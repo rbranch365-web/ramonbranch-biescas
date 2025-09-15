@@ -26,16 +26,6 @@
       padding: 20px;
     }
     nav a { font-weight: 500; font-size: 0.95rem; padding: 5px 0; position: relative; }
-    nav a.active::after {
-      content: '';
-      position: absolute;
-      bottom: -5px;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background: #0077cc;
-      border-radius: 2px;
-    }
 
     /* HERO */
     .hero {
@@ -49,38 +39,13 @@
       color: #fff;
       background: url('images/profile.jpg') center 35% / cover no-repeat;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
     .hero-content {
       position: relative;
-      z-index: 1;
-      animation: fadeUp 1s ease forwards;
       margin-bottom: 80px;
     }
     .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; margin-bottom: 10px; }
     .hero .title { font-size: 1.3rem; margin-bottom: 15px; color: #ddd; }
     .hero .quote { font-style: italic; font-size: 1.1rem; color: #eee; }
-
-    /* Header social icons */
-    .header-social {
-      position: absolute;
-      top: 20px;
-      right: 30px;
-      z-index: 10;
-    }
-    .header-social a {
-      color: #fff;
-      font-size: 1.4rem;
-      margin-left: 15px;
-      transition: color 0.3s;
-    }
-    .header-social a:hover { color: #f5a623; }
-
-    @keyframes fadeUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
 
     /* SECTIONS */
     section {
@@ -92,17 +57,10 @@
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.6s ease, transform 0.6s ease;
+      background: #f7f9fc;
     }
     section.visible { opacity: 1; transform: translateY(0); }
     section h2 { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 40px; }
-
-    /* Unified Section Backgrounds */
-    #concerts,
-    #media,
-    #about,
-    #contact {
-      background: #f7f9fc; /* same as media gallery */
-    }
 
     /* CONCERT LIST */
     .concert-list { list-style: none; padding: 0; margin: 0; }
@@ -122,7 +80,7 @@
     .concert-details h3 { font-size: 1.3rem; margin-bottom: 5px; }
     .concert-details time { font-style: italic; color: #777; }
     .concert-details p { color: #555; }
-    .concert-cta a, .future-btn {
+    .future-btn {
       padding: 10px 18px;
       background: #0077cc;
       color: #fff;
@@ -131,7 +89,7 @@
       display: inline-block;
       transition: background 0.3s;
     }
-    .concert-cta a:hover, .future-btn:hover { background: #005fa3; }
+    .future-btn:hover { background: #005fa3; }
 
     /* MEDIA GALLERY */
     .media-gallery {
@@ -148,7 +106,6 @@
       transition: transform 0.3s, box-shadow 0.3s;
       cursor: pointer;
     }
-    .media-gallery img:nth-child(2) { object-position: center 40%; } /* lower face adjustment */
     .media-gallery img:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
 
     /* BIOGRAPHY */
@@ -162,7 +119,6 @@
 
     /* FOOTER */
     footer { text-align: center; font-size: 0.85rem; color: #888; padding: 40px 20px; background: #f7f9fc; }
-    footer .social a { margin: 0 12px; font-weight: 500; }
 
     /* RESPONSIVE */
     @media(max-width:768px){
@@ -187,71 +143,62 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="header-social">
-  <a href="https://www.instagram.com/rbranchbiescas/" target="_blank" rel="noopener">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a href="https://www.facebook.com/heronbrass" target="_blank" rel="noopener">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-</div>
-
+    <div class="hero-content">
+      <h1>Ramon Branch Biescas</h1>
+      <p class="title">Tuba Player • Organist • Teacher</p>
+      <div class="quote">“Music is the bridge that connects us all”</div>
+    </div>
   </header>
 
-
-<!-- CONCERTS -->
-<section id="concerts">
-  <h2>Upcoming Concerts</h2>
-  <ul class="concert-list">
-    <li class="concert-item">
-      <div class="concert-details">
-        <h3>Heron Brass Performance</h3>
-        <time datetime="2025-09-19T19:30">Friday, September 19, 2025 • 7:30 PM</time>
-        <p>St Saviour's Church, Brockley Rise, London</p>
-      </div>
-    </li>
-    <li class="concert-item">
-      <div class="concert-details">
-        <h3>Dido and Aeneas Performance</h3>
-        <time datetime="2025-09-20T19:00">Saturday, September 20, 2025 • 7:00 PM</time>
-        <p>St Mary’s, Hendon, London</p>
-      </div>
-    </li>
-    <li class="concert-item">
-      <div class="concert-details">
-        <h3>Heron Brass Performance</h3>
-        <time datetime="2025-10-26T19:30">Sunday, October 26, 2025 • 7:30 PM</time>
-        <p>Stour Valley Arts Concert Series, UK</p>
-      </div>
-    </li>
-    <li class="concert-item">
-      <div class="concert-details">
-        <h3>Vilaseca Concert</h3>
-        <time datetime="2025-11-09T17:00">Sunday, November 9, 2025 • 5:00 PM</time>
-        <p>Tarragona, Spain</p>
-      </div>
-    </li>
-  </ul>
-  <div style="text-align: right; margin-top: 20px;">
-    <a href="future-concerts.html" class="future-btn">Future Concerts</a>
-  </div>
-</section>
-
-
+  <!-- CONCERTS -->
+  <section id="concerts">
+    <h2>Upcoming Concerts</h2>
+    <ul class="concert-list">
+      <li class="concert-item">
+        <div class="concert-details">
+          <h3>Heron Brass Performance</h3>
+          <time datetime="2025-09-19T19:30">Friday, September 19, 2025 • 7:30 PM</time>
+          <p>St Saviour's Church, Brockley Rise, London</p>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="concert-details">
+          <h3>Dido and Aeneas Performance</h3>
+          <time datetime="2025-09-20T19:00">Saturday, September 20, 2025 • 7:00 PM</time>
+          <p>St Mary’s, Hendon, London</p>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="concert-details">
+          <h3>Heron Brass Performance</h3>
+          <time datetime="2025-10-26T19:30">Sunday, October 26, 2025 • 7:30 PM</time>
+          <p>Stour Valley Arts Concert Series, UK</p>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="concert-details">
+          <h3>Vilaseca Concert</h3>
+          <time datetime="2025-11-09T17:00">Sunday, November 9, 2025 • 5:00 PM</time>
+          <p>Tarragona, Spain</p>
+        </div>
+      </li>
+    </ul>
+    <div style="text-align: right; margin-top: 20px;">
+      <a href="future-concerts.html" class="future-btn">Future Concerts</a>
+    </div>
+  </section>
 
   <!-- MEDIA -->
   <section id="media">
     <h2>Media Gallery</h2>
     <div class="media-gallery">
-  <img src="images/concert1.jpg" alt="Concert 1" style="object-position: center 35%;">
-  <img src="images/concert4.jpg" alt="Concert 4" style="object-position: center 50%;">
-  <img src="images/concert2.jpg" alt="Concert 2" style="object-position: center 35%;">
-  <img src="images/concert6.jpg" alt="Concert 6" style="object-position: center top;">
-  <img src="images/concert5.jpg" alt="Concert 5" style="object-position: center 20%;">
-  <img src="images/concert3.jpg" alt="Concert 3" style="object-position: center top;">
-</div>
-
-
+      <img src="images/concert1.jpg" alt="Concert 1" style="object-position: center 60%;">
+      <img src="images/concert4.jpg" alt="Concert 4" style="object-position: center 50%;">
+      <img src="images/concert2.jpg" alt="Concert 2" style="object-position: center 60%;">
+      <img src="images/concert6.jpg" alt="Concert 6" style="object-position: center top;">
+      <img src="images/concert5.jpg" alt="Concert 5" style="object-position: center 60%;">
+      <img src="images/concert3.jpg" alt="Concert 3" style="object-position: center top;">
+    </div>
   </section>
 
   <!-- BIOGRAPHY -->
@@ -275,7 +222,8 @@
   </section>
 
   <!-- FOOTER -->
-    <div>©Copyright </div>
+  <footer>
+    <div>© Ramon Branch Biescas 2025</div>
   </footer>
 
   <script>
