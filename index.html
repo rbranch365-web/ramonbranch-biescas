@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name — Conductor</title>
+  <meta name="description" content="Official website of Your Name, conductor and music director. Explore concerts, media, and biography." />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Georgia, serif; color: #111; background: #fff; line-height: 1.6; padding: 0 20px; }
+    a { color: #111; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header { max-width: 900px; margin: 40px auto 60px auto; text-align: center; }
+    nav { margin-bottom: 40px; font-size: 0.95rem; }
+    nav a { margin: 0 15px; font-weight: 500; }
+    .hero { margin-bottom: 60px; }
+    .hero h1 { font-size: 3rem; font-weight: bold; line-height: 1.2; margin-bottom: 20px; }
+    .hero p { font-size: 1.3rem; color: #555; margin-bottom: 30px; }
+    .hero .quote { font-style: italic; color: #333; font-size: 1.1rem; margin-bottom: 20px; }
+    .hero .profile-link { font-size: 1rem; }
+    section { max-width: 900px; margin: 0 auto 80px auto; }
+    section h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
+    .about p { color: #444; margin-bottom: 15px; text-align: center; font-size: 1.1rem; }
+    .event { margin-bottom: 60px; }
+    .event h3 { font-size: 1.6rem; margin-bottom: 8px; }
+    .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
+    .event .details { margin-bottom: 10px; color: #555; }
+    .event .cta { margin-top: 10px; }
+    .event .cta a { padding: 8px 16px; background: #000; color: #fff; font-size: 0.9rem; border-radius: 3px; transition: background 0.3s; }
+    .event .cta a:hover { background: #444; }
+    .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .media-gallery img { width: 100%; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
+    input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
+    button { padding: 10px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
+    button:hover { background: #444; }
+    footer { max-width: 900px; margin: 80px auto 40px auto; text-align: center; font-size: 0.8rem; color: #999; }
+    .social { margin-bottom: 10px; }
+    .social a { margin: 0 8px; }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2.2rem; }
+      .event h3 { font-size: 1.4rem; }
+      nav { font-size: 0.85rem; display: flex; flex-wrap: wrap; justify-content: center; }
+      nav a { margin: 5px 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#concerts">Concerts</a>
+      <a href="#media">Media</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hero">
+      <h1>Your Name</h1>
+      <p>Conductor & Music Director</p>
+      <div class="quote">“Your quote describing you or your art”</div>
+      <div class="profile-link"><a href="#">Profile on SomeSite.com</a></div>
+    </div>
+  </header>
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec tincidunt, nisl vel consequat aliquet, erat nisl volutpat nunc.</p>
+    <p>Phasellus viverra, nulla in congue tempus, justo odio pretium velit, nec pharetra risus elit at justo.</p>
+  </section>
+  <section id="concerts" class="events">
+    <h2>Upcoming Concerts</h2>
+    <article class="event">
+      <h3>Upcoming Concert One</h3>
+      <time datetime="2025-10-12T19:30">October 12, 2025 • 7:30 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+    <article class="event">
+      <h3>Upcoming Concert Two</h3>
+      <time datetime="2025-10-16T20:00">October 16, 2025 • 8:00 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+  </section>
+  <section id="media">
+    <h2>Media</h2>
+    <div class="media-gallery">
+      <img src="images/concert1.jpg" alt="Concert photo 1" />
+      <img src="images/concert2.jpg" alt="Concert photo 2" />
+      <img src="images/concert3.jpg" alt="Concert photo 3" />
+    </div>
+  </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <form>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+  <footer>
+    <div class="social">
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+    <div>© Your Name 2025</div>
+  </footer>
+</body>
+</html>
