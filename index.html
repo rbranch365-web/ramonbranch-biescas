@@ -1,119 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ramon Branch Biescas — Tuba</title>
-  <meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography." />
+  <meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography.">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Georgia, serif;
-      color: #111;
-      background: #fafafa;
-      line-height: 1.7;
-    }
-    h1, h2, h3 {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: 600;
-      color: #222;
-    }
-    a { color: #111; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; background: #f5f5f5; color: #222; scroll-behavior: smooth; }
+
+    a { text-decoration: none; color: inherit; transition: 0.3s; }
+    a:hover { color: #0077cc; }
 
     /* NAVIGATION */
     nav {
-      text-align: center;
-      padding: 20px 0;
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       position: sticky;
       top: 0;
-      z-index: 10;
+      background: #fff;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 20px;
+      transition: background 0.3s;
     }
-    nav a { margin: 0 15px; font-weight: 500; font-size: 0.95rem; }
+    nav a {
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 5px 0;
+      position: relative;
+    }
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #0077cc;
+      border-radius: 2px;
+    }
 
     /* HERO */
     .hero {
       position: relative;
+      width: 100%;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 100px 20px 80px 20px;
-      background: url('images/profile.jpg') no-repeat center center;
-      background-size: cover;
-      background-color: #fff;
-      color: #222;
+      color: #fff;
+      background: url('images/profile.jpg') center/cover no-repeat;
     }
     .hero::before {
-      content: "";
+      content: '';
       position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255,255,255,0.7);
-      z-index: 1;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-    .hero .title { font-size: 1.3rem; color: #555; margin-bottom: 15px; }
-    .hero .quote { font-style: italic; color: #444; font-size: 1.15rem; }
+    .hero-content { position: relative; z-index: 1; animation: fadeUp 1s ease forwards; }
+    .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 3rem; margin-bottom: 10px; }
+    .hero .title { font-size: 1.3rem; margin-bottom: 15px; color: #ddd; }
+    .hero .quote { font-style: italic; font-size: 1.1rem; color: #eee; }
 
-    /* SECTION BASE */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTION */
     section {
-      max-width: 1000px;
-      margin: 0 auto 80px auto;
+      max-width: 1100px;
+      margin: 60px auto;
       padding: 40px 20px;
       background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-    section h2 { font-size: 2rem; margin-bottom: 25px; text-align: center; }
+    section.visible { opacity: 1; transform: translateY(0); }
+    section h2 { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 40px; }
 
-    /* ABOUT */
-    .about p { color: #444; margin-bottom: 18px; font-size: 1.1rem; text-align: justify; }
-
-    /* CONCERTS */
+    /* CONCERT CARDS */
+    .events { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
     .event {
-      margin-bottom: 40px;
-      padding: 20px;
-      border: 1px solid #eee;
-      border-radius: 6px;
-      background: #fafafa;
-      transition: transform 0.2s;
+      padding: 25px;
+      border-radius: 12px;
+      background: #f9f9f9;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .event:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
-    .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
-    .event .details { margin-bottom: 10px; color: #555; }
+    .event:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+    .event h3 { font-size: 1.4rem; margin-bottom: 8px; }
+    .event time { display: block; color: #777; font-style: italic; margin-bottom: 8px; }
+    .event .details { margin-bottom: 15px; color: #555; }
     .event .cta a {
-      padding: 8px 16px;
-      background: #000;
+      display: inline-block;
+      padding: 10px 20px;
+      background: #0077cc;
       color: #fff;
-      font-size: 0.9rem;
-      border-radius: 3px;
+      border-radius: 6px;
+      font-weight: 500;
       transition: background 0.3s;
     }
-    .event .cta a:hover { background: #444; }
+    .event .cta a:hover { background: #005fa3; }
 
     /* MEDIA GALLERY */
-    .media-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
+    .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .media-gallery img {
       width: 100%;
       height: 250px;
       object-fit: cover;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
     }
-    .media-gallery img:hover { transform: scale(1.05); }
+    .media-gallery img:hover { transform: scale(1.05); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+
+    /* BIOGRAPHY */
+    .about p { font-size: 1.1rem; color: #555; margin-bottom: 20px; text-align: justify; }
 
     /* CONTACT FORM */
     form {
@@ -124,33 +134,46 @@
       margin: 0 auto;
     }
     input, textarea {
-      padding: 12px;
+      padding: 14px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 8px;
       font-size: 1rem;
-      font-family: inherit;
     }
     button {
-      padding: 12px;
-      background: #000;
+      padding: 14px;
+      background: #0077cc;
       color: #fff;
       border: none;
-      border-radius: 4px;
+      border-radius: 8px;
       cursor: pointer;
       font-size: 1rem;
       transition: background 0.3s;
     }
-    button:hover { background: #444; }
+    button:hover { background: #005fa3; }
 
     /* FOOTER */
-    footer { text-align: center; font-size: 0.85rem; color: #999; padding: 40px 20px; }
-    .social a { margin: 0 10px; }
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #888;
+      padding: 40px 20px;
+      background: #f9f9f9;
+    }
+    footer .social a { margin: 0 12px; font-weight: 500; }
+
+    /* RESPONSIVE */
+    @media(max-width:768px){
+      .hero h1 { font-size: 2.2rem; }
+      .hero .title { font-size: 1.2rem; }
+      .hero .quote { font-size: 1rem; }
+      .events { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav id="navbar">
     <a href="#concerts">Concerts</a>
     <a href="#media">Media</a>
     <a href="#about">About</a>
@@ -181,74 +204,30 @@
       <p class="details">Venue Name, City, Country</p>
       <div class="cta"><a href="#">Buy Tickets</a></div>
     </article>
-    <article class="event">
-      <h3>Concert Three</h3>
-      <time datetime="2025-11-05T19:30">November 5, 2025 • 7:30 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="#">Buy Tickets</a></div>
-    </article>
-    <article class="event">
-      <h3>Concert Four</h3>
-      <time datetime="2025-11-20T20:00">November 20, 2025 • 8:00 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="#">Buy Tickets</a></div>
-    </article>
-
-    <!-- Separate "View All Concerts" Button -->
-    <div style="text-align:center; margin-top:20px;">
-      <a href="all-concerts.html" style="padding:10px 20px; background:#000; color:#fff; border-radius:4px; text-decoration:none; font-weight:500;">View All Concerts</a>
-    </div>
   </section>
 
   <!-- MEDIA -->
   <section id="media">
     <h2>Media Gallery</h2>
     <div class="media-gallery">
-      <img src="images/concert1.jpg" alt="Concert photo 1" />
-      <img src="images/concert2.jpg" alt="Concert photo 2" />
-      <img src="images/concert3.jpg" alt="Concert photo 3" />
-      <img src="images/concert4.jpg" alt="Concert photo 4" />
-      <img src="images/concert5.jpg" alt="Concert photo 5" />
-      <img src="images/concert6.jpg" alt="Concert photo 6" />
+      <img src="images/concert1.jpg" alt="Concert 1">
+      <img src="images/concert2.jpg" alt="Concert 2">
+      <img src="images/concert3.jpg" alt="Concert 3">
     </div>
   </section>
 
   <!-- BIOGRAPHY -->
   <section id="about" class="about">
     <h2>Biography</h2>
-    <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age he attended
-    the choir school Escolania de Montserrat in Catalonia where he had most of his early musical training.
-    There he studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years.
-    The choir performed in Russia, France, the United States, Poland, Germany, China and many different
-    areas in Catalonia. Later he moved to the UK to continue his musical career and his academic studies
-    at Lancing College, where he had organ lessons with Neil Cox and piano lessons with Adrian West.</p>
-
-    <p>Ramon started the tuba at the age of fourteen with Dave Whitson and a year later joined the Junior
-    Royal Academy of Music to study with Stephen Wick. After completing his GCSEs, he went to the Purcell
-    School for Young Musicians to continue his musical career as a tuba player without neglecting his other
-    instruments. There he improved as an all-rounded musician and enjoyed many varied performing opportunities.
-    He achieved a high distinction mark in all his grade 8 ABRSM exams and hopes to achieve his diploma in
-    singing and organ in the future.</p>
-
-    <p>Ramon has had a considerable amount of experience playing with orchestras such as the London Symphony
-    Orchestra, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Junior Academy Symphony Orchestra,
-    Purcell School Symphony, Jove Orchestra National de Catalunya and the Guildhall Symphony Orchestra.
-    He is currently studying with Ben Thomson, the principal tubist at the London Symphony Orchestra and
-    Kevin Morgan, the principal tubist of the Royal Philharmonic Orchestra. He has been keen to continue with
-    his other musical talents and is having second study singing lessons with Adrian Thompson, while also
-    singing at St Mary’s Hendon as a choral scholar and playing the organ in different churches around London.</p>
-
-    <p>Ramon is also very keen on chamber music, playing regularly with the Heron Brass Quintet, who recently
-    reached the semifinal round for the Royal Overseas League competition. Having now completed his master’s
-    studies, he is looking forward to continuing his career as a freelance musician and teacher.</p>
+    <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age...</p>
   </section>
 
   <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
     <form>
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message"></textarea>
       <button type="submit">Send Message</button>
     </form>
@@ -262,5 +241,30 @@
     </div>
     <div>© Ramon Branch Biescas 2025</div>
   </footer>
+
+  <script>
+    // Animate sections on scroll
+    const sections = document.querySelectorAll('section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+    sections.forEach(sec => observer.observe(sec));
+
+    // Scroll spy for nav links
+    const navLinks = document.querySelectorAll('nav a');
+    const sectionPositions = Array.from(sections).map(sec => ({id: sec.id, offset: sec.offsetTop}));
+
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 100; // offset for sticky nav
+      sectionPositions.forEach((sec, index) => {
+        if(scrollPos >= sec.offset && (index === sectionPositions.length-1 || scrollPos < sectionPositions[index+1].offset)) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          document.querySelector(`nav a[href="#${sec.id}"]`).classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
