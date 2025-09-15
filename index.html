@@ -7,17 +7,11 @@
   <meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography." />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Georgia, serif;
-      color: #111;
-      background: #fafafa;
-      line-height: 1.7;
-    }
+    body { font-family: Georgia, serif; color: #111; background: #fafafa; line-height: 1.7; }
+
     h1, h2, h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 600; color: #222; }
     a { color: #111; text-decoration: none; }
     a:hover { text-decoration: underline; }
-
-    html { scroll-behavior: smooth; }
 
     /* NAVIGATION */
     nav {
@@ -32,94 +26,43 @@
     nav a { margin: 0 15px; font-weight: 500; font-size: 0.95rem; }
 
     /* HERO */
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 120px 20px 100px 20px;
-      background: url('images/profile.jpg') no-repeat center center;
-      background-size: cover;
-      color: #222;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.3));
-      z-index: 1;
-    }
-    .hero-content { position: relative; z-index: 2; }
-    .hero h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);}
-    .hero .title { font-size: 1.3rem; color: #555; margin-bottom: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);}
-    .hero .quote { font-style: italic; color: #444; font-size: 1.15rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
+    .hero { position: relative; text-align: center; padding: 120px 20px 100px; background: url('images/profile.jpg') no-repeat center center; background-size: cover; color: #222; }
+    .hero-overlay { position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(255,255,255,0.7); z-index:1; }
+    .hero-content { position: relative; z-index:2; max-width: 800px; margin: 0 auto; }
+    .hero h1 { font-size: 3rem; margin-bottom: 15px; }
+    .hero .title { font-size: 1.4rem; color: #555; margin-bottom: 20px; }
+    .hero .quote { font-style: italic; font-size: 1.2rem; color: #444; }
+    @media (max-width: 768px) { .hero h1 { font-size: 2.2rem; } .hero .title, .hero .quote { font-size: 1rem; } }
 
-    /* SECTION */
-    section {
-      max-width: 1000px;
-      margin: 0 auto 80px auto;
-      padding: 40px 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
+    /* SECTION BASE */
+    section { max-width: 1000px; margin: 0 auto 80px; padding: 40px 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
     section h2 { font-size: 2rem; margin-bottom: 25px; text-align: center; }
 
     /* CONCERTS */
-    .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .event {
-      padding: 20px;
-      border: 1px solid #eee;
-      border-radius: 6px;
-      background: #fafafa;
-      transition: transform 0.2s;
-    }
-    .event:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08);}
+    .event { margin-bottom: 40px; padding: 20px; border: 1px solid #eee; border-radius: 6px; background: #fafafa; transition: transform 0.2s; }
+    .event:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
     .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
     .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
     .event .details { margin-bottom: 10px; color: #555; }
-    .event .cta a {
-      padding: 8px 16px;
-      background: #000;
-      color: #fff;
-      font-size: 0.9rem;
-      border-radius: 3px;
-      transition: background 0.3s;
-    }
+    .event .cta a { padding: 8px 16px; background: #000; color: #fff; font-size: 0.9rem; border-radius: 3px; transition: background 0.3s; }
     .event .cta a:hover { background: #444; }
-
-    .full-concerts-btn {
-      display: block;
-      margin: 20px auto 0 auto;
-      padding: 10px 20px;
-      background: #000;
-      color: #fff;
-      border-radius: 4px;
-      text-align: center;
-      width: fit-content;
-    }
-    .full-concerts-btn:hover { background: #444; }
+    .concerts-cta { text-align: center; margin-top: 20px; }
+    .concerts-cta a { padding: 10px 20px; background: #222; color: #fff; border-radius: 4px; font-size: 1rem; transition: background 0.3s; }
+    .concerts-cta a:hover { background: #555; }
 
     /* MEDIA GALLERY */
-    .media-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .media-gallery img {
-      width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .media-gallery img:hover { transform: scale(1.05); }
+    .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    .media-gallery img { width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+    .media-gallery img:hover { transform: scale(1.05); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
 
-    /* ABOUT */
-    .about p { color: #444; margin-bottom: 18px; font-size: 1.1rem; text-align: justify; }
-    @media(min-width:900px) {
-      .about p { column-count: 2; column-gap: 40px; }
-    }
+    /* BIOGRAPHY */
+    .bio-content { display: flex; flex-wrap: wrap; gap: 30px; padding: 25px 30px; background: #f9f9f9; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+    .bio-column { flex: 1 1 45%; min-width: 300px; }
+    .bio-content h3 { margin-top: 20px; margin-bottom: 10px; font-size: 1.3rem; color: #222; }
+    .bio-content p { text-align: justify; margin-bottom: 15px; font-size: 1.1rem; color: #444; }
+    @media (max-width: 768px) { .bio-content { flex-direction: column; } .bio-column { flex: 1 1 100%; } }
 
-    /* CONTACT */
+    /* CONTACT FORM */
     form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
     input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
     button { padding: 12px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
@@ -131,6 +74,7 @@
   </style>
 </head>
 <body>
+
   <!-- NAV -->
   <nav>
     <a href="#concerts">Concerts</a>
@@ -141,6 +85,7 @@
 
   <!-- HERO -->
   <header class="hero">
+    <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Ramon Branch Biescas</h1>
       <p class="title">Tuba Player • Organist • Teacher</p>
@@ -148,39 +93,39 @@
     </div>
   </header>
 
-  <!-- CONCERTS -->
-  <section id="concerts">
+  <!-- UPCOMING CONCERTS -->
+  <section id="concerts" class="events">
     <h2>Upcoming Concerts</h2>
-    <div class="events-grid">
-      <div class="event">
-        <h3>Concert One</h3>
-        <time datetime="2025-10-12T19:30">October 12, 2025 • 7:30 PM</time>
-        <p class="details">Venue Name, City, Country</p>
-        <div class="cta"><a href="#">Buy Tickets</a></div>
-      </div>
-      <div class="event">
-        <h3>Concert Two</h3>
-        <time datetime="2025-10-16T20:00">October 16, 2025 • 8:00 PM</time>
-        <p class="details">Venue Name, City, Country</p>
-        <div class="cta"><a href="#">Buy Tickets</a></div>
-      </div>
-      <div class="event">
-        <h3>Concert Three</h3>
-        <time datetime="2025-11-01T19:00">November 1, 2025 • 7:00 PM</time>
-        <p class="details">Venue Name, City, Country</p>
-        <div class="cta"><a href="#">Buy Tickets</a></div>
-      </div>
-      <div class="event">
-        <h3>Concert Four</h3>
-        <time datetime="2025-11-12T18:30">November 12, 2025 • 6:30 PM</time>
-        <p class="details">Venue Name, City, Country</p>
-        <div class="cta"><a href="#">Buy Tickets</a></div>
-      </div>
+    <article class="event">
+      <h3>Concert One</h3>
+      <time datetime="2025-10-12T19:30">October 12, 2025 • 7:30 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+    <article class="event">
+      <h3>Concert Two</h3>
+      <time datetime="2025-10-16T20:00">October 16, 2025 • 8:00 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+    <article class="event">
+      <h3>Concert Three</h3>
+      <time datetime="2025-10-20T19:30">October 20, 2025 • 7:30 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+    <article class="event">
+      <h3>Concert Four</h3>
+      <time datetime="2025-10-25T20:00">October 25, 2025 • 8:00 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+    <div class="concerts-cta">
+      <a href="all-concerts.html">View All Concerts</a>
     </div>
-    <a href="all-concerts.html" class="full-concerts-btn">View All Concerts</a>
   </section>
 
-  <!-- MEDIA -->
+  <!-- MEDIA GALLERY -->
   <section id="media">
     <h2>Media Gallery</h2>
     <div class="media-gallery">
@@ -196,31 +141,20 @@
   <!-- BIOGRAPHY -->
   <section id="about" class="about">
     <h2>Biography</h2>
-    <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age he attended
-    the choir school Escolania de Montserrat in Catalonia where he had most of his early musical training.
-    There he studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years.
-    The choir performed in Russia, France, the United States, Poland, Germany, China and many different
-    areas in Catalonia. Later he moved to the UK to continue his musical career and his academic studies
-    at Lancing College, where he had organ lessons with Neil Cox and piano lessons with Adrian West.</p>
-
-    <p>Ramon started the tuba at the age of fourteen with Dave Whitson and a year later joined the Junior
-    Royal Academy of Music to study with Stephen Wick. After completing his GCSEs, he went to the Purcell
-    School for Young Musicians to continue his musical career as a tuba player without neglecting his other
-    instruments. There he improved as an all-rounded musician and enjoyed many varied performing opportunities.
-    He achieved a high distinction mark in all his grade 8 ABRSM exams and hopes to achieve his diploma in
-    singing and organ in the future.</p>
-
-    <p>Ramon has had a considerable amount of experience playing with orchestras such as the London Symphony
-    Orchestra, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Junior Academy Symphony Orchestra,
-    Purcell School Symphony, Jove Orchestra National de Catalunya and the Guildhall Symphony Orchestra.
-    He is currently studying with Ben Thomson, the principal tubist at the London Symphony Orchestra and
-    Kevin Morgan, the principal tubist of the Royal Philharmonic Orchestra. He has been keen to continue with
-    his other musical talents and is having second study singing lessons with Adrian Thompson, while also
-    singing at St Mary’s Hendon as a choral scholar and playing the organ in different churches around London.</p>
-
-    <p>Ramon is also very keen on chamber music, playing regularly with the Heron Brass Quintet, who recently
-    reached the semifinal round for the Royal Overseas League competition. Having now completed his master’s
-    studies, he is looking forward to continuing his career as a freelance musician and teacher.</p>
+    <div class="bio-content">
+      <div class="bio-column">
+        <h3>Early Life & Musical Training</h3>
+        <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age, he attended the choir school Escolania de Montserrat in Catalonia, where he had most of his early musical training. He studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years. The choir performed internationally.</p>
+        <h3>Education & Instrumental Studies</h3>
+        <p>Later, Ramon moved to the UK to continue his musical career and academic studies at Lancing College. He started the tuba at fourteen and joined the Junior Royal Academy of Music a year later. He then attended the Purcell School for Young Musicians, excelling in multiple instruments and achieving high distinctions in all Grade 8 ABRSM exams.</p>
+      </div>
+      <div class="bio-column">
+        <h3>Professional Experience</h3>
+        <p>Ramon has performed with orchestras including the London Symphony Orchestra, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Junior Academy Symphony Orchestra, Purcell School Symphony, Jove Orchestra National de Catalunya, and the Guildhall Symphony Orchestra. He also studies with principal tubists of LSO and RPO and continues singing and organ performances across London.</p>
+        <h3>Chamber Music & Future Plans</h3>
+        <p>He regularly performs chamber music with the Heron Brass Quintet, which recently reached the semifinals of the Royal Overseas League competition. Having completed his master’s studies, Ramon looks forward to continuing his career as a freelance musician and teacher.</p>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT -->
@@ -237,10 +171,4 @@
   <!-- FOOTER -->
   <footer>
     <div class="social">
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-    </div>
-    <div>© Ramon Branch Biescas 2025</div>
-  </footer>
-</body>
-</html>
+      <a href
