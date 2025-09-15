@@ -1,200 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ramon Branch Biescas — Tuba</title>
-  <meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography." />
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Georgia, serif;
-      color: #111;
-      background: #fafafa;
-      line-height: 1.7;
-    }
-    h1, h2, h3 {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: 600;
-      color: #222;
-    }
-    a { color: #111; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ramon Branch Biescas — Tuba</title>
+<meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography." />
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; } /* Smooth scroll */
+  body {
+    font-family: Georgia, serif;
+    color: #111;
+    background: #fafafa;
+    line-height: 1.7;
+  }
+  h1, h2, h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 600; color: #222; }
+  a { color: #111; text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-    /* NAVIGATION */
-    nav {
-      text-align: center;
-      padding: 20px 0;
-      background: #fff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav a {
-      margin: 0 15px;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
+  /* NAVIGATION */
+  nav {
+    text-align: center;
+    padding: 20px 0;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  nav a { margin: 0 15px; font-weight: 500; font-size: 0.95rem; }
 
-    /* HERO STYLING */
-    .hero {
-      position: relative;
-      text-align: center;
-      padding: 120px 20px 100px 20px;
-      background: url('images/profile.jpg') no-repeat center center;
-      background-size: cover;
-      color: #222;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.7));
-      backdrop-filter: blur(2px);
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 700px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    .hero .title {
-      font-size: 1.3rem;
-      color: #555;
-      margin-bottom: 15px;
-    }
-    .hero .quote {
-      font-style: italic;
-      color: #444;
-      font-size: 1.15rem;
-    }
+  /* HERO STYLING */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 120px 20px 100px 20px;
+    background: url('images/profile.jpg') no-repeat center center;
+    background-size: cover;
+    color: #222;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.7));
+    backdrop-filter: blur(2px);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+  .hero .title { font-size: 1.3rem; color: #555; margin-bottom: 15px; }
+  .hero .quote { font-style: italic; color: #444; font-size: 1.15rem; }
 
-    /* SECTION BASE */
-    section {
-      max-width: 1000px;
-      margin: 0 auto 80px auto;
-      padding: 40px 20px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-    section h2 {
-      font-size: 2rem;
-      margin-bottom: 25px;
-      text-align: center;
-    }
+  /* SECTION BASE */
+  section { max-width: 1000px; margin: 0 auto 80px auto; padding: 40px 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+  section h2 { font-size: 2rem; margin-bottom: 25px; text-align: center; }
 
-    /* ABOUT */
-    .about p {
-      color: #444;
-      margin-bottom: 18px;
-      font-size: 1.1rem;
-      text-align: justify;
-    }
+  /* ABOUT */
+  .about p { color: #444; margin-bottom: 18px; font-size: 1.1rem; text-align: justify; }
 
-    /* CONCERTS */
-    .event {
-      margin-bottom: 40px;
-      padding: 20px;
-      border: 1px solid #eee;
-      border-radius: 6px;
-      background: #fafafa;
-      transition: transform 0.2s;
-    }
-    .event:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
-    .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
-    .event .details { margin-bottom: 10px; color: #555; }
-    .event .cta a {
-      padding: 8px 16px;
-      background: #000;
-      color: #fff;
-      font-size: 0.9rem;
-      border-radius: 3px;
-      transition: background 0.3s;
-    }
-    .event .cta a:hover { background: #444; }
+  /* CONCERTS */
+  .event { margin-bottom: 40px; padding: 20px; border: 1px solid #eee; border-radius: 6px; background: #fafafa; transition: transform 0.2s; }
+  .event:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
+  .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
+  .event .details { margin-bottom: 10px; color: #555; }
+  .event .cta a { padding: 8px 16px; background: #000; color: #fff; font-size: 0.9rem; border-radius: 3px; transition: background 0.3s; }
+  .event .cta a:hover { background: #444; }
 
-    /* MEDIA GALLERY */
-    .media-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .media-gallery img {
-      width: 100%;
-      border-radius: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-    .media-gallery img:hover {
-      transform: scale(1.05);
-    }
+  /* MEDIA GALLERY */
+  .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+  .media-gallery img { width: 100%; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
+  .media-gallery img:hover { transform: scale(1.05); }
 
-    /* CONTACT FORM */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    input, textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-    button {
-      padding: 12px;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
-    button:hover { background: #444; }
+  /* LIGHTBOX */
+  #lightbox {
+    position: fixed;
+    display: none;
+    z-index: 999;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  #lightbox img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  }
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #999;
-      padding: 40px 20px;
-    }
-    .social a { margin: 0 10px; }
+  /* CONTACT FORM */
+  form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
+  input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
+  button { padding: 12px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
+  button:hover { background: #444; }
 
-    /* RESPONSIVE HERO */
-    @media (max-width: 768px) {
-      .hero h1 { font-size: 2.4rem; }
-      .hero .title { font-size: 1.1rem; }
-      .hero .quote { font-size: 1rem; }
-      .hero { padding: 100px 15px 80px 15px; }
-    }
+  /* FOOTER */
+  footer { text-align: center; font-size: 0.85rem; color: #999; padding: 40px 20px; }
+  .social a { margin: 0 10px; }
 
-    @media (max-width: 480px) {
-      nav a { margin: 5px 8px; font-size: 0.85rem; }
-      .hero h1 { font-size: 2rem; }
-      .hero .title { font-size: 1rem; }
-      .hero .quote { font-size: 0.95rem; }
-    }
-
-  </style>
+  /* RESPONSIVE HERO */
+  @media (max-width: 768px) {
+    .hero h1 { font-size: 2.4rem; }
+    .hero .title { font-size: 1.1rem; }
+    .hero .quote { font-size: 1rem; }
+    .hero { padding: 100px 15px 80px 15px; }
+  }
+  @media (max-width: 480px) {
+    nav a { margin: 5px 8px; font-size: 0.85rem; }
+    .hero h1 { font-size: 2rem; }
+    .hero .title { font-size: 1rem; }
+    .hero .quote { font-size: 0.95rem; }
+  }
+</style>
 </head>
 <body>
 
@@ -277,6 +205,11 @@
     </div>
   </section>
 
+  <!-- LIGHTBOX CONTAINER -->
+  <div id="lightbox">
+    <img src="" alt="Expanded media image">
+  </div>
+
   <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
@@ -296,6 +229,22 @@
     </div>
     <div>© Ramon Branch Biescas 2025</div>
   </footer>
+
+<script>
+  // LIGHTBOX FUNCTIONALITY
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = lightbox.querySelector('img');
+  document.querySelectorAll('.media-gallery img').forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImage.src = img.src;
+      lightboxImage.alt = img.alt;
+    });
+  });
+  lightbox.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
