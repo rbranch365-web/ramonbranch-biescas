@@ -33,7 +33,7 @@
     }
     nav a { margin: 0 15px; font-weight: 500; font-size: 0.95rem; }
 
-    /* HERO STYLING */
+    /* HERO */
     .hero {
       position: relative;
       text-align: center;
@@ -107,16 +107,13 @@
     }
     .media-gallery img {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      height: 250px;
       object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-    .media-gallery img:hover {
-      transform: scale(1.08);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-    }
+    .media-gallery img:hover { transform: scale(1.05); }
 
     /* CONTACT FORM */
     form {
@@ -146,16 +143,12 @@
     button:hover { background: #444; }
 
     /* FOOTER */
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #999;
-      padding: 40px 20px;
-    }
+    footer { text-align: center; font-size: 0.85rem; color: #999; padding: 40px 20px; }
     .social a { margin: 0 10px; }
   </style>
 </head>
 <body>
+
   <!-- NAV -->
   <nav>
     <a href="#concerts">Concerts</a>
@@ -198,8 +191,13 @@
       <h3>Concert Four</h3>
       <time datetime="2025-11-20T20:00">November 20, 2025 • 8:00 PM</time>
       <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="all-concerts.html">View All Concerts</a></div>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
     </article>
+
+    <!-- Separate "View All Concerts" Button -->
+    <div style="text-align:center; margin-top:20px;">
+      <a href="all-concerts.html" style="padding:10px 20px; background:#000; color:#fff; border-radius:4px; text-decoration:none; font-weight:500;">View All Concerts</a>
+    </div>
   </section>
 
   <!-- MEDIA -->
@@ -258,4 +256,11 @@
 
   <!-- FOOTER -->
   <footer>
-    <div class="
+    <div class="social">
+      <a href="#">Twitter</a>
+      <a href="#">Instagram</a>
+    </div>
+    <div>© Ramon Branch Biescas 2025</div>
+  </footer>
+</body>
+</html>
