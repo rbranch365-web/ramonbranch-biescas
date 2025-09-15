@@ -37,50 +37,46 @@
       font-size: 0.95rem;
     }
 
-/* HERO STYLING */
-.hero {
-  position: relative;
-  text-align: center;
-  padding: 100px 20px 80px 20px;
-  background: url('images/profile.jpg') no-repeat center center;
-  background-size: cover; /* cover entire hero area */
-  background-color: #fff; /* fallback if image doesn't load */
-  color: #222;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(255,255,255,0.7); /* white overlay for readability */
-  z-index: 1;
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2; /* put text above overlay */
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 10px;
-}
-
-.hero .title {
-  font-size: 1.3rem;
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.hero .quote {
-  font-style: italic;
-  color: #444;
-  font-size: 1.15rem;
-}
-
-
-
+    /* HERO STYLING */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 120px 20px 100px 20px;
+      background: url('images/profile.jpg') no-repeat center center;
+      background-size: cover;
+      color: #222;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.7));
+      backdrop-filter: blur(2px);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .hero .title {
+      font-size: 1.3rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .hero .quote {
+      font-style: italic;
+      color: #444;
+      font-size: 1.15rem;
+    }
 
     /* SECTION BASE */
     section {
@@ -182,9 +178,26 @@
       padding: 40px 20px;
     }
     .social a { margin: 0 10px; }
+
+    /* RESPONSIVE HERO */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2.4rem; }
+      .hero .title { font-size: 1.1rem; }
+      .hero .quote { font-size: 1rem; }
+      .hero { padding: 100px 15px 80px 15px; }
+    }
+
+    @media (max-width: 480px) {
+      nav a { margin: 5px 8px; font-size: 0.85rem; }
+      .hero h1 { font-size: 2rem; }
+      .hero .title { font-size: 1rem; }
+      .hero .quote { font-size: 0.95rem; }
+    }
+
   </style>
 </head>
 <body>
+
   <!-- NAV -->
   <nav>
     <a href="#about">About</a>
@@ -194,13 +207,13 @@
   </nav>
 
   <!-- HERO SECTION -->
-<header class="hero">
-  <img src="images/profile.jpg" alt="Portrait of Ramon Branch Biescas">
-  <h1>Ramon Branch Biescas</h1>
-  <p class="title">Tuba Player • Organist • Teacher</p>
-  <div class="quote">“Music is the bridge that connects us all”</div>
-</header>
-
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Ramon Branch Biescas</h1>
+      <p class="title">Tuba Player • Organist • Teacher</p>
+      <div class="quote">“Music is the bridge that connects us all”</div>
+    </div>
+  </header>
 
   <!-- BIOGRAPHY -->
   <section id="about" class="about">
@@ -257,6 +270,10 @@
       <img src="images/concert2.jpg" alt="Concert photo 2" />
       <img src="images/concert3.jpg" alt="Concert photo 3" />
       <img src="images/concert4.jpg" alt="Concert photo 4" />
+      <img src="images/concert5.jpg" alt="Concert photo 5" />
+      <img src="images/concert6.jpg" alt="Concert photo 6" />
+      <img src="images/concert7.jpg" alt="Concert photo 7" />
+      <img src="images/concert8.jpg" alt="Concert photo 8" />
     </div>
   </section>
 
@@ -279,5 +296,6 @@
     </div>
     <div>© Ramon Branch Biescas 2025</div>
   </footer>
+
 </body>
 </html>
