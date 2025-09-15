@@ -13,13 +13,11 @@
       background: #fafafa;
       line-height: 1.7;
     }
-    h1, h2, h3 {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-weight: 600;
-      color: #222;
-    }
+    h1, h2, h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 600; color: #222; }
     a { color: #111; text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    html { scroll-behavior: smooth; }
 
     /* NAVIGATION */
     nav {
@@ -31,20 +29,15 @@
       top: 0;
       z-index: 10;
     }
-    nav a {
-      margin: 0 15px;
-      font-weight: 500;
-      font-size: 0.95rem;
-    }
+    nav a { margin: 0 15px; font-weight: 500; font-size: 0.95rem; }
 
-    /* HERO STYLING */
+    /* HERO */
     .hero {
       position: relative;
       text-align: center;
-      padding: 100px 20px 80px 20px;
+      padding: 120px 20px 100px 20px;
       background: url('images/profile.jpg') no-repeat center center;
       background-size: cover;
-      background-color: #fff;
       color: #222;
     }
     .hero::before {
@@ -52,18 +45,15 @@
       position: absolute;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      background: rgba(255,255,255,0.7);
+      background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.3));
       z-index: 1;
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
-    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-    .hero .title { font-size: 1.3rem; color: #555; margin-bottom: 15px; }
-    .hero .quote { font-style: italic; color: #444; font-size: 1.15rem; }
+    .hero-content { position: relative; z-index: 2; }
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; text-shadow: 0 2px 4px rgba(0,0,0,0.2);}
+    .hero .title { font-size: 1.3rem; color: #555; margin-bottom: 15px; text-shadow: 0 1px 2px rgba(0,0,0,0.2);}
+    .hero .quote { font-style: italic; color: #444; font-size: 1.15rem; text-shadow: 0 1px 2px rgba(0,0,0,0.2); }
 
-    /* SECTION BASE */
+    /* SECTION */
     section {
       max-width: 1000px;
       margin: 0 auto 80px auto;
@@ -74,22 +64,16 @@
     }
     section h2 { font-size: 2rem; margin-bottom: 25px; text-align: center; }
 
-    /* ABOUT */
-    .about p { color: #444; margin-bottom: 18px; font-size: 1.1rem; text-align: justify; }
-
     /* CONCERTS */
+    .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
     .event {
-      margin-bottom: 40px;
       padding: 20px;
       border: 1px solid #eee;
       border-radius: 6px;
       background: #fafafa;
       transition: transform 0.2s;
     }
-    .event:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
+    .event:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08);}
     .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
     .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
     .event .details { margin-bottom: 10px; color: #555; }
@@ -103,6 +87,18 @@
     }
     .event .cta a:hover { background: #444; }
 
+    .full-concerts-btn {
+      display: block;
+      margin: 20px auto 0 auto;
+      padding: 10px 20px;
+      background: #000;
+      color: #fff;
+      border-radius: 4px;
+      text-align: center;
+      width: fit-content;
+    }
+    .full-concerts-btn:hover { background: #444; }
+
     /* MEDIA GALLERY */
     .media-gallery {
       display: grid;
@@ -111,48 +107,26 @@
     }
     .media-gallery img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
       border-radius: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       transition: transform 0.3s;
     }
     .media-gallery img:hover { transform: scale(1.05); }
 
-    /* CONTACT FORM */
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: 0 auto;
+    /* ABOUT */
+    .about p { color: #444; margin-bottom: 18px; font-size: 1.1rem; text-align: justify; }
+    @media(min-width:900px) {
+      .about p { column-count: 2; column-gap: 40px; }
     }
-    input, textarea {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1rem;
-      font-family: inherit;
-    }
-    button {
-      padding: 12px;
-      background: #000;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
+
+    /* CONTACT */
+    form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
+    input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
+    button { padding: 12px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
     button:hover { background: #444; }
 
     /* FOOTER */
-    footer {
-      text-align: center;
-      font-size: 0.85rem;
-      color: #999;
-      padding: 40px 20px;
-    }
+    footer { text-align: center; font-size: 0.85rem; color: #999; padding: 40px 20px; }
     .social a { margin: 0 10px; }
   </style>
 </head>
@@ -161,7 +135,7 @@
   <nav>
     <a href="#concerts">Concerts</a>
     <a href="#media">Media</a>
-    <a href="#about">About</a>
+    <a href="#about">Biography</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -175,32 +149,35 @@
   </header>
 
   <!-- CONCERTS -->
-  <section id="concerts" class="events">
+  <section id="concerts">
     <h2>Upcoming Concerts</h2>
-    <article class="event">
-      <h3>Concert One</h3>
-      <time datetime="2025-10-12T19:30">October 12, 2025 • 7:30 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="#">Buy Tickets</a></div>
-    </article>
-    <article class="event">
-      <h3>Concert Two</h3>
-      <time datetime="2025-10-16T20:00">October 16, 2025 • 8:00 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="#">Buy Tickets</a></div>
-    </article>
-    <article class="event">
-      <h3>Concert Three</h3>
-      <time datetime="2025-11-05T19:30">November 5, 2025 • 7:30 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="#">Buy Tickets</a></div>
-    </article>
-    <article class="event">
-      <h3>Concert Four</h3>
-      <time datetime="2025-11-20T20:00">November 20, 2025 • 8:00 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="all-concerts.html">View All Concerts</a></div>
-    </article>
+    <div class="events-grid">
+      <div class="event">
+        <h3>Concert One</h3>
+        <time datetime="2025-10-12T19:30">October 12, 2025 • 7:30 PM</time>
+        <p class="details">Venue Name, City, Country</p>
+        <div class="cta"><a href="#">Buy Tickets</a></div>
+      </div>
+      <div class="event">
+        <h3>Concert Two</h3>
+        <time datetime="2025-10-16T20:00">October 16, 2025 • 8:00 PM</time>
+        <p class="details">Venue Name, City, Country</p>
+        <div class="cta"><a href="#">Buy Tickets</a></div>
+      </div>
+      <div class="event">
+        <h3>Concert Three</h3>
+        <time datetime="2025-11-01T19:00">November 1, 2025 • 7:00 PM</time>
+        <p class="details">Venue Name, City, Country</p>
+        <div class="cta"><a href="#">Buy Tickets</a></div>
+      </div>
+      <div class="event">
+        <h3>Concert Four</h3>
+        <time datetime="2025-11-12T18:30">November 12, 2025 • 6:30 PM</time>
+        <p class="details">Venue Name, City, Country</p>
+        <div class="cta"><a href="#">Buy Tickets</a></div>
+      </div>
+    </div>
+    <a href="all-concerts.html" class="full-concerts-btn">View All Concerts</a>
   </section>
 
   <!-- MEDIA -->
