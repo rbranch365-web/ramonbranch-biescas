@@ -7,55 +7,181 @@
   <meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography." />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: Georgia, serif; color: #111; background: #fff; line-height: 1.6; padding: 0 20px; }
+    body {
+      font-family: Georgia, serif;
+      color: #111;
+      background: #fafafa;
+      line-height: 1.7;
+    }
+    h1, h2, h3 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      color: #222;
+    }
     a { color: #111; text-decoration: none; }
     a:hover { text-decoration: underline; }
-    header { max-width: 900px; margin: 40px auto 60px auto; text-align: center; }
-    nav { margin-bottom: 40px; font-size: 0.95rem; }
-    nav a { margin: 0 15px; font-weight: 500; }
-    .hero { margin-bottom: 60px; }
-    .hero h1 { font-size: 3rem; font-weight: bold; line-height: 1.2; margin-bottom: 20px; }
-    .hero p { font-size: 1.3rem; color: #555; margin-bottom: 30px; }
-    .hero .quote { font-style: italic; color: #333; font-size: 1.1rem; margin-bottom: 20px; }
-    section { max-width: 900px; margin: 0 auto 80px auto; }
-    section h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
-    .about p { color: #444; margin-bottom: 15px; font-size: 1.1rem; text-align: justify; }
-    .event { margin-bottom: 60px; }
-    .event h3 { font-size: 1.6rem; margin-bottom: 8px; }
+
+    /* NAVIGATION */
+    nav {
+      text-align: center;
+      padding: 20px 0;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      margin: 0 15px;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: #fff;
+    }
+    .hero img {
+      width: 220px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    .hero .quote {
+      font-style: italic;
+      color: #333;
+      font-size: 1.1rem;
+      margin-top: 15px;
+    }
+
+    /* SECTION BASE */
+    section {
+      max-width: 1000px;
+      margin: 0 auto 80px auto;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    /* ABOUT */
+    .about p {
+      color: #444;
+      margin-bottom: 18px;
+      font-size: 1.1rem;
+      text-align: justify;
+    }
+
+    /* CONCERTS */
+    .event {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      background: #fafafa;
+      transition: transform 0.2s;
+    }
+    .event:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
     .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
     .event .details { margin-bottom: 10px; color: #555; }
-    .event .cta { margin-top: 10px; }
-    .event .cta a { padding: 8px 16px; background: #000; color: #fff; font-size: 0.9rem; border-radius: 3px; transition: background 0.3s; }
-    .event .cta a:hover { background: #444; }
-    form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
-    input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
-    button { padding: 10px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
-    button:hover { background: #444; }
-    footer { max-width: 900px; margin: 80px auto 40px auto; text-align: center; font-size: 0.8rem; color: #999; }
-    .social { margin-bottom: 10px; }
-    .social a { margin: 0 8px; }
-    @media (max-width: 600px) {
-      .hero h1 { font-size: 2.2rem; }
-      .event h3 { font-size: 1.4rem; }
-      nav { font-size: 0.85rem; display: flex; flex-wrap: wrap; justify-content: center; }
-      nav a { margin: 5px 10px; }
+    .event .cta a {
+      padding: 8px 16px;
+      background: #000;
+      color: #fff;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      transition: background 0.3s;
     }
+    .event .cta a:hover { background: #444; }
+
+    /* MEDIA GALLERY */
+    .media-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .media-gallery img {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .media-gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* CONTACT FORM */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input, textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    button {
+      padding: 12px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    button:hover { background: #444; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #999;
+      padding: 40px 20px;
+    }
+    .social a { margin: 0 10px; }
   </style>
 </head>
 <body>
-  <!-- HEADER / HERO -->
-  <header>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#concerts">Concerts</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="hero">
-      <h1>Ramon Branch Biescas</h1>
-      <img src="images/profile.jpg" alt="Portrait of Ramon Branch Biescas" style="width:200px; border-radius:50%; margin:20px auto;">
-      <p>Tuba Player • Conductor • Musician</p>
-      <div class="quote">“Music is the bridge that connects us all”</div>
-    </div>
+  <!-- NAV -->
+  <nav>
+    <a href="#about">About</a>
+    <a href="#concerts">Concerts</a>
+    <a href="#media">Media</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Ramon Branch Biescas</h1>
+    <img src="images/profile.jpg" alt="Portrait of Ramon Branch Biescas">
+    <p>Tuba Player • Conductor • Musician</p>
+    <div class="quote">“Music is the bridge that connects us all”</div>
   </header>
 
   <!-- BIOGRAPHY -->
@@ -103,6 +229,17 @@
       <p class="details">Venue Name, City, Country</p>
       <div class="cta"><a href="#">Buy Tickets</a></div>
     </article>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media">
+    <h2>Media Gallery</h2>
+    <div class="media-gallery">
+      <img src="images/concert1.jpg" alt="Concert photo 1" />
+      <img src="images/concert2.jpg" alt="Concert photo 2" />
+      <img src="images/concert3.jpg" alt="Concert photo 3" />
+      <img src="images/concert4.jpg" alt="Concert photo 4" />
+    </div>
   </section>
 
   <!-- CONTACT -->
