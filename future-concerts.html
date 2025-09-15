@@ -22,6 +22,7 @@
       z-index: 100;
     }
     nav a { font-weight: 500; font-size: 0.95rem; }
+
     section {
       max-width: 1100px;
       margin: 60px auto;
@@ -31,6 +32,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.05);
     }
     h2 { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 40px; }
+
     .concert-list { list-style: none; padding: 0; margin: 0; }
     .concert-item {
       display: flex;
@@ -42,9 +44,17 @@
       margin-bottom: 20px;
       border-radius: 10px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border 0.3s;
     }
     .concert-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+
+    /* Highlight next upcoming concert */
+    .concert-item.next-upcoming {
+      border: 2px solid #0077cc;
+      background: #e6f0fb;
+      box-shadow: 0 6px 20px rgba(0, 119, 204, 0.25);
+    }
+
     .concert-details h3 { font-size: 1.3rem; margin-bottom: 5px; }
     .concert-details time { font-style: italic; color: #777; }
     .concert-details p { color: #555; }
@@ -58,8 +68,10 @@
       transition: background 0.3s;
     }
     .concert-cta a:hover { background: #005fa3; }
+
     footer { text-align: center; font-size: 0.85rem; color: #888; padding: 40px 20px; background: #f7f9fc; }
     footer .social a { margin: 0 12px; font-weight: 500; }
+
     @media(max-width:768px){ .concert-item { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
@@ -77,7 +89,7 @@
   <!-- FUTURE CONCERTS -->
   <section>
     <h2>Future Concerts</h2>
-    <ul class="concert-list">
+    <ul class="concert-list" id="futureConcertsList">
       <li class="concert-item">
         <div class="concert-details">
           <h3>Concert Five</h3>
@@ -105,6 +117,49 @@
     </div>
     <div>© Ramon Branch Biescas 2025</div>
   </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const now = new Date();
+      const concertList = document.getElementById("futureConcertsList");
+      const concerts = Array.from(concertList.querySelectorAll(".concert-item"));
+      let upcomingConcerts = [];
+
+      concerts.forEach(concert => {
+        const timeEl = concert.querySelector("time");
+        if (timeEl && timeEl.getAttribute("datetime")) {
+          const concertDate = new Date(timeEl.getAttribute("datetime"));
+          if (concertDate >= now) {
+            upcomingConcerts.push({ date: concertDate, element: concert });
+          } else {
+            // Optionally remove past concerts from this list
+            concert.remove();
+          }
+        }
+      });
+
+      // Sort upcoming concerts soonest → latest
+      upcomingConcerts.sort((a, b) => a.date - b.date);
+      concertList.innerHTML = "";
+      upcomingConcerts.forEach(c => concertList.appendChild(c.element));
+
+      // Highlight the next upcoming concert
+      if (upcomingConcerts.length > 0) {
+        upcomingConcerts[0].element.classList.add("next-upcoming");
+      }
+
+      // Show message if no upcoming concerts
+      if (upcomingConcerts.length === 0) {
+        const msg = document.createElement("li");
+        msg.textContent = "No upcoming concerts at the moment. Please check back later.";
+        msg.style.textAlign = "center";
+        msg.style.color = "#666";
+        msg.style.fontStyle = "italic";
+        msg.style.padding = "20px";
+        concertList.appendChild(msg);
+      }
+    });
+  </script>
 
 </body>
 </html>
