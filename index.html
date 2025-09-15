@@ -180,9 +180,9 @@
 <body>
   <!-- NAV -->
   <nav>
-    <a href="#about">About</a>
     <a href="#concerts">Concerts</a>
     <a href="#media">Media</a>
+    <a href="#about">Biography</a>
     <a href="#contact">Contact</a>
   </nav>
 
@@ -194,6 +194,34 @@
       <div class="quote">“Music is the bridge that connects us all”</div>
     </div>
   </header>
+
+  <!-- CONCERTS -->
+  <section id="concerts" class="events">
+    <h2>Upcoming Concerts</h2>
+    <article class="event">
+      <h3>Upcoming Concert One</h3>
+      <time datetime="2025-10-12T19:30">October 12, 2025 • 7:30 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+    <article class="event">
+      <h3>Upcoming Concert Two</h3>
+      <time datetime="2025-10-16T20:00">October 16, 2025 • 8:00 PM</time>
+      <p class="details">Venue Name, City, Country</p>
+      <div class="cta"><a href="#">Buy Tickets</a></div>
+    </article>
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media">
+    <h2>Media Gallery</h2>
+    <div class="media-gallery">
+      <img src="images/concert1.jpg" alt="Concert photo 1">
+      <img src="images/concert2.jpg" alt="Concert photo 2">
+      <img src="images/concert3.jpg" alt="Concert photo 3">
+      <img src="images/concert4.jpg" alt="Concert photo 4">
+    </div>
+  </section>
 
   <!-- BIOGRAPHY -->
   <section id="about" class="about">
@@ -225,34 +253,6 @@
       studies, he is looking forward to continuing his career as a freelance musician and teacher.</p>
   </section>
 
-  <!-- CONCERTS -->
-  <section id="concerts" class="events">
-    <h2>Upcoming Concerts</h2>
-    <article class="event">
-      <h3>Upcoming Concert One</h3>
-      <time datetime="2025-10-12T19:30">October 12, 2025 • 7:30 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="#">Buy Tickets</a></div>
-    </article>
-    <article class="event">
-      <h3>Upcoming Concert Two</h3>
-      <time datetime="2025-10-16T20:00">October 16, 2025 • 8:00 PM</time>
-      <p class="details">Venue Name, City, Country</p>
-      <div class="cta"><a href="#">Buy Tickets</a></div>
-    </article>
-  </section>
-
-  <!-- MEDIA -->
-  <section id="media">
-    <h2>Media Gallery</h2>
-    <div class="media-gallery">
-      <img src="images/concert1.jpg" alt="Concert photo 1">
-      <img src="images/concert2.jpg" alt="Concert photo 2">
-      <img src="images/concert3.jpg" alt="Concert photo 3">
-      <img src="images/concert4.jpg" alt="Concert photo 4">
-    </div>
-  </section>
-
   <!-- LIGHTBOX -->
   <div id="lightbox">
     <span id="prev">&#10094;</span>
@@ -277,57 +277,4 @@
       <a href="#">Twitter</a>
       <a href="#">Instagram</a>
     </div>
-    <div>© Ramon Branch Biescas 2025</div>
-  </footer>
-
-  <script>
-    // LIGHTBOX FUNCTIONALITY
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = lightbox.querySelector('img');
-    const galleryImages = document.querySelectorAll('.media-gallery img');
-    const prev = document.getElementById('prev');
-    const next = document.getElementById('next');
-    let currentIndex = 0;
-
-    function openLightbox(index) {
-      currentIndex = index;
-      lightbox.style.display = 'flex';
-      lightboxImage.src = galleryImages[currentIndex].src;
-      lightboxImage.alt = galleryImages[currentIndex].alt;
-    }
-
-    function closeLightbox() { lightbox.style.display = 'none'; }
-
-    function showPrev() {
-      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-      lightboxImage.src = galleryImages[currentIndex].src;
-      lightboxImage.alt = galleryImages[currentIndex].alt;
-    }
-
-    function showNext() {
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-      lightboxImage.src = galleryImages[currentIndex].src;
-      lightboxImage.alt = galleryImages[currentIndex].alt;
-    }
-
-    galleryImages.forEach((img, index) => {
-      img.addEventListener('click', () => openLightbox(index));
-    });
-
-    prev.addEventListener('click', showPrev);
-    next.addEventListener('click', showNext);
-
-    lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') showPrev();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'Escape') closeLightbox();
-      }
-    });
-  </script>
-</body>
-</html>
+    <div>© Ramon Branch Biescas 2025</div
