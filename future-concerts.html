@@ -48,7 +48,6 @@
     }
     .concert-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
 
-    /* Highlight next upcoming concert */
     .concert-item.next-upcoming {
       border: 2px solid #0077cc;
       background: #e6f0fb;
@@ -58,16 +57,6 @@
     .concert-details h3 { font-size: 1.3rem; margin-bottom: 5px; }
     .concert-details time { font-style: italic; color: #777; }
     .concert-details p { color: #555; }
-    .concert-cta a {
-      padding: 10px 18px;
-      background: #0077cc;
-      color: #fff;
-      border-radius: 6px;
-      font-weight: 500;
-      display: inline-block;
-      transition: background 0.3s;
-    }
-    .concert-cta a:hover { background: #005fa3; }
 
     footer { text-align: center; font-size: 0.85rem; color: #888; padding: 40px 20px; background: #f7f9fc; }
     footer .social a { margin: 0 12px; font-weight: 500; }
@@ -92,11 +81,17 @@
     <ul class="concert-list" id="futureConcertsList">
       <li class="concert-item">
         <div class="concert-details">
+          <h3>London Euphonia Orchestra</h3>
+          <time datetime="2025-11-29T19:30">November 29, 2025 • Time TBC</time>
+          <p>Venue: TBC</p>
+        </div>
+      </li>
+      <li class="concert-item">
+        <div class="concert-details">
           <h3>Concert Five</h3>
           <time datetime="2025-12-10T19:30">December 10, 2025 • 7:30 PM</time>
           <p>Venue Name, City, Country</p>
         </div>
-        <div class="concert-cta"><a href="#">Buy Tickets</a></div>
       </li>
       <li class="concert-item">
         <div class="concert-details">
@@ -104,7 +99,13 @@
           <time datetime="2026-01-15T20:00">January 15, 2026 • 8:00 PM</time>
           <p>Venue Name, City, Country</p>
         </div>
-        <div class="concert-cta"><a href="#">Buy Tickets</a></div>
+      </li>
+      <li class="concert-item">
+        <div class="concert-details">
+          <h3>Brighton Tuba & Horn Duet</h3>
+          <time datetime="2026-06-01T19:30">June 1, 2026 • Time TBC</time>
+          <p>Venue: TBC</p>
+        </div>
       </li>
     </ul>
   </section>
@@ -132,7 +133,6 @@
           if (concertDate >= now) {
             upcomingConcerts.push({ date: concertDate, element: concert });
           } else {
-            // Optionally remove past concerts from this list
             concert.remove();
           }
         }
