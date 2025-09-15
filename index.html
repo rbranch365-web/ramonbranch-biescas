@@ -1,131 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Ramon Branch Biescas — Tuba</title>
-<meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography." />
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; } /* Smooth scroll */
-  body {
-    font-family: Georgia, serif;
-    color: #111;
-    background: #fafafa;
-    line-height: 1.7;
-  }
-  h1, h2, h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 600; color: #222; }
-  a { color: #111; text-decoration: none; }
-  a:hover { text-decoration: underline; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ramon Branch Biescas — Tuba</title>
+  <meta name="description" content="Official website of Ramon Branch Biescas. Explore concerts, media, and biography." />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Georgia, serif;
+      color: #111;
+      background: #fafafa;
+      line-height: 1.7;
+    }
+    h1, h2, h3 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      color: #222;
+    }
+    a { color: #111; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-  /* NAVIGATION */
-  nav {
-    text-align: center;
-    padding: 20px 0;
-    background: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  nav a { margin: 0 15px; font-weight: 500; font-size: 0.95rem; }
+    /* NAVIGATION */
+    nav {
+      text-align: center;
+      padding: 20px 0;
+      background: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a { margin: 0 15px; font-weight: 500; font-size: 0.95rem; }
 
-  /* HERO STYLING */
-  .hero {
-    position: relative;
-    text-align: center;
-    padding: 120px 20px 100px 20px;
-    background: url('images/profile.jpg') no-repeat center center;
-    background-size: cover;
-    color: #222;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: linear-gradient(rgba(255,255,255,0.5), rgba(255,255,255,0.7));
-    backdrop-filter: blur(2px);
-    z-index: 1;
-  }
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .hero h1 { font-size: 3rem; margin-bottom: 10px; }
-  .hero .title { font-size: 1.3rem; color: #555; margin-bottom: 15px; }
-  .hero .quote { font-style: italic; color: #444; font-size: 1.15rem; }
+    /* HERO STYLING */
+    .hero {
+      position: relative;
+      text-align: center;
+      padding: 100px 20px 80px 20px;
+      background: url('images/profile.jpg') no-repeat center center;
+      background-size: cover;
+      background-color: #fff;
+      color: #222;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(255,255,255,0.7);
+      z-index: 1;
+    }
+    .hero-content { position: relative; z-index: 2; }
+    .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+    .hero .title { font-size: 1.3rem; color: #555; margin-bottom: 15px; }
+    .hero .quote { font-style: italic; color: #444; font-size: 1.15rem; }
 
-  /* SECTION BASE */
-  section { max-width: 1000px; margin: 0 auto 80px auto; padding: 40px 20px; background: #fff; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-  section h2 { font-size: 2rem; margin-bottom: 25px; text-align: center; }
+    /* SECTION BASE */
+    section {
+      max-width: 1000px;
+      margin: 0 auto 80px auto;
+      padding: 40px 20px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    section h2 { font-size: 2rem; margin-bottom: 25px; text-align: center; }
 
-  /* ABOUT */
-  .about p { color: #444; margin-bottom: 18px; font-size: 1.1rem; text-align: justify; }
+    /* ABOUT */
+    .about p { color: #444; margin-bottom: 18px; font-size: 1.1rem; text-align: justify; }
 
-  /* CONCERTS */
-  .event { margin-bottom: 40px; padding: 20px; border: 1px solid #eee; border-radius: 6px; background: #fafafa; transition: transform 0.2s; }
-  .event:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-  .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
-  .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
-  .event .details { margin-bottom: 10px; color: #555; }
-  .event .cta a { padding: 8px 16px; background: #000; color: #fff; font-size: 0.9rem; border-radius: 3px; transition: background 0.3s; }
-  .event .cta a:hover { background: #444; }
+    /* CONCERTS */
+    .event {
+      margin-bottom: 40px;
+      padding: 20px;
+      border: 1px solid #eee;
+      border-radius: 6px;
+      background: #fafafa;
+      transition: transform 0.2s;
+    }
+    .event:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+    .event h3 { font-size: 1.5rem; margin-bottom: 8px; }
+    .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
+    .event .details { margin-bottom: 10px; color: #555; }
+    .event .cta a {
+      padding: 8px 16px;
+      background: #000;
+      color: #fff;
+      font-size: 0.9rem;
+      border-radius: 3px;
+      transition: background 0.3s;
+    }
+    .event .cta a:hover { background: #444; }
 
-  /* MEDIA GALLERY */
-  .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-  .media-gallery img { width: 100%; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.3s; }
-  .media-gallery img:hover { transform: scale(1.05); }
+    /* MEDIA GALLERY */
+    .media-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .media-gallery img {
+      width: 100%;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    .media-gallery img:hover { transform: scale(1.05); }
 
-  /* LIGHTBOX */
-  #lightbox {
-    position: fixed;
-    display: none;
-    z-index: 999;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8);
-    justify-content: center;
-    align-items: center;
-  }
-  #lightbox img {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-  }
+    /* LIGHTBOX */
+    #lightbox {
+      position: fixed;
+      display: none;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85);
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    #lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 6px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+    #lightbox span {
+      position: absolute;
+      top: 50%;
+      font-size: 3rem;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(-50%);
+      padding: 0 15px;
+    }
+    #prev { left: 10px; }
+    #next { right: 10px; }
 
-  /* CONTACT FORM */
-  form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
-  input, textarea { padding: 12px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
-  button { padding: 12px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
-  button:hover { background: #444; }
+    /* CONTACT FORM */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input, textarea {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    button {
+      padding: 12px;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+    }
+    button:hover { background: #444; }
 
-  /* FOOTER */
-  footer { text-align: center; font-size: 0.85rem; color: #999; padding: 40px 20px; }
-  .social a { margin: 0 10px; }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #999;
+      padding: 40px 20px;
+    }
+    .social a { margin: 0 10px; }
 
-  /* RESPONSIVE HERO */
-  @media (max-width: 768px) {
-    .hero h1 { font-size: 2.4rem; }
-    .hero .title { font-size: 1.1rem; }
-    .hero .quote { font-size: 1rem; }
-    .hero { padding: 100px 15px 80px 15px; }
-  }
-  @media (max-width: 480px) {
-    nav a { margin: 5px 8px; font-size: 0.85rem; }
-    .hero h1 { font-size: 2rem; }
-    .hero .title { font-size: 1rem; }
-    .hero .quote { font-size: 0.95rem; }
-  }
-</style>
+  </style>
 </head>
 <body>
-
   <!-- NAV -->
   <nav>
     <a href="#about">About</a>
@@ -147,30 +199,30 @@
   <section id="about" class="about">
     <h2>Biography</h2>
     <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age he attended
-    the choir school Escolania de Montserrat in Catalonia where he had most of his early musical training.
-    There he studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years.
-    The choir performed in Russia, France, the United States, Poland, Germany, China and many different
-    areas in Catalonia. Later he moved to the UK to continue his musical career and his academic studies
-    at Lancing College, where he had organ lessons with Neil Cox and piano lessons with Adrian West.</p>
+      the choir school Escolania de Montserrat in Catalonia where he had most of his early musical training.
+      There he studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years.
+      The choir performed in Russia, France, the United States, Poland, Germany, China and many different
+      areas in Catalonia. Later he moved to the UK to continue his musical career and his academic studies
+      at Lancing College, where he had organ lessons with Neil Cox and piano lessons with Adrian West.</p>
 
     <p>Ramon started the tuba at the age of fourteen with Dave Whitson and a year later joined the Junior
-    Royal Academy of Music to study with Stephen Wick. After completing his GCSEs, he went to the Purcell
-    School for Young Musicians to continue his musical career as a tuba player without neglecting his other
-    instruments. There he improved as an all-rounded musician and enjoyed many varied performing opportunities.
-    He achieved a high distinction mark in all his grade 8 ABRSM exams and hopes to achieve his diploma in
-    singing and organ in the future.</p>
+      Royal Academy of Music to study with Stephen Wick. After completing his GCSEs, he went to the Purcell
+      School for Young Musicians to continue his musical career as a tuba player without neglecting his other
+      instruments. There he improved as an all-rounded musician and enjoyed many varied performing opportunities.
+      He achieved a high distinction mark in all his grade 8 ABRSM exams and hopes to achieve his diploma in
+      singing and organ in the future.</p>
 
     <p>Ramon has had a considerable amount of experience playing with orchestras such as the London Symphony
-    Orchestra, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Junior Academy Symphony Orchestra,
-    Purcell School Symphony, Jove Orchestra National de Catalunya and the Guildhall Symphony Orchestra.
-    He is currently studying with Ben Thomson, the principal tubist at the London Symphony Orchestra and
-    Kevin Morgan, the principal tubist of the Royal Philharmonic Orchestra. He has been keen to continue with
-    his other musical talents and is having second study singing lessons with Adrian Thompson, while also
-    singing at St Mary’s Hendon as a choral scholar and playing the organ in different churches around London.</p>
+      Orchestra, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Junior Academy Symphony Orchestra,
+      Purcell School Symphony, Jove Orchestra National de Catalunya and the Guildhall Symphony Orchestra.
+      He is currently studying with Ben Thomson, the principal tubist at the London Symphony Orchestra and
+      Kevin Morgan, the principal tubist of the Royal Philharmonic Orchestra. He has been keen to continue with
+      his other musical talents and is having second study singing lessons with Adrian Thompson, while also
+      singing at St Mary’s Hendon as a choral scholar and playing the organ in different churches around London.</p>
 
     <p>Ramon is also very keen on chamber music, playing regularly with the Heron Brass Quintet, who recently
-    reached the semifinal round for the Royal Overseas League competition. Having now completed his master’s
-    studies, he is looking forward to continuing his career as a freelance musician and teacher.</p>
+      reached the semifinal round for the Royal Overseas League competition. Having now completed his master’s
+      studies, he is looking forward to continuing his career as a freelance musician and teacher.</p>
   </section>
 
   <!-- CONCERTS -->
@@ -194,20 +246,18 @@
   <section id="media">
     <h2>Media Gallery</h2>
     <div class="media-gallery">
-      <img src="images/concert1.jpg" alt="Concert photo 1" />
-      <img src="images/concert2.jpg" alt="Concert photo 2" />
-      <img src="images/concert3.jpg" alt="Concert photo 3" />
-      <img src="images/concert4.jpg" alt="Concert photo 4" />
-      <img src="images/concert5.jpg" alt="Concert photo 5" />
-      <img src="images/concert6.jpg" alt="Concert photo 6" />
-      <img src="images/concert7.jpg" alt="Concert photo 7" />
-      <img src="images/concert8.jpg" alt="Concert photo 8" />
+      <img src="images/concert1.jpg" alt="Concert photo 1">
+      <img src="images/concert2.jpg" alt="Concert photo 2">
+      <img src="images/concert3.jpg" alt="Concert photo 3">
+      <img src="images/concert4.jpg" alt="Concert photo 4">
     </div>
   </section>
 
-  <!-- LIGHTBOX CONTAINER -->
+  <!-- LIGHTBOX -->
   <div id="lightbox">
+    <span id="prev">&#10094;</span>
     <img src="" alt="Expanded media image">
+    <span id="next">&#10095;</span>
   </div>
 
   <!-- CONTACT -->
@@ -230,21 +280,54 @@
     <div>© Ramon Branch Biescas 2025</div>
   </footer>
 
-<script>
-  // LIGHTBOX FUNCTIONALITY
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = lightbox.querySelector('img');
-  document.querySelectorAll('.media-gallery img').forEach(img => {
-    img.addEventListener('click', () => {
-      lightbox.style.display = 'flex';
-      lightboxImage.src = img.src;
-      lightboxImage.alt = img.alt;
-    });
-  });
-  lightbox.addEventListener('click', () => {
-    lightbox.style.display = 'none';
-  });
-</script>
+  <script>
+    // LIGHTBOX FUNCTIONALITY
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = lightbox.querySelector('img');
+    const galleryImages = document.querySelectorAll('.media-gallery img');
+    const prev = document.getElementById('prev');
+    const next = document.getElementById('next');
+    let currentIndex = 0;
 
+    function openLightbox(index) {
+      currentIndex = index;
+      lightbox.style.display = 'flex';
+      lightboxImage.src = galleryImages[currentIndex].src;
+      lightboxImage.alt = galleryImages[currentIndex].alt;
+    }
+
+    function closeLightbox() { lightbox.style.display = 'none'; }
+
+    function showPrev() {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      lightboxImage.src = galleryImages[currentIndex].src;
+      lightboxImage.alt = galleryImages[currentIndex].alt;
+    }
+
+    function showNext() {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      lightboxImage.src = galleryImages[currentIndex].src;
+      lightboxImage.alt = galleryImages[currentIndex].alt;
+    }
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
+
+    prev.addEventListener('click', showPrev);
+    next.addEventListener('click', showNext);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'Escape') closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
