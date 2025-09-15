@@ -17,10 +17,9 @@
     .hero h1 { font-size: 3rem; font-weight: bold; line-height: 1.2; margin-bottom: 20px; }
     .hero p { font-size: 1.3rem; color: #555; margin-bottom: 30px; }
     .hero .quote { font-style: italic; color: #333; font-size: 1.1rem; margin-bottom: 20px; }
-    .hero .profile-link { font-size: 1rem; }
     section { max-width: 900px; margin: 0 auto 80px auto; }
     section h2 { font-size: 2rem; margin-bottom: 20px; text-align: center; }
-    .about p { color: #444; margin-bottom: 15px; text-align: center; font-size: 1.1rem; }
+    .about p { color: #444; margin-bottom: 15px; font-size: 1.1rem; text-align: justify; }
     .event { margin-bottom: 60px; }
     .event h3 { font-size: 1.6rem; margin-bottom: 8px; }
     .event time { color: #777; font-style: italic; margin-bottom: 5px; display: block; }
@@ -28,8 +27,6 @@
     .event .cta { margin-top: 10px; }
     .event .cta a { padding: 8px 16px; background: #000; color: #fff; font-size: 0.9rem; border-radius: 3px; transition: background 0.3s; }
     .event .cta a:hover { background: #444; }
-    .media-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-    .media-gallery img { width: 100%; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
     form { display: flex; flex-direction: column; gap: 15px; max-width: 500px; margin: 0 auto; }
     input, textarea { padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; font-family: inherit; }
     button { padding: 10px; background: #000; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; }
@@ -46,61 +43,52 @@
   </style>
 </head>
 <body>
+  <!-- HEADER / HERO -->
   <header>
     <nav>
       <a href="#about">About</a>
       <a href="#concerts">Concerts</a>
-      <a href="#media">Media</a>
       <a href="#contact">Contact</a>
     </nav>
-   <div class="hero">
-  <img src="images/profile.jpg" alt="Ramon Branch Biescas" style="width:180px; border-radius:50%; margin-bottom:20px;">
-  <h1>Ramon Branch Biescas</h1>
-  <p>Tuba Player • Conductor • Musician</p>
-  <div class="quote">“Music is the bridge that connects us all”</div>
-  <div class="profile-link"><a href="#">Profile on SomeSite.com</a></div>
-</div>
+    <div class="hero">
+      <h1>Ramon Branch Biescas</h1>
+      <img src="images/profile.jpg" alt="Portrait of Ramon Branch Biescas" style="width:200px; border-radius:50%; margin:20px auto;">
+      <p>Tuba Player • Conductor • Musician</p>
+      <div class="quote">“Music is the bridge that connects us all”</div>
+    </div>
   </header>
+
+  <!-- BIOGRAPHY -->
   <section id="about" class="about">
-    <h2>About</h2>
-    <section class="about" style="max-width: 800px; margin: 0 auto 80px auto;">
-  <h2 style="font-size: 2rem; margin-bottom: 20px;">Biography</h2>
-  <p>
-    Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age he attended
+    <h2>Biography</h2>
+    <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age he attended
     the choir school Escolania de Montserrat in Catalonia where he had most of his early musical training.
     There he studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years.
     The choir performed in Russia, France, the United States, Poland, Germany, China and many different
     areas in Catalonia. Later he moved to the UK to continue his musical career and his academic studies
-    at Lancing College, where he had organ lessons with Neil Cox and piano lessons with Adrian West.
-  </p>
+    at Lancing College, where he had organ lessons with Neil Cox and piano lessons with Adrian West.</p>
 
-  <p>
-    Ramon started the tuba at the age of fourteen with Dave Whitson and a year later joined the Junior
+    <p>Ramon started the tuba at the age of fourteen with Dave Whitson and a year later joined the Junior
     Royal Academy of Music to study with Stephen Wick. After completing his GCSEs, he went to the Purcell
     School for Young Musicians to continue his musical career as a tuba player without neglecting his other
     instruments. There he improved as an all-rounded musician and enjoyed many varied performing opportunities.
     He achieved a high distinction mark in all his grade 8 ABRSM exams and hopes to achieve his diploma in
-    singing and organ in the future.
-  </p>
+    singing and organ in the future.</p>
 
-  <p>
-    Ramon has had a considerable amount of experience playing with orchestras such as the London Symphony
+    <p>Ramon has had a considerable amount of experience playing with orchestras such as the London Symphony
     Orchestra, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Junior Academy Symphony Orchestra,
     Purcell School Symphony, Jove Orchestra National de Catalunya and the Guildhall Symphony Orchestra.
     He is currently studying with Ben Thomson, the principal tubist at the London Symphony Orchestra and
     Kevin Morgan, the principal tubist of the Royal Philharmonic Orchestra. He has been keen to continue with
     his other musical talents and is having second study singing lessons with Adrian Thompson, while also
-    singing at St Mary’s Hendon as a choral scholar and playing the organ in different churches around London.
-  </p>
+    singing at St Mary’s Hendon as a choral scholar and playing the organ in different churches around London.</p>
 
-  <p>
-    Ramon is also very keen on chamber music, playing regularly with the Heron Brass Quintet, who recently
+    <p>Ramon is also very keen on chamber music, playing regularly with the Heron Brass Quintet, who recently
     reached the semifinal round for the Royal Overseas League competition. Having now completed his master’s
-    studies, he is looking forward to continuing his career as a freelance musician and teacher.
-  </p>
-</section>
-
+    studies, he is looking forward to continuing his career as a freelance musician and teacher.</p>
   </section>
+
+  <!-- CONCERTS -->
   <section id="concerts" class="events">
     <h2>Upcoming Concerts</h2>
     <article class="event">
@@ -116,14 +104,8 @@
       <div class="cta"><a href="#">Buy Tickets</a></div>
     </article>
   </section>
-  <section id="media">
-    <h2>Media</h2>
-    <div class="media-gallery">
-      <img src="images/concert1.jpg" alt="Concert photo 1" />
-      <img src="images/concert2.jpg" alt="Concert photo 2" />
-      <img src="images/concert3.jpg" alt="Concert photo 3" />
-    </div>
-  </section>
+
+  <!-- CONTACT -->
   <section id="contact">
     <h2>Contact</h2>
     <form>
@@ -133,6 +115,8 @@
       <button type="submit">Send Message</button>
     </form>
   </section>
+
+  <!-- FOOTER -->
   <footer>
     <div class="social">
       <a href="#">Twitter</a>
