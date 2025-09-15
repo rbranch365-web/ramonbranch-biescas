@@ -37,33 +37,49 @@
       font-size: 0.95rem;
     }
 
-    /* HERO */
-    .hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: #fff;
-    }
-    .hero img {
-      width: 220px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .hero h1 {
-      font-size: 2.8rem;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #555;
-      margin-bottom: 15px;
-    }
-    .hero .quote {
-      font-style: italic;
-      color: #333;
-      font-size: 1.1rem;
-      margin-top: 15px;
-    }
+/* HERO STYLING */
+.hero {
+  text-align: center;
+  padding: 100px 20px 80px 20px;
+  background: linear-gradient(135deg, #fefefe, #e6e6e6); /* subtle gradient */
+  border-bottom: 1px solid #ddd;
+}
+
+.hero img {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+  margin-bottom: 25px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hero img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.25);
+}
+
+.hero h1 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3rem;
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.hero .title {
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.hero .quote {
+  font-style: italic;
+  color: #444;
+  font-size: 1.15rem;
+}
+
 
     /* SECTION BASE */
     section {
@@ -176,13 +192,14 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <h1>Ramon Branch Biescas</h1>
-    <img src="images/profile.jpg" alt="Portrait of Ramon Branch Biescas">
-    <p>Tuba Player • Conductor • Musician</p>
-    <div class="quote">“Music is the bridge that connects us all”</div>
-  </header>
+  <!-- HERO SECTION -->
+<header class="hero">
+  <img src="images/profile.jpg" alt="Portrait of Ramon Branch Biescas">
+  <h1>Ramon Branch Biescas</h1>
+  <p class="title">Tuba Player • Conductor • Musician</p>
+  <div class="quote">“Music is the bridge that connects us all”</div>
+</header>
+
 
   <!-- BIOGRAPHY -->
   <section id="about" class="about">
