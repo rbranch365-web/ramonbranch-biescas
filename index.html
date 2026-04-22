@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ramon Branch Biescas — Tuba · Organ · Teacher</title>
-<meta name="description" content="Ramon Branch Biescas — Tuba player, organist and teacher. Book for solo recitals, chamber music, brass quintet performances, and teaching.">
+<title>Ramon Branch Biescas | Tuba Player, Organist & Teacher in London</title>
+<meta name="description" content="Ramon Branch Biescas — Tuba player, organist, and teacher. Available for solo recitals, chamber music, brass quintet performances, and lessons across the UK and Europe.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <style>
@@ -46,11 +46,6 @@ nav.scrolled{box-shadow:0 1px 18px rgba(0,0,0,.07)}
 #hero{
   min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:80px 2rem 5rem;position:relative;overflow:hidden;
-  /* ─── HERO BACKGROUND ───────────────────────────────────────────────
-     This uses concert1.jpg as a placeholder. To use your original hero
-     background, change the filename below to match your image, e.g.:
-       url('images/hero.jpg')  or  url('images/background.jpg')
-     ─────────────────────────────────────────────────────────────────── */
   background-image:url('https://rbranch365-web.github.io/ramonbranch-biescas/images/concert1.jpg');
   background-size:cover;background-position:center top;background-repeat:no-repeat;
 }
@@ -64,7 +59,7 @@ nav.scrolled{box-shadow:0 1px 18px rgba(0,0,0,.07)}
 .h-rule{width:48px;height:1px;background:rgba(255,255,255,.5);margin:2.2rem auto;opacity:0;animation:up .8s .3s ease forwards}
 .h-roles{font-family:var(--sans);font-size:.75rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.65);opacity:0;animation:up .8s .45s ease forwards}
 .h-roles b{color:rgba(255,255,255,.25);font-weight:300;margin:0 .4rem}
-.h-quote{font-family:var(--serif);font-style:italic;font-size:clamp(.95rem,2vw,1.15rem);color:rgba(255,255,255,.4);margin-top:2.2rem;opacity:0;animation:up .8s .6s ease forwards}
+.h-quote{font-family:var(--sans);font-weight:300;font-size:clamp(.85rem,1.5vw,1rem);letter-spacing: .05em; color:rgba(255,255,255,.8);margin-top:2.2rem;max-width: 600px;opacity:0;animation:up .8s .6s ease forwards}
 .h-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2.8rem;opacity:0;animation:up .8s .75s ease forwards}
 .btn-p,.btn-g{font-family:var(--sans);font-size:.65rem;font-weight:300;letter-spacing:.28em;text-transform:uppercase;padding:.9rem 2rem;cursor:pointer;transition:all .25s;border:none;display:inline-flex;align-items:center;gap:.5rem}
 .btn-p{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(4px)}
@@ -86,49 +81,35 @@ section{padding:6rem 2.5rem}
 /* CONCERTS */
 #concerts{background:var(--w)}
 .ctable{width:100%;border-collapse:collapse}
-.ctable tbody tr{border-top:1px solid var(--line);transition:background .2s;cursor:default}
+.ctable tbody tr{border-top:1px solid var(--line);transition:background .2s;}
 .ctable tbody tr:last-child{border-bottom:1px solid var(--line)}
 .ctable tbody tr:hover{background:var(--w2)}
 .ctable tbody tr:hover .cnum{color:var(--acc)}
 .ctable td{padding:1.6rem .5rem;vertical-align:middle}
 .cnum{width:52px;font-family:var(--serif);font-style:italic;font-size:2rem;font-weight:400;color:var(--pale);text-align:center;transition:color .2s}
 .ctitle{font-family:var(--serif);font-size:clamp(1rem,2.2vw,1.25rem);font-weight:400;margin-bottom:.3rem}
-.cmeta{font-size:.7rem;font-weight:300;letter-spacing:.06em;color:var(--mid)}
-.cmeta span+span::before{content:'·';margin:0 .5rem;color:var(--pale)}
+.cmeta{font-size:.7rem;font-weight:300;letter-spacing:.06em;color:var(--mid);display:flex; flex-wrap: wrap; gap: 0.5rem; align-items: center;}
+.cmeta span+span::before{content:'·';margin-right: .5rem;color:var(--pale)}
 .cbadge{font-size:.58rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);background:var(--acc2);padding:.3rem .75rem;border-radius:20px;white-space:nowrap}
+.tix-link{font-size:.65rem; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; color: var(--acc); border-bottom: 1px solid var(--acc); padding-bottom: 2px; transition: opacity .2s;}
+.tix-link:hover{opacity: .7;}
 .more{margin-top:2.2rem;display:flex;justify-content:flex-end}
 .alink{font-size:.66rem;font-weight:300;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:.2rem;display:inline-flex;align-items:center;gap:.5rem;transition:color .25s,border-color .25s}
 .alink::after{content:'→'}
 .alink:hover{color:var(--acc);border-color:var(--acc)}
 
-/* BOOKING */
-#booking{background:var(--w2)}
-.bgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start}
-.bintro p{font-size:.95rem;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:1.2rem}
-.scards{display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
-.scard{border:1px solid var(--line);padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.9rem;transition:border-color .2s,background .2s;cursor:default}
-.scard:hover{border-color:var(--acc);background:var(--w)}
-.sicon{font-size:1.4rem;line-height:1;flex-shrink:0;margin-top:.05rem}
-.sname{font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:.2rem}
-.sdesc{font-size:.72rem;font-weight:300;color:var(--mid);line-height:1.5}
-.bform{display:flex;flex-direction:column;gap:.85rem}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
-.bform input,.bform textarea,.bform select,.cform input,.cform textarea{
-  font-family:var(--sans);font-size:.9rem;font-weight:300;color:var(--ink);
-  width:100%;padding:.85rem 1rem;background:var(--w);border:1px solid var(--line);
-  outline:none;resize:vertical;transition:border-color .25s;appearance:none;
-}
-.bform input::placeholder,.bform textarea::placeholder,.cform input::placeholder,.cform textarea::placeholder{color:var(--pale)}
-.bform input:focus,.bform textarea:focus,.bform select:focus,.cform input:focus,.cform textarea:focus{border-color:var(--acc)}
-.bform textarea{min-height:110px}
-.bform select{cursor:pointer}
-.bform select.empty{color:var(--pale)}
-.bform textarea{min-height:110px}
-.subrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.4rem}
-.subnote{font-size:.68rem;font-weight:300;color:var(--pale);line-height:1.5}
+/* ABOUT */
+#about{background:var(--w)}
+.agrid{display:grid;grid-template-columns:260px 1fr;gap:5.5rem;align-items:start}
+.aside{position:sticky;top:80px}
+.bio p{font-size:clamp(.9rem,1.7vw,1.02rem);font-weight:300;line-height:1.95;color:rgba(26,23,20,.7);margin-bottom:1.35rem}
+.bio p:first-child::first-letter{font-family:var(--serif);font-size:4em;float:left;line-height:.8;padding-right:.12em;padding-top:.05em;color:var(--acc);font-weight:400}
+.bio strong{font-weight:500; color:var(--ink);}
 
 /* MEDIA */
 #media{background:var(--w);padding-bottom:0}
+.vid-container{position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; margin-bottom: 3rem; border: 1px solid var(--line);}
+.vid-container iframe{position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;}
 .pgrid{display:grid;grid-template-columns:repeat(12,1fr);gap:5px}
 .pi{overflow:hidden}
 .pi img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85) brightness(.97);transition:filter .5s,transform .6s}
@@ -150,29 +131,33 @@ section{padding:6rem 2.5rem}
 .reels-note{margin-top:1.5rem;font-size:.75rem;font-weight:300;color:var(--pale);text-align:center}
 .reels-note a{color:var(--acc)}
 
-/* ABOUT */
-#about{background:var(--w)}
-.agrid{display:grid;grid-template-columns:260px 1fr;gap:5.5rem;align-items:start}
-.aside{position:sticky;top:80px}
-.aname{font-family:var(--serif);font-size:1.7rem;font-weight:400;line-height:1.3;margin-bottom:1.5rem}
-.aname em{font-style:italic;display:block}
-.tags{display:flex;flex-direction:column}
-.tag{font-size:.63rem;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);padding:.55rem 0;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.6rem}
-.tag::before{content:'';width:3px;height:3px;border-radius:50%;background:var(--acc);flex-shrink:0}
-.bio p{font-size:clamp(.9rem,1.7vw,1.02rem);font-weight:300;line-height:1.95;color:rgba(26,23,20,.7);margin-bottom:1.35rem}
-.bio p:first-child::first-letter{font-family:var(--serif);font-size:4em;float:left;line-height:.8;padding-right:.12em;padding-top:.05em;color:var(--acc);font-weight:400}
-
-/* CONTACT */
+/* CONTACT & BOOKING (Unified) */
 #contact{background:var(--w2)}
-.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:5.5rem;align-items:start}
-.clead{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400;line-height:1.35;margin-bottom:1.2rem}
-.clead em{font-style:italic}
-.csub{font-size:.88rem;font-weight:300;color:var(--mid);line-height:1.85;margin-bottom:1.5rem}
-.socrow{display:flex;gap:1rem;flex-wrap:wrap;margin-top:1rem}
+.bgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:5rem;align-items:start}
+.bintro p{font-size:.95rem;font-weight:300;line-height:1.85;color:var(--mid);margin-bottom:1.2rem}
+.scards{display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem}
+.scard{border:1px solid var(--line);padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.9rem;transition:border-color .2s,background .2s;cursor:default}
+.scard:hover{border-color:var(--acc);background:var(--w)}
+.sicon{font-size:1.4rem;line-height:1;flex-shrink:0;margin-top:.05rem}
+.sname{font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:.2rem}
+.sdesc{font-size:.72rem;font-weight:300;color:var(--mid);line-height:1.5}
+.bform{display:flex;flex-direction:column;gap:.85rem}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.bform input,.bform textarea,.bform select{
+  font-family:var(--sans);font-size:.9rem;font-weight:300;color:var(--ink);
+  width:100%;padding:.85rem 1rem;background:var(--w);border:1px solid var(--line);
+  outline:none;resize:vertical;transition:border-color .25s;appearance:none;
+}
+.bform input::placeholder,.bform textarea::placeholder{color:var(--pale)}
+.bform input:focus,.bform textarea:focus,.bform select:focus{border-color:var(--acc)}
+.bform textarea{min-height:110px}
+.bform select{cursor:pointer}
+.bform select.empty{color:var(--pale)}
+.subrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.4rem}
+.subnote{font-size:.68rem;font-weight:300;color:var(--pale);line-height:1.5}
+.socrow{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem}
 .socbtn{font-size:.6rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;color:var(--mid);border:1px solid var(--line);padding:.5rem .9rem;display:inline-flex;align-items:center;gap:.4rem;transition:all .2s}
-.socbtn:hover{color:var(--acc);border-color:var(--acc)}
-.cform{display:flex;flex-direction:column;gap:.85rem}
-.cform textarea{min-height:120px}
+.socbtn:hover{color:var(--acc);border-color:var(--acc); background: var(--w);}
 
 /* FOOTER */
 footer{background:var(--ink);color:var(--w);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
@@ -197,7 +182,7 @@ footer a:hover{color:white}
   .nav-ul{display:none}
   .ham{display:flex}
   section,#reels{padding:4rem 1.4rem}
-  .bgrid,.agrid,.cgrid{grid-template-columns:1fr;gap:2.5rem}
+  .bgrid,.agrid{grid-template-columns:1fr;gap:2.5rem}
   .aside{position:static}
   .frow{grid-template-columns:1fr}
   .rgrid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
@@ -219,14 +204,12 @@ footer a:hover{color:white}
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="nav">
   <a class="logo" href="#hero">Ramon Branch Biescas</a>
   <ul class="nav-ul">
     <li><a href="#concerts">Concerts</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#media">Media</a></li>
-    <li><a href="#booking">Bookings</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <button class="ham" id="ham" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -235,18 +218,16 @@ footer a:hover{color:white}
   <a href="#concerts" onclick="closeMob()">Concerts</a>
   <a href="#about"    onclick="closeMob()">About</a>
   <a href="#media"    onclick="closeMob()">Media</a>
-  <a href="#booking"  onclick="closeMob()">Bookings</a>
   <a href="#contact"  onclick="closeMob()">Contact</a>
 </div>
 
-<!-- HERO — white, centered, large name matching old site feel -->
 <section id="hero">
   <h1 class="h-name">Ramon<br>Branch Biescas</h1>
   <div class="h-rule"></div>
   <p class="h-roles">Tuba Player <b>·</b> Organist <b>·</b> Teacher</p>
-  <p class="h-quote">"Music is the bridge that connects us all"</p>
+  <p class="h-quote">Versatile brass and organ performance for concert halls, churches, and private events across the UK & Europe.</p>
   <div class="h-cta">
-    <a class="btn-p" href="#booking">Book a Performance</a>
+    <a class="btn-p" href="#contact">Enquire & Book</a>
     <a class="btn-g" href="#concerts">Upcoming Concerts</a>
   </div>
   <div class="scroll-hint">
@@ -257,7 +238,6 @@ footer a:hover{color:white}
 
 <hr class="rule">
 
-<!-- CONCERTS -->
 <section id="concerts">
   <div class="wrap">
     <p class="lbl rv">Upcoming Performances</p>
@@ -268,7 +248,7 @@ footer a:hover{color:white}
           <td class="cnum">01</td>
           <td>
             <div class="ctitle">Heron Brass Performance</div>
-            <div class="cmeta"><span>Friday 19 September 2025</span><span>7:30 PM</span><span>St Saviour's Church, Brockley Rise, London</span></div>
+            <div class="cmeta"><span>Friday 19 September 2025</span><span>7:30 PM</span><span>St Saviour's Church, Brockley Rise, London</span><a href="#" class="tix-link">More Info</a></div>
           </td>
           <td><span class="cbadge">19 Sep</span></td>
         </tr>
@@ -276,7 +256,7 @@ footer a:hover{color:white}
           <td class="cnum">02</td>
           <td>
             <div class="ctitle">Dido and Aeneas</div>
-            <div class="cmeta"><span>Saturday 20 September 2025</span><span>7:00 PM</span><span>St Mary's, Hendon, London</span></div>
+            <div class="cmeta"><span>Saturday 20 September 2025</span><span>7:00 PM</span><span>St Mary's, Hendon, London</span><a href="#" class="tix-link">Buy Tickets</a></div>
           </td>
           <td><span class="cbadge">20 Sep</span></td>
         </tr>
@@ -284,7 +264,7 @@ footer a:hover{color:white}
           <td class="cnum">03</td>
           <td>
             <div class="ctitle">Heron Brass Performance</div>
-            <div class="cmeta"><span>Sunday 26 October 2025</span><span>7:30 PM</span><span>Stour Valley Arts Concert Series, UK</span></div>
+            <div class="cmeta"><span>Sunday 26 October 2025</span><span>7:30 PM</span><span>Stour Valley Arts, Nayland, UK</span><a href="#" class="tix-link">More Info</a></div>
           </td>
           <td><span class="cbadge">26 Oct</span></td>
         </tr>
@@ -306,7 +286,6 @@ footer a:hover{color:white}
 
 <hr class="rule">
 
-<!-- ABOUT -->
 <section id="about">
   <div class="wrap">
     <div class="agrid">
@@ -314,11 +293,11 @@ footer a:hover{color:white}
         <p class="lbl">Biography</p>
       </div>
       <div class="bio rv d1">
-        <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age he attended the choir school Escolania de Montserrat in Catalonia where he had most of his early musical training. There he studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years. The choir performed in Russia, France, the United States, Poland, Germany, China and many different areas in Catalonia.</p>
-        <p>Later he moved to the UK to continue his musical career and his academic studies at Lancing College, where he had organ lessons with Neil Cox and piano lessons with Adrian West. Ramon started the tuba at the age of fourteen with Dave Whitson and a year later joined the Junior Royal Academy of Music to study with Stephen Wick.</p>
-        <p>After completing his GCSEs, he went to the Purcell School for Young Musicians to continue his musical career as a tuba player without neglecting his other instruments. He achieved a high distinction mark in all his grade 8 ABRSM exams and hopes to achieve his diploma in singing and organ in the future.</p>
-        <p>Ramon has had experience playing with orchestras such as the London Symphony Orchestra, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Junior Academy Symphony Orchestra, Purcell School Symphony, Jove Orchestra Nacional de Catalunya and the Guildhall Symphony Orchestra. He is currently studying with Ben Thomson, principal tubist at the London Symphony Orchestra and Kevin Morgan, principal tubist of the Royal Philharmonic Orchestra. He also continues with singing lessons and plays organ at various churches.</p>
-        <p>Ramon is keen on chamber music, playing regularly with the Heron Brass Quintet, who recently reached the semifinal round for the Royal Overseas League competition. Having now completed his master's studies, he is looking forward to freelancing and teaching. He will also be starting the Liverpool Philharmonic Scheme, further developing his orchestral experience and professional growth.</p>
+        <p>Ramon Branch Biescas was born in Tarragona, Spain in 2001. Starting music at a young age he attended the choir school <strong>Escolania de Montserrat</strong> in Catalonia where he had most of his early musical training. There he studied piano with Vicenç Prunés for four years and organ with Merce Sanchís for three years. The choir performed internationally across Russia, France, the United States, Poland, Germany, and China.</p>
+        <p>He later moved to the UK to continue his musical career and academic studies at Lancing College, receiving organ lessons with Neil Cox and piano lessons with Adrian West. Ramon started the tuba at the age of fourteen with Dave Whitson, and a year later joined the <strong>Junior Royal Academy of Music</strong> to study with Stephen Wick.</p>
+        <p>After completing his GCSEs, he attended the <strong>Purcell School for Young Musicians</strong> to further his career as a tuba player without neglecting his other instruments. He achieved high distinction marks in all his grade 8 ABRSM exams and is working toward diplomas in singing and organ.</p>
+        <p>Ramon has extensive orchestral experience playing with ensembles such as the <strong>London Symphony Orchestra</strong>, London Lawyers Symphony Orchestra, Fidelio Symphony Orchestra, Jove Orchestra Nacional de Catalunya, and the Guildhall Symphony Orchestra. He is currently studying with Ben Thomson (Principal Tuba, LSO) and Kevin Morgan (Principal Tuba, RPO).</p>
+        <p>A keen chamber musician, Ramon plays regularly with the <strong>Heron Brass Quintet</strong>, who recently reached the semifinal round for the Royal Overseas League competition. Having completed his master's studies, he is freelancing, teaching, and will be joining the <strong>Liverpool Philharmonic Scheme</strong> to further develop his orchestral career.</p>
       </div>
     </div>
   </div>
@@ -326,25 +305,28 @@ footer a:hover{color:white}
 
 <hr class="rule">
 
-<!-- MEDIA / PHOTOS -->
 <section id="media">
   <div class="wrap">
-    <p class="lbl rv">Photography</p>
+    <p class="lbl rv">Listen &amp; Watch</p>
     <h2 class="stitle rv d1">Media <em>Gallery</em></h2>
+    
+    <div class="vid-container rv d2">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Ramon Branch Biescas Performance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
   </div>
+  
   <div style="max-width:1060px;margin:0 auto;padding:0 2.5rem">
     <div class="pgrid rv">
-      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert1.jpg" alt="Performance" loading="lazy"></div>
-      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert4.jpg" alt="Performance" loading="lazy"></div>
-      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert2.jpg" alt="Performance" loading="lazy"></div>
-      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert6.jpg" alt="Performance" loading="lazy"></div>
-      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert5.jpg" alt="Performance" loading="lazy"></div>
-      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert3.jpg" alt="Performance" loading="lazy"></div>
+      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert1.jpg" alt="Ramon Branch Biescas performing in a concert hall" loading="lazy"></div>
+      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert4.jpg" alt="Heron Brass Quintet performing live" loading="lazy"></div>
+      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert2.jpg" alt="Ramon playing the tuba with an orchestra" loading="lazy"></div>
+      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert6.jpg" alt="Ramon Branch Biescas playing the church organ" loading="lazy"></div>
+      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert5.jpg" alt="Close up of Ramon playing the tuba" loading="lazy"></div>
+      <div class="pi"><img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert3.jpg" alt="Ramon at a musical event" loading="lazy"></div>
     </div>
   </div>
 </section>
 
-<!-- REELS -->
 <section id="reels">
   <div style="max-width:1060px;margin:0 auto">
     <div class="rhead rv">
@@ -359,28 +341,13 @@ footer a:hover{color:white}
     </div>
     <div class="rgrid rv">
       <div class="rwrap">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/reel/DV1ICIajOvK/?utm_source=ig_embed&utm_campaign=loading"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:none;margin:0;max-width:100%;min-width:0;padding:0;width:99.375%;width:calc(100% - 2px)">
-        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DV1ICIajOvK/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14"></blockquote>
       </div>
       <div class="rwrap">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/reel/DUdCr7QDfrz/?utm_source=ig_embed&utm_campaign=loading"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:none;margin:0;max-width:100%;min-width:0;padding:0;width:99.375%;width:calc(100% - 2px)">
-        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DUdCr7QDfrz/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14"></blockquote>
       </div>
       <div class="rwrap">
-        <blockquote class="instagram-media"
-          data-instgrm-captioned
-          data-instgrm-permalink="https://www.instagram.com/reel/DTOAFJYDWqU/?utm_source=ig_embed&utm_campaign=loading"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:none;margin:0;max-width:100%;min-width:0;padding:0;width:99.375%;width:calc(100% - 2px)">
-        </blockquote>
+        <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/DTOAFJYDWqU/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14"></blockquote>
       </div>
     </div>
     <p class="reels-note">Reels appear when viewed on the live website. <a href="https://www.instagram.com/rbranchbiescas/reels/" target="_blank" rel="noopener">View all on Instagram →</a></p>
@@ -389,15 +356,14 @@ footer a:hover{color:white}
 
 <hr class="rule">
 
-<!-- BOOKING -->
-<section id="booking">
+<section id="contact">
   <div class="wrap">
-    <p class="lbl rv">Enquire &amp; Reserve</p>
-    <h2 class="stitle rv d1">Book a <em>Performance</em></h2>
+    <p class="lbl rv">Get in Touch</p>
+    <h2 class="stitle rv d1">Enquire &amp; <em>Book</em></h2>
     <div class="bgrid">
       <div class="bintro rv">
-        <p>Available for solo recitals, orchestral engagements, chamber music, and educational events across the UK and Europe.</p>
-        <p>Please fill in the enquiry form and I'll get back to you within 48 hours to discuss your event.</p>
+        <p>Available for solo recitals, orchestral engagements, chamber music, and educational events across the UK and Europe. For press info or general inquiries, simply select "General Enquiry" below.</p>
+        
         <div class="scards">
           <div class="scard">
             <div class="sicon">🎺</div>
@@ -424,66 +390,43 @@ footer a:hover{color:white}
             <div class="sicon">📚</div>
             <div>
               <div class="sname">Teaching</div>
-              <div class="sdesc">Tuba and organ lessons for all levels. In-person in London or online. Experienced with ABRSM graded exams.</div>
+              <div class="sdesc">Tuba and organ lessons for all levels. <strong>In-person in London or online.</strong> Experienced with ABRSM graded exams.</div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="rv d1">
-        <form class="bform" id="bookForm" onsubmit="submitBook(event)" novalidate>
-          <div class="frow">
-            <input type="text"  name="name"  placeholder="Full name"     required>
-            <input type="email" name="email" placeholder="Email address" required>
-          </div>
-          <div class="frow">
-            <input type="tel"  name="phone" placeholder="Phone (optional)">
-            <input type="date" name="date"  title="Preferred event date">
-          </div>
-          <select name="type" id="btype" class="empty" onchange="this.classList.toggle('empty',!this.value)" required>
-            <option value="" disabled selected>Type of booking</option>
-            <option>Solo Recital — Tuba</option>
-            <option>Brass Quintet (Heron Brass)</option>
-            <option>Organ Recital</option>
-            <option>Teaching — Tuba</option>
-            <option>Teaching — Organ</option>
-            <option>Other / Orchestral</option>
-          </select>
-          <input type="text" name="venue" placeholder="Venue / location">
-          <textarea name="details" placeholder="Tell me about your event — programme preferences, duration, budget…"></textarea>
-          <div class="subrow">
-            <p class="subnote">I aim to reply within 48 hours.<br>All enquiries welcome.</p>
-            <button type="submit" class="btn-p" id="bookBtn">Send Enquiry</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
 
-<hr class="rule">
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="wrap">
-    <div class="cgrid">
-      <div class="rv">
-        <p class="lbl">Get in Touch</p>
-        <p class="clead">Contact</p>
-        <p class="csub">For general enquiries, press information, or anything not covered by the booking form, please use this form or reach out on Instagram.</p>
         <div class="socrow">
           <a class="socbtn" href="https://www.instagram.com/rbranchbiescas/" target="_blank" rel="noopener">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
             Instagram
           </a>
         </div>
+
       </div>
       <div class="rv d1">
-        <form class="cform" id="cForm" onsubmit="submitContact(event)" novalidate>
-          <input type="text"  name="name"    placeholder="Your name"     required>
-          <input type="email" name="email"   placeholder="Email address" required>
-          <textarea           name="message" placeholder="Your message"  required></textarea>
-          <div style="display:flex;justify-content:flex-end">
-            <button type="submit" class="btn-p" id="cBtn">Send Message</button>
+        <form class="bform" id="bookForm" onsubmit="submitForm(event)" novalidate>
+          <div class="frow">
+            <input type="text"  name="name"  placeholder="Full name"      required>
+            <input type="email" name="email" placeholder="Email address" required>
+          </div>
+          <div class="frow">
+            <input type="tel"  name="phone" placeholder="Phone (optional)">
+            <input type="date" name="date"  title="Preferred event date (if applicable)">
+          </div>
+          <select name="type" id="btype" class="empty" onchange="this.classList.toggle('empty',!this.value)" required>
+            <option value="" disabled selected>Nature of enquiry</option>
+            <option>Booking: Solo Recital (Tuba)</option>
+            <option>Booking: Brass Quintet (Heron Brass)</option>
+            <option>Booking: Organ Recital / Service</option>
+            <option>Teaching: Tuba or Organ</option>
+            <option>General / Press Enquiry</option>
+            <option>Other / Orchestral</option>
+          </select>
+          <input type="text" name="venue" placeholder="Venue / location (if applicable)">
+          <textarea name="details" placeholder="Tell me about your event, teaching needs, or general message..." required></textarea>
+          <div class="subrow">
+            <p class="subnote">I aim to reply within 48 hours.<br>All enquiries welcome.</p>
+            <button type="submit" class="btn-p" id="submitBtn">Send Message</button>
           </div>
         </form>
       </div>
@@ -498,17 +441,6 @@ footer a:hover{color:white}
 
 <div class="toast" id="toast"></div>
 
-<!--
-  INSTAGRAM REELS NOTE:
-  The embed.js script below is what turns the <blockquote> tags into
-  real video players. It ONLY works when:
-  1. The page is served over HTTPS (i.e. live on GitHub Pages)
-  2. You are not using an adblocker that blocks Instagram
-
-  If you open the HTML file directly from your computer (file://...)
-  the reels will NOT appear — this is normal and expected.
-  Push the file to GitHub Pages and they will show correctly.
--->
 <script async defer src="https://www.instagram.com/embed.js"></script>
 
 <script>
@@ -535,26 +467,24 @@ function showToast(msg){
   t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),4000);
 }
-function submitBook(e){
+
+function submitForm(e){
   e.preventDefault();
-  const b=document.getElementById('bookBtn');
-  b.textContent='Sending…';b.disabled=true;
-  setTimeout(()=>{
-    b.textContent='Enquiry Sent ✓';b.style.background='#3a6b3a';
-    showToast('Booking enquiry received — I\'ll be in touch within 48 hours.');
-    setTimeout(()=>{b.textContent='Send Enquiry';b.style.background='';b.disabled=false;document.getElementById('bookForm').reset();document.getElementById('btype').classList.add('empty');},4500);
-  },900);
-}
-function submitContact(e){
-  e.preventDefault();
-  const b=document.getElementById('cBtn');
+  const b=document.getElementById('submitBtn');
   b.textContent='Sending…';b.disabled=true;
   setTimeout(()=>{
     b.textContent='Sent ✓';b.style.background='#3a6b3a';
-    showToast('Message sent — thank you!');
-    setTimeout(()=>{b.textContent='Send Message';b.style.background='';b.disabled=false;document.getElementById('cForm').reset();},4500);
+    showToast('Message received — I\'ll be in touch within 48 hours.');
+    setTimeout(()=>{
+      b.textContent='Send Message';
+      b.style.background='';
+      b.disabled=false;
+      document.getElementById('bookForm').reset();
+      document.getElementById('btype').classList.add('empty');
+    },4500);
   },900);
 }
+
 window.addEventListener('load',()=>{
   if(window.instgrm&&window.instgrm.Embeds) window.instgrm.Embeds.process();
 });
