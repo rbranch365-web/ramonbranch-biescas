@@ -1,151 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Future Concerts — Ramon Branch Biescas</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    body { font-family: 'Poppins', sans-serif; background: #f0f0f0; color: #222; margin: 0; line-height: 1.6; }
-    a { text-decoration: none; color: inherit; transition: 0.3s; }
-    a:hover { color: #0077cc; }
-    nav {
-      background: #fff;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.06);
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    nav a { font-weight: 500; font-size: 0.95rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    section {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 50px 30px;
-      border-radius: 12px;
-      background: #f7f9fc;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-    }
-    h2 { text-align: center; font-family: 'Montserrat', sans-serif; font-size: 2rem; margin-bottom: 40px; }
+<title>All Concerts — Ramon Branch Biescas</title>
 
-    .concert-list { list-style: none; padding: 0; margin: 0; }
-    .concert-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      background: #f9f9f9;
-      padding: 20px;
-      margin-bottom: 20px;
-      border-radius: 10px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-      transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border 0.3s;
-    }
-    .concert-item:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300;400;500&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 
-    .concert-item.next-upcoming {
-      border: 2px solid #0077cc;
-      background: #e6f0fb;
-      box-shadow: 0 6px 20px rgba(0, 119, 204, 0.25);
-    }
+<style>
+:root {
+  --w:#f9f8f5;
+  --w2:#f2f0ec;
+  --ink:#1a1714;
+  --mid:#6f6a63;
+  --gold:#8b5e2a;
+}
 
-    .concert-details h3 { font-size: 1.3rem; margin-bottom: 5px; }
-    .concert-details time { font-style: italic; color: #777; }
-    .concert-details p { color: #555; }
+body {
+  font-family:'Jost',sans-serif;
+  background:var(--w);
+  color:var(--ink);
+  margin:0;
+}
 
-    footer { text-align: center; font-size: 0.85rem; color: #888; padding: 40px 20px; background: #f7f9fc; }
-    footer .social a { margin: 0 12px; font-weight: 500; }
+.wrap {
+  max-width:1000px;
+  margin:0 auto;
+  padding:6rem 2rem;
+}
 
-    @media(max-width:768px){ .concert-item { flex-direction: column; align-items: flex-start; } }
-  </style>
+h1 {
+  font-family:'Cormorant',serif;
+  font-size:3rem;
+  margin-bottom:3rem;
+}
+
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+
+tr {
+  border-bottom:1px solid rgba(0,0,0,0.1);
+  transition:all .3s;
+}
+
+tr:hover {
+  background:var(--w2);
+  transform:translateX(6px);
+}
+
+td {
+  padding:1.2rem 0;
+}
+
+.back {
+  margin-top:3rem;
+  display:inline-block;
+  font-size:.7rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  text-decoration:none;
+  border-bottom:1px solid rgba(0,0,0,0.2);
+}
+
+.back:hover {
+  color:var(--gold);
+}
+</style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="index.html#concerts">Concerts</a>
-    <a href="index.html#media">Media</a>
-    <a href="index.html#about">About</a>
-    <a href="index.html#contact">Contact</a>
-  </nav>
+<div class="wrap">
+  <h1>All Upcoming Concerts</h1>
 
-  <!-- FUTURE CONCERTS -->
-  <section>
-    <h2>Future Concerts</h2>
-    <ul class="concert-list" id="futureConcertsList">
-      <li class="concert-item">
-        <div class="concert-details">
-          <h3>London Euphonia Orchestra</h3>
-          <time datetime="2025-11-29T19:30">November 29, 2025 • Time TBC</time>
-          <p>Venue: TBC</p>
-        </div>
-      </li>
-      <li class="concert-item">
-        <div class="concert-details">
-          <h3>Brighton Tuba & Horn Duet</h3>
-          <time datetime="2026-06-01T19:30">June 1, 2026 • Time TBC</time>
-          <p>Venue: TBC</p>
-        </div>
-      </li>
-    </ul>
-  </section>
+  <table>
+    <tr>
+      <td>19 Sep 2025</td>
+      <td>Heron Brass Performance</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>20 Sep 2025</td>
+      <td>Dido and Aeneas</td>
+      <td>London</td>
+    </tr>
+    <tr>
+      <td>26 Oct 2025</td>
+      <td>Heron Brass Performance</td>
+      <td>UK</td>
+    </tr>
+  </table>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="social">
-      <a href="#">Twitter</a>
-      <a href="#">Instagram</a>
-    </div>
-    <div>© Ramon Branch Biescas 2025</div>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const now = new Date();
-      const concertList = document.getElementById("futureConcertsList");
-      const concerts = Array.from(concertList.querySelectorAll(".concert-item"));
-      let upcomingConcerts = [];
-
-      concerts.forEach(concert => {
-        const timeEl = concert.querySelector("time");
-        if (timeEl && timeEl.getAttribute("datetime")) {
-          const concertDate = new Date(timeEl.getAttribute("datetime"));
-          if (concertDate >= now) {
-            upcomingConcerts.push({ date: concertDate, element: concert });
-          } else {
-            concert.remove();
-          }
-        }
-      });
-
-      // Sort upcoming concerts soonest → latest
-      upcomingConcerts.sort((a, b) => a.date - b.date);
-      concertList.innerHTML = "";
-      upcomingConcerts.forEach(c => concertList.appendChild(c.element));
-
-      // Highlight the next upcoming concert
-      if (upcomingConcerts.length > 0) {
-        upcomingConcerts[0].element.classList.add("next-upcoming");
-      }
-
-      // Show message if no upcoming concerts
-      if (upcomingConcerts.length === 0) {
-        const msg = document.createElement("li");
-        msg.textContent = "No upcoming concerts at the moment. Please check back later.";
-        msg.style.textAlign = "center";
-        msg.style.color = "#666";
-        msg.style.fontStyle = "italic";
-        msg.style.padding = "20px";
-        concertList.appendChild(msg);
-      }
-    });
-  </script>
+  <a href="index.html" class="back">← Back to Home</a>
+</div>
 
 </body>
 </html>
