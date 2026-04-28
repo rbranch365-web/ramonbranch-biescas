@@ -264,19 +264,19 @@ nav.is-solid .ham span { background: var(--ink) }
 /* Landscape adjustment: Move image higher and keep text below torso */
 @media (orientation: landscape) and (max-height: 600px) {
   #hero {
-    padding-bottom: 0.5rem;
+    padding-bottom: 0.2rem;
     align-items: flex-end;
   }
   .hero-img {
-    object-position: center 5%; /* Move picture higher in landscape */
+    object-position: center 0%; /* Move picture to the very top in landscape */
   }
   .hero-content {
-    transform: translateY(20%); /* Push text even lower */
+    transform: translateY(25%); /* Push text to the absolute bottom */
   }
-  .h-eyebrow { margin-bottom: 0.3rem; font-size: 0.5rem; }
-  .h-rule { margin: 0.2rem 0 0.8rem; }
-  .h-quote { font-size: 0.85rem; line-height: 1.4; }
-  .h-cta { margin-top: 0.8rem; scale: 0.75; }
+  .h-eyebrow { margin-bottom: 0.2rem; font-size: 0.45rem; }
+  .h-rule { margin: 0.1rem 0 0.6rem; }
+  .h-quote { font-size: 0.8rem; line-height: 1.3; }
+  .h-cta { margin-top: 0.6rem; scale: 0.7; }
 }
 
 
