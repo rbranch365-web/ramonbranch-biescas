@@ -257,16 +257,17 @@ nav.is-solid .ham span { background: var(--ink) }
   height: 100dvh;
   min-height: 580px;
   overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 8rem;
 }
 
 
 .hero-img {
   position: absolute;
   top: 0; left: 0;
-  width: 100%; height: 100%;
+  width: 100%; height: 120%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center top;
   display: block;
   will-change: transform;
   filter: brightness(.88) saturate(1.05);
@@ -296,7 +297,7 @@ nav.is-solid .ham span { background: var(--ink) }
   padding: 0 2rem;
   max-width: 960px; width: 100%;
   display: flex; flex-direction: column; align-items: center;
-  margin-top: 0; /* Lowered as requested */
+  margin-top: 0;
 }
 
 
@@ -389,7 +390,7 @@ nav.is-solid .ham span { background: var(--ink) }
 
 /* Scroll cue */
 .scroll-cue {
-  position: absolute; bottom: 2.8rem; left: 50%; transform: translateX(-50%);
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
   z-index: 2;
   display: flex; flex-direction: column; align-items: center; gap: .55rem;
   opacity: 0; animation: heroUp .7s 1.15s var(--out) forwards;
@@ -681,13 +682,7 @@ section { padding: 8rem 3.5rem }
 
 
 /* ═══════════════════════════════════════════════════
-   INSTAGRAM REELS — REBUILT
-   REMOVED: Instagram embed.js (unreliable, heavy, layout-shifting)
-   REPLACED WITH: custom lightweight thumbnail grid
-   — Fixed 9:16 aspect-ratio containers = zero layout shift
-   — Lazy-loaded thumbnails with fade-in
-   — Click → modal with Instagram embed loaded on demand
-   — Fallback card if thumbnails fail to load
+   INSTAGRAM REELS — Official Instagram Embeds
 ═══════════════════════════════════════════════════ */
 #reels {
   background: var(--w2);
@@ -719,90 +714,30 @@ section { padding: 8rem 3.5rem }
 .ig-handle:hover svg { transform: scale(1.2) }
 
 
-/* 3-col equal grid — 1px seam */
+/* 3-col equal grid for Instagram embeds */
 .rgrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
+  gap: 1.5rem;
+  justify-items: center;
 }
 
 
-/* Reel card — fixed aspect ratio prevents layout shift */
-.rcard {
-  position: relative;
-  aspect-ratio: 9 / 16;
-  overflow: hidden;
-  cursor: pointer;
+/* Instagram embed wrapper */
+.reel-embed-wrap {
+  width: 100%;
+  max-width: 328px;
+  min-height: 560px;
   background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.rcard-placeholder {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
-  color: rgba(255,255,255,0.3);
-  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+.reel-embed-wrap .instagram-media {
+  min-width: unset !important;
+  width: 100% !important;
+  max-width: 100% !important;
 }
-
-
-/* Thumbnail image */
-.rcard-thumb {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity .6s var(--smooth), transform .6s var(--out);
-  will-change: transform;
-}
-.rcard-thumb.loaded { opacity: 1 }
-.rcard:hover .rcard-thumb { transform: scale(1.04) }
-
-
-/* Dark gradient overlay */
-.rcard-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  background: linear-gradient(to top,
-    rgba(5,3,1,.72) 0%,
-    rgba(5,3,1,.18) 50%,
-    transparent 100%);
-  transition: opacity .4s var(--smooth);
-}
-.rcard:hover .rcard-overlay { opacity: .7 }
-
-
-/* Play button */
-.rcard-play {
-  position: absolute; z-index: 2;
-  top: 50%; left: 50%; transform: translate(-50%,-50%);
-  width: 52px; height: 52px;
-  border: 1.5px solid rgba(255,255,255,.7);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  transition: transform .38s var(--out), border-color .3s, background .3s;
-}
-.rcard-play svg {
-  width: 18px; height: 18px;
-  fill: rgba(255,255,255,.9); stroke: none;
-  margin-left: 3px; /* optical centre */
-}
-.rcard:hover .rcard-play {
-  transform: translate(-50%,-50%) scale(1.12);
-  border-color: #fff;
-  background: rgba(255,255,255,.1);
-}
-
-
-/* Fallback state — shown if image fails */
-.rcard-fallback {
-  position: absolute; inset: 0; z-index: 3;
-  display: none;
-  flex-direction: column; align-items: center; justify-content: center; gap: .8rem;
-  background: var(--ink);
-  color: rgba(255,255,255,.45);
-  font-size: .58rem; letter-spacing: .18em; text-transform: uppercase;
-}
-.rcard-fallback svg { opacity: .4 }
-.rcard.failed .rcard-fallback { display: flex }
-.rcard.failed .rcard-thumb,
-.rcard.failed .rcard-play { display: none }
 
 
 /* "View all" row */
@@ -812,38 +747,7 @@ section { padding: 8rem 3.5rem }
 }
 
 
-/* ─── REEL MODAL — video player ─── */
-.reel-modal {
-  position: fixed; inset: 0; z-index: 7500;
-  background: rgba(4,3,2,.97);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; pointer-events: none;
-  transition: opacity .38s var(--smooth);
-}
-.reel-modal.open { opacity: 1; pointer-events: all }
 
-
-.reel-modal-inner {
-  position: relative;
-  width: min(420px, 90vw);
-  aspect-ratio: 9 / 16;
-  max-height: 88vh;
-}
-.reel-modal-inner iframe {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  border: none;
-}
-.reel-modal-close {
-  position: absolute; top: -3rem; right: 0;
-  width: 42px; height: 42px;
-  border: 1px solid rgba(255,255,255,.22);
-  background: rgba(255,255,255,.04); cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: border-color .3s, background .3s;
-}
-.reel-modal-close:hover { border-color: rgba(255,255,255,.75); background: rgba(255,255,255,.1) }
-.reel-modal-close svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 1.5; fill: none }
 
 
 /* ═══════════════════════════════════════════════════
@@ -1300,7 +1204,7 @@ footer {
 </div>
 
 
-<!-- ═══ REELS ═══ (REBUILT — no embed.js) -->
+<!-- ═══ REELS ═══ (Official Instagram Embeds) -->
 <section id="reels">
   <div style="max-width:1080px;margin:0 auto">
     <div class="reels-head rv">
@@ -1324,50 +1228,32 @@ footer {
 
     <div class="rgrid rv">
       <!-- Reel 1 -->
-      <div class="rcard" data-reel="DV1ICIajOvK">
-        <div class="rcard-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="2" width="20" height="20" rx="5"/>
-            <circle cx="12" cy="12" r="5"/>
-          </svg>
-          <span>Play Reel</span>
-        </div>
-        <div class="rcard-overlay"></div>
-        <div class="rcard-play">
-          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
+      <div class="reel-embed-wrap">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DV1ICIajOvK/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);">
+        </blockquote>
       </div>
 
 
       <!-- Reel 2 -->
-      <div class="rcard" data-reel="DUdCr7QDfrz">
-        <div class="rcard-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="2" width="20" height="20" rx="5"/>
-            <circle cx="12" cy="12" r="5"/>
-          </svg>
-          <span>Play Reel</span>
-        </div>
-        <div class="rcard-overlay"></div>
-        <div class="rcard-play">
-          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
+      <div class="reel-embed-wrap">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DUdCr7QDfrz/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);">
+        </blockquote>
       </div>
 
 
       <!-- Reel 3 -->
-      <div class="rcard" data-reel="DTOAFJYDWqU">
-        <div class="rcard-placeholder">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="2" y="2" width="20" height="20" rx="5"/>
-            <circle cx="12" cy="12" r="5"/>
-          </svg>
-          <span>Play Reel</span>
-        </div>
-        <div class="rcard-overlay"></div>
-        <div class="rcard-play">
-          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-        </div>
+      <div class="reel-embed-wrap">
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/reel/DTOAFJYDWqU/"
+          data-instgrm-version="14"
+          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);">
+        </blockquote>
       </div>
     </div>
 
@@ -1383,16 +1269,8 @@ footer {
   </div>
 </section>
 
-
-<!-- REEL VIDEO MODAL -->
-<div class="reel-modal" id="reelModal" role="dialog" aria-modal="true" aria-label="Reel player">
-  <div class="reel-modal-inner" id="reelModalInner">
-    <button class="reel-modal-close" id="reelModalClose" aria-label="Close reel">
-      <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <!-- iframe injected by JS on open, removed on close -->
-  </div>
-</div>
+<!-- Instagram embed.js -->
+<script async src="//www.instagram.com/embed.js"></script>
 
 
 <!-- ═══ BOOKING ═══ -->
@@ -1785,70 +1663,7 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
 }());
 
 
-/* ─── REEL THUMBNAILS ─── */
-document.querySelectorAll('.rcard-thumb').forEach(function (img) {
-  var card = img.closest('.rcard');
-  if (img.complete && img.naturalWidth > 0) {
-    img.classList.add('loaded');
-  } else {
-    img.addEventListener('load', function () { img.classList.add('loaded'); });
-    img.addEventListener('error', function () {
-      card.classList.add('failed');
-    });
-  }
-});
 
-
-/* ─── REEL MODAL ─── */
-(function () {
-  var reelModal  = document.getElementById('reelModal');
-  var reelInner  = document.getElementById('reelModalInner');
-  var closeBtn   = document.getElementById('reelModalClose');
-
-
-  function openReel(reelId) {
-    var old = reelInner.querySelector('iframe');
-    if (old) reelInner.removeChild(old);
-
-
-    var iframe = document.createElement('iframe');
-    iframe.src = 'https://www.instagram.com/reel/' + reelId + '/embed/';
-    iframe.allowFullscreen = true;
-    iframe.allow = 'autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share';
-    reelInner.appendChild(iframe);
-
-
-    reelModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-
-
-  function closeReel() {
-    reelModal.classList.remove('open');
-    document.body.style.overflow = '';
-    setTimeout(function () {
-      var old = reelInner.querySelector('iframe');
-      if (old) reelInner.removeChild(old);
-    }, 400);
-  }
-
-
-  document.querySelectorAll('.rcard').forEach(function (card) {
-    card.addEventListener('click', function () {
-      var reelId = card.dataset.reel;
-      if (reelId) openReel(reelId);
-    });
-  });
-
-
-  closeBtn.addEventListener('click', closeReel);
-  reelModal.addEventListener('click', function (e) {
-    if (e.target === reelModal) closeReel();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (reelModal.classList.contains('open') && e.key === 'Escape') closeReel();
-  });
-}());
 
 
 /* ─── TOAST ─── */
