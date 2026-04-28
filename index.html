@@ -261,6 +261,19 @@ nav.is-solid .ham span { background: var(--ink) }
   padding-bottom: 8rem;
 }
 
+/* Landscape adjustment to keep text below face */
+@media (orientation: landscape) and (max-height: 600px) {
+  #hero {
+    padding-bottom: 2rem;
+  }
+  .hero-content {
+    transform: translateY(0);
+  }
+  .h-eyebrow { margin-bottom: 1rem; }
+  .h-rule { margin: 0.5rem 0 1.5rem; }
+  .h-cta { margin-top: 1.5rem; }
+}
+
 
 .hero-img {
   position: absolute;
@@ -1226,35 +1239,9 @@ footer {
     </div>
 
 
-    <div class="rgrid rv">
-      <!-- Reel 1 -->
-      <div class="reel-embed-wrap">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DV1ICIajOvK/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);">
-        </blockquote>
-      </div>
-
-
-      <!-- Reel 2 -->
-      <div class="reel-embed-wrap">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DUdCr7QDfrz/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);">
-        </blockquote>
-      </div>
-
-
-      <!-- Reel 3 -->
-      <div class="reel-embed-wrap">
-        <blockquote class="instagram-media"
-          data-instgrm-permalink="https://www.instagram.com/reel/DTOAFJYDWqU/"
-          data-instgrm-version="14"
-          style="background:#FFF;border:0;border-radius:3px;box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15);margin:1px;max-width:540px;min-width:326px;padding:0;width:99.375%;width:-webkit-calc(100% - 2px);width:calc(100% - 2px);">
-        </blockquote>
-      </div>
+    <div class="rv">
+      <script src="https://static.elfsight.com/platform/platform.js" async></script>
+      <div class="elfsight-app-fad43a60-c229-4608-93a7-a50768d0b565" data-elfsight-app-lazy></div>
     </div>
 
 
@@ -1269,8 +1256,7 @@ footer {
   </div>
 </section>
 
-<!-- Instagram embed.js -->
-<script async src="//www.instagram.com/embed.js"></script>
+
 
 
 <!-- ═══ BOOKING ═══ -->
@@ -1371,7 +1357,7 @@ footer {
   <div class="smm-banner-inner">
     <p class="sec-label">Concert Series</p>
     <h2 class="sec-title">St Mary Magdalene<br>Concert Series</h2>
-    <p>A programme of lunchtime concerts at St Mary Magdalene Church, curated by Ramon Branch Biescas. Open to performers of all disciplines — submit your proposal to perform.</p>
+    <p>A programme of lunchtime concerts at St Mary Magdalene Church, Brighton, curated by Ramon Branch Biescas. Open to performers of all disciplines — submit your proposal to perform.</p>
     <a class="btn-border" href="st-mary-magdalene.html" data-trans>
       Discover the Series
     </a>
