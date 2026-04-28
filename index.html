@@ -1665,6 +1665,13 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       handleClose(e);
     }
   });
+  
+  // Extra safety for mobile: close if clicking anywhere outside the image
+  modal.addEventListener('touchstart', function (e) {
+    if (e.target === modal || e.target.classList.contains('modal-img-wrap')) {
+      handleClose(e);
+    }
+  }, { passive: false });
 
 
   document.addEventListener('keydown', function (e) {
