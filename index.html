@@ -668,14 +668,17 @@ section { padding: 8rem 3.5rem }
 
 .modal-close {
   position: absolute; top: 1.8rem; right: 1.8rem;
-  width: 42px; height: 42px;
-  border: 1px solid rgba(255,255,255,.22);
-  background: rgba(255,255,255,.04); cursor: pointer;
+  width: 54px; height: 54px; /* Larger hit area for mobile */
+  border: 1px solid rgba(255,255,255,.3);
+  background: rgba(0,0,0,.5); /* Better visibility */
+  cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: border-color .3s, background .3s;
+  z-index: 7010; /* Ensure it's above everything */
+  touch-action: manipulation;
 }
-.modal-close:hover { border-color: rgba(255,255,255,.75); background: rgba(255,255,255,.1) }
-.modal-close svg { width: 14px; height: 14px; stroke: #fff; stroke-width: 1.5; fill: none }
+.modal-close:hover { border-color: #fff; background: rgba(255,255,255,.2) }
+.modal-close svg { width: 20px; height: 20px; stroke: #fff; stroke-width: 2; fill: none }
 
 
 .modal-prev, .modal-next {
@@ -1640,21 +1643,26 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   });
 
 
-  document.getElementById('modalClose').addEventListener('click', close);
+  var closeBtn = document.getElementById('modalClose');
+  
+  // Robust close handling for all devices
+  function handleClose(e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    close();
+  }
+
+  closeBtn.addEventListener('click', handleClose);
+  closeBtn.addEventListener('touchstart', handleClose, { passive: false });
+  
   document.getElementById('modalPrev').addEventListener('click', prev);
   document.getElementById('modalNext').addEventListener('click', next);
 
-
-  document.getElementById('modalClose').addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    close();
-  });
-
   modal.addEventListener('click', function (e) {
     if (e.target === modal || e.target.closest('.modal-close')) {
-      e.preventDefault();
-      close();
+      handleClose(e);
     }
   });
 
