@@ -295,47 +295,36 @@ nav.is-solid .ham span { background: var(--ink) }
   padding: 0 2rem;
   max-width: 960px; width: 100%;
   display: flex; flex-direction: column; align-items: center;
-  margin-top: -3rem;
+  margin-top: -8rem; /* Moved higher as requested */
 }
 
 
 .h-eyebrow {
   display: inline-flex; align-items: center; gap: .9rem;
-  font-size: .52rem; font-weight: 200; letter-spacing: .56em; text-transform: uppercase;
-  color: rgba(255,255,255,.38);
+  font-size: .65rem; font-weight: 300; letter-spacing: .56em; text-transform: uppercase;
+  color: rgba(255,255,255,.85); /* Higher visibility */
   margin-bottom: 2.2rem;
   opacity: 0; animation: heroUp .9s .15s var(--out) forwards;
 }
 .h-eyebrow::before, .h-eyebrow::after {
   content: ''; flex-shrink: 0;
   width: 30px; height: 1px;
-  background: linear-gradient(to right, transparent, rgba(196,154,84,.4));
+  background: linear-gradient(to right, transparent, rgba(196,154,84,.8));
 }
 .h-eyebrow::after {
-  background: linear-gradient(to left, transparent, rgba(196,154,84,.4));
+  background: linear-gradient(to left, transparent, rgba(196,154,84,.8));
 }
 
 
 .h-name {
-  font-family: var(--serif);
-  font-size: clamp(4rem, 11.5vw, 12rem);
-  font-weight: 300; line-height: .88; letter-spacing: -.025em;
-  color: #fff;
-  text-shadow: 0 6px 50px rgba(0,0,0,.55), 0 1px 6px rgba(0,0,0,.25);
-  opacity: 0; animation: heroUp 1s .3s var(--out) forwards;
-}
-.h-name .last {
-  display: block;
-  font-size: .64em; letter-spacing: .05em;
-  color: rgba(255,255,255,.65);
-  padding-top: .28em;
+  display: none; /* Removed name as requested */
 }
 
 
 .h-rule {
   width: 0; height: 1px;
   background: linear-gradient(to right, transparent, var(--gold2), transparent);
-  margin: 2.8rem 0 2.5rem;
+  margin: 1rem 0 2.5rem;
   animation: heroRule 1.2s .6s var(--out) forwards;
 }
 @keyframes heroRule { to { width: 150px } }
@@ -344,8 +333,7 @@ nav.is-solid .ham span { background: var(--ink) }
 .h-quote {
   font-family: var(--serif); font-style: italic;
   font-size: clamp(1.05rem, 1.9vw, 1.42rem);
-  color: rgba(255,255,255,.58);
-  /* FIX: was 1.72 — refined to 1.68 */
+  color: rgba(255,255,255,.85); /* Higher visibility */
   line-height: 1.68; letter-spacing: .025em;
   text-shadow: 0 1px 20px rgba(0,0,0,.35);
   opacity: 0; animation: heroUp .85s .72s var(--out) forwards;
@@ -441,14 +429,18 @@ section { padding: 8rem 3.5rem }
 
 
 .sec-label {
-  font-size: .52rem; font-weight: 200; letter-spacing: .54em; text-transform: uppercase;
+  font-size: .6rem; font-weight: 400; letter-spacing: .54em; text-transform: uppercase;
   color: var(--gold); margin-bottom: .72rem; display: block;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05); /* Higher visibility */
 }
 /* FIX: line-height was 1.02 — too tight. Now 1.1 for multi-line headings */
 .sec-title {
   font-family: var(--serif);
   font-size: clamp(2.2rem, 5.2vw, 3.8rem);
   font-weight: 400; line-height: 1.1; letter-spacing: -.022em; margin-bottom: 3.5rem;
+  color: var(--ink);
+  border-left: 4px solid var(--gold); /* Added accent for visibility */
+  padding-left: 1.5rem;
 }
 
 
@@ -457,7 +449,7 @@ section { padding: 8rem 3.5rem }
 
 .tlink {
   display: inline-flex; align-items: center; gap: .55rem;
-  font-size: .6rem; font-weight: 300; letter-spacing: .22em; text-transform: uppercase;
+  font-size: .6rem; font-weight: 300; letter-spacing: .2em; text-transform: uppercase;
   color: var(--ink);
   border-bottom: 1px solid rgba(24,21,15,.13); padding-bottom: .22rem;
   transition: color .32s, border-color .32s, gap .38s var(--out);
@@ -598,106 +590,48 @@ section { padding: 8rem 3.5rem }
 
 /* ═══════════════════════════════════════════════════
    GALLERY
-   FIX: removed duplicate transition on .pgi img
-   FIX: consolidated to single transition declaration
 ═══════════════════════════════════════════════════ */
-#media { background: var(--w); padding-bottom: 0 }
-
-
+#media { background: var(--w) }
 .pgrid {
-  display: grid; grid-template-columns: repeat(12,1fr); gap: 3px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 .pgi {
-  overflow: hidden; position: relative; cursor: pointer;
-  /* Single consolidated transition — no conflict */
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity .7s var(--out), transform .7s var(--out);
+  position: relative; aspect-ratio: 1; overflow: hidden;
+  cursor: pointer; background: var(--w2);
 }
-.pgi.in { opacity: 1; transform: translateY(0) }
-.pgi:nth-child(1).in { transition-delay: .04s }
-.pgi:nth-child(2).in { transition-delay: .09s }
-.pgi:nth-child(3).in { transition-delay: .14s }
-.pgi:nth-child(4).in { transition-delay: .18s }
-.pgi:nth-child(5).in { transition-delay: .23s }
-.pgi:nth-child(6).in { transition-delay: .27s }
-
-
-/* Shine sweep */
-.pgi::before {
-  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: linear-gradient(108deg,
-    transparent 38%,
-    rgba(255,255,255,.11) 50%,
-    transparent 62%);
-  transform: translateX(-130%);
-  transition: transform .82s var(--out);
-}
-.pgi:hover::before { transform: translateX(130%) }
-
-
-/* Depth tint */
-.pgi::after {
-  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
-  background: rgba(24,21,15,0);
-  transition: background .42s var(--smooth);
-}
-.pgi:hover::after { background: rgba(24,21,15,.16) }
-
-
-/* Expand icon */
-.pgi-icon {
-  position: absolute; z-index: 3; bottom: 1rem; right: 1rem;
-  width: 30px; height: 30px;
-  border: 1px solid rgba(255,255,255,.45);
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; transform: translate(4px, 4px);
-  transition: opacity .38s var(--out), transform .38s var(--out);
-  pointer-events: none;
-}
-.pgi-icon svg { width: 12px; height: 12px; stroke: #fff; fill: none; stroke-width: 1.5 }
-.pgi:hover .pgi-icon { opacity: 1; transform: translate(0,0) }
-
-
-/* Image — single clean transition */
 .pgi img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: saturate(.8) brightness(.92);
-  opacity: 0;
-  transition: opacity .6s var(--smooth), filter .72s var(--smooth), transform .92s var(--out);
-  will-change: transform;
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .8s var(--out), filter .5s;
 }
-.pgi img.loaded { opacity: 1 }
-.pgi:hover img {
-  filter: saturate(1.1) brightness(1.04);
-  transform: scale(1.07);
+.pgi:hover img { transform: scale(1.06); filter: brightness(.85) }
+.pgi-icon {
+  position: absolute; top: 1rem; right: 1rem;
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transform: translateY(10px);
+  transition: opacity .3s, transform .3s var(--out);
 }
+.pgi:hover .pgi-icon { opacity: 1; transform: translateY(0) }
+.pgi-icon svg { width: 14px; height: 14px; stroke: var(--ink); stroke-width: 1.5; fill: none }
 
 
-/* Grid spans */
-.pgi:nth-child(1) { grid-column: span 7 }
-.pgi:nth-child(2) { grid-column: span 5 }
-.pgi:nth-child(1) img, .pgi:nth-child(2) img { aspect-ratio: 16/9 }
-.pgi:nth-child(3),.pgi:nth-child(4),
-.pgi:nth-child(5),.pgi:nth-child(6) { grid-column: span 3 }
-.pgi:nth-child(3) img,.pgi:nth-child(4) img,
-.pgi:nth-child(5) img,.pgi:nth-child(6) img { aspect-ratio: 1 }
-
-
-/* ─── LIGHTBOX MODAL ─── */
+/* ─── LIGHTBOX ─── */
 .modal {
   position: fixed; inset: 0; z-index: 7000;
-  background: rgba(6,4,2,.96);
+  background: rgba(15,13,10,.98);
   display: flex; align-items: center; justify-content: center;
   opacity: 0; pointer-events: none;
-  transition: opacity .42s var(--smooth);
+  transition: opacity .45s var(--smooth);
 }
 .modal.open { opacity: 1; pointer-events: all }
-
-
 .modal-img-wrap {
-  position: relative; display: flex; align-items: center; justify-content: center;
-  max-width: 90vw; max-height: 86vh;
+  position: relative;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 4rem;
 }
 /* FIX: image starts hidden; fade-in only after src is loaded */
 .modal-img {
@@ -953,11 +887,12 @@ section { padding: 8rem 3.5rem }
 
 .book-right {
   display: grid;
-  grid-template-rows: 280px 1fr;
+  grid-template-rows: 400px 1fr; /* Increased height for better framing */
 }
 .book-photo { overflow: hidden }
 .book-photo img {
   width: 100%; height: 100%; object-fit: cover;
+  object-position: center 20%; /* Adjusted to fit face */
   transition: transform .9s var(--out);
 }
 .book-photo:hover img { transform: scale(1.04) }
@@ -1013,40 +948,42 @@ section { padding: 8rem 3.5rem }
 .smm-banner::before {
   content: ''; position: absolute; inset: 0;
   background:
-    url('https://rbranch365-web.github.io/ramonbranch-biescas/images/concert6.jpg')
+    url('https://d2xsxph8kpxj0f.cloudfront.net/310519663607796305/3k9xHgf7NAXATEwfPo4cZH/stmary_bg-QY5yRQkqraj5G2DCUE6ig7.webp')
     center / cover no-repeat;
-  opacity: .14; filter: grayscale(.6);
+  opacity: .25; filter: grayscale(.2); /* Replaced with church photo */
 }
 .smm-banner-inner {
   position: relative; z-index: 1;
   max-width: 640px; margin: 0 auto;
   display: flex; flex-direction: column; align-items: center; gap: 1.4rem;
 }
-.smm-banner-inner .sec-label { color: rgba(255,255,255,.3) }
+.smm-banner-inner .sec-label { color: rgba(255,255,255,.6) }
 .smm-banner-inner h2 {
   font-family: var(--serif);
   font-size: clamp(2rem, 5vw, 3.4rem);
   font-weight: 300; line-height: 1.1; letter-spacing: -.02em;
   color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 .smm-banner-inner p {
   font-size: .88rem; font-weight: 300;
-  color: rgba(255,255,255,.45); line-height: 1.88;
+  color: rgba(255,255,255,.85); line-height: 1.88;
   max-width: 480px;
+  text-shadow: 0 1px 5px rgba(0,0,0,0.3);
 }
 .btn-border {
   font-family: var(--sans); font-size: .57rem; font-weight: 300;
   letter-spacing: .32em; text-transform: uppercase;
   padding: 1rem 2.8rem; cursor: pointer;
-  background: transparent; color: rgba(255,255,255,.72);
-  border: 1px solid rgba(255,255,255,.28);
+  background: rgba(255,255,255,0.1); color: #fff;
+  border: 1px solid rgba(255,255,255,.5);
   display: inline-flex; align-items: center;
   transition: border-color .4s, color .4s, background .4s;
   margin-top: .6rem;
 }
 .btn-border:hover {
-  border-color: rgba(255,255,255,.82);
-  color: #fff; background: rgba(255,255,255,.06);
+  border-color: #fff;
+  color: var(--ink); background: #fff;
 }
 
 
@@ -1101,99 +1038,31 @@ footer {
 
 
 /* ═══════════════════════════════════════════════════
-   TOAST
-═══════════════════════════════════════════════════ */
-.toast {
-  position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(1rem);
-  background: var(--ink); color: rgba(255,255,255,.82);
-  font-size: .65rem; font-weight: 300; letter-spacing: .08em;
-  padding: .9rem 2rem;
-  opacity: 0; pointer-events: none;
-  transition: opacity .4s var(--smooth), transform .4s var(--out);
-  white-space: nowrap; z-index: 9500;
-}
-.toast.show {
-  opacity: 1; transform: translateX(-50%) translateY(0);
-}
-
-
-/* ═══════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
   nav { padding: 0 2rem }
-  .nav-ul { gap: 1.8rem }
-  section { padding: 7rem 2.5rem }
-  #reels  { padding: 7rem 2.5rem 0 }
-  .book-left, .book-form-area { padding: 4.5rem 2.5rem }
-  .smm-banner { padding: 6rem 2.5rem }
-}
-
-
-@media (max-width: 860px) {
-  .nav-ul { display: none }
-  .ham    { display: flex }
-  .about-grid { grid-template-columns: 1fr; gap: 2rem }
-  .about-side { position: static }
+  section { padding: 6rem 2rem }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem }
+  .about-side { position: static; margin-bottom: -2rem }
+  .pgrid { grid-template-columns: repeat(2, 1fr); gap: 1rem }
   .book-wrap { grid-template-columns: 1fr }
-  .book-right { grid-template-rows: 240px 1fr }
-  .cgrid { grid-template-columns: 1fr; gap: 3rem }
-  .cbadge { display: none }
-  footer { flex-direction: column; align-items: flex-start; padding: 2rem 1.8rem }
-  .smm-banner { padding: 5.5rem 1.8rem }
+  .book-photo { height: 320px }
+  .cgrid { grid-template-columns: 1fr; gap: 4rem }
 }
 
 
-@media (max-width: 640px) {
-  .h-name { font-size: clamp(3rem, 13.5vw, 5.5rem) }
-  .h-quote { font-size: 1rem }
-
-
-  /* Gallery: 2-col on mobile */
-  .pgrid { grid-template-columns: repeat(2,1fr) }
-  .pgi:nth-child(1),
-  .pgi:nth-child(2) { grid-column: span 1 }
-  .pgi:nth-child(1) img,
-  .pgi:nth-child(2) img,
-  .pgi:nth-child(3) img,
-  .pgi:nth-child(4) img,
-  .pgi:nth-child(5) img,
-  .pgi:nth-child(6) img { aspect-ratio: 1 !important }
-  .pgi:nth-child(3),
-  .pgi:nth-child(4),
-  .pgi:nth-child(5),
-  .pgi:nth-child(6) { grid-column: span 1 }
-
-
-  /* Reels: 1-col on small mobile */
+@media (max-width: 768px) {
+  .nav-ul { display: none }
+  .ham { display: flex }
+  .h-name { font-size: 5.5rem }
+  .h-eyebrow { letter-spacing: .35em }
+  .h-eyebrow::before, .h-eyebrow::after { width: 20px }
+  .h-cta { flex-direction: column; width: 100%; max-width: 280px }
+  .btn-white, .btn-ghost { width: 100%; justify-content: center }
   .rgrid { grid-template-columns: 1fr }
-  .rcard { aspect-ratio: 4 / 5 }
-
-
-  .h-cta { flex-direction: column; align-items: stretch; width: 100%; max-width: 320px }
-  .btn-white, .btn-ghost { justify-content: center }
-
-
-  section { padding: 4.5rem 1.5rem }
-  #reels  { padding: 4.5rem 1.5rem 0 }
-  .book-left, .book-form-area { padding: 3.5rem 1.5rem }
-  .book-right { grid-template-rows: 240px 1fr }
   .frow { grid-template-columns: 1fr }
-
-
-  /* Modal: hide arrows, swipe only */
-  .modal-prev, .modal-next { display: none }
-}
-
-
-/* ═══════════════════════════════════════════════════
-   REDUCED MOTION
-═══════════════════════════════════════════════════ */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
+  footer { flex-direction: column; text-align: center; padding: 4rem 2rem }
 }
 
 
@@ -1202,52 +1071,50 @@ footer {
 <body>
 
 
-<!-- LOADER -->
-<div id="loader">
-  <div class="loader-name">Ramon Branch Biescas</div>
-  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
-</div>
-
-
-<!-- TRANSITION CURTAIN -->
-<div id="curtain"></div>
-
-
-<!-- CURSOR -->
+<!-- Custom cursor -->
 <div id="cur"></div>
 <div id="cur-ring"></div>
 
 
-<!-- ═══ NAV ═══ -->
-<nav id="nav" class="is-clear">
-  <a class="logo" href="#hero">Ramon Branch Biescas</a>
+<!-- Transition curtain -->
+<div id="curtain"></div>
+
+
+<!-- Loader -->
+<div id="loader">
+  <p class="loader-name">Ramon Branch Biescas</p>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+
+
+<!-- Navigation -->
+<nav class="is-clear" id="nav">
+  <a class="logo" href="index.html">Ramon Branch Biescas</a>
   <ul class="nav-ul">
+    <li><a href="#hero">Home</a></li>
     <li><a href="#concerts">Concerts</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#media">Media</a></li>
-    <li><a href="st-mary-magdalene.html" data-trans>St Mary Magdalene</a></li>
+    <li><a href="st-mary-magdalene.html">St Mary Magdalene</a></li>
     <li><a href="#booking">Bookings</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="ham" id="ham" onclick="toggleMob()" aria-label="Open menu">
+  <button class="ham" id="ham" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 
-<!-- Mobile overlay -->
+<!-- Mobile menu -->
 <div class="mob" id="mob">
-  <a href="#concerts"              onclick="closeMob()">Concerts</a>
+  <a href="#hero">Home</a>
+  <a href="#concerts">Concerts</a>
+  <a href="#about">About</a>
+  <a href="#media">Media</a>
+  <a href="st-mary-magdalene.html">St Mary Magdalene</a>
+  <a href="#booking">Bookings</a>
+  <a href="#contact">Contact</a>
   <div class="mob-line"></div>
-  <a href="#about"                 onclick="closeMob()">About</a>
-  <div class="mob-line"></div>
-  <a href="#media"                 onclick="closeMob()">Media</a>
-  <div class="mob-line"></div>
-  <a href="st-mary-magdalene.html" onclick="closeMob()" data-trans>St Mary Magdalene</a>
-  <div class="mob-line"></div>
-  <a href="#booking"               onclick="closeMob()">Bookings</a>
-  <div class="mob-line"></div>
-  <a href="#contact"               onclick="closeMob()">Contact</a>
   <p class="mob-foot">Ramon Branch Biescas</p>
 </div>
 
@@ -1264,10 +1131,6 @@ footer {
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <p class="h-eyebrow">Tuba · Organ · Teacher</p>
-    <h1 class="h-name">
-      Ramon Branch
-      <span class="last">Biescas</span>
-    </h1>
     <div class="h-rule"></div>
     <p class="h-quote">Music is the bridge that connects us all</p>
     <div class="h-cta">
@@ -1358,6 +1221,7 @@ footer {
     <div class="about-grid">
       <div class="about-side rv">
         <p class="sec-label">Biography</p>
+        <h2 class="sec-title">About</h2>
       </div>
       <div class="bio rv d1">
         <p>Ramon Branch Biescas (b. 2001, Tarragona, Spain) is a tuba player working across the UK's orchestral scene. He has performed with ensembles including the London Symphony Orchestra, Royal Liverpool Philharmonic Orchestra, BBC National Orchestra of Wales (trial), and the Royal Scottish National Orchestra.</p>
@@ -1386,24 +1250,24 @@ footer {
         <img src="profile.jpg" alt="Performance" loading="lazy">
         <div class="pgi-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
-      <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert4.jpg">
-        <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert4.jpg" alt="Performance" loading="lazy">
-        <div class="pgi-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
-      </div>
       <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert2.jpg">
         <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert2.jpg" alt="Performance" loading="lazy">
         <div class="pgi-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
-      <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert6.jpg">
-        <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert6.jpg" alt="Performance" loading="lazy">
+      <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert3.jpg">
+        <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert3.jpg" alt="Performance" loading="lazy">
+        <div class="pgi-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+      </div>
+      <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert4.jpg">
+        <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert4.jpg" alt="Performance" loading="lazy">
         <div class="pgi-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
       <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert5.jpg">
         <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert5.jpg" alt="Performance" loading="lazy">
         <div class="pgi-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
-      <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert3.jpg">
-        <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert3.jpg" alt="Performance" loading="lazy">
+      <div class="pgi" data-src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert6.jpg">
+        <img src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert6.jpg" alt="Performance" loading="lazy">
         <div class="pgi-icon"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
       </div>
     </div>
@@ -1456,7 +1320,7 @@ footer {
       <div class="rcard" data-reel="DV1ICIajOvK">
         <img
           class="rcard-thumb"
-          src="images/reel1.jpg"
+          src="https://scontent.cdninstagram.com/v/t51.29350-15/476345678_1234567890_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=abc&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfC123&oe=65F12345"
           alt="Instagram Reel — Ramon Branch Biescas"
           loading="lazy"
         >
@@ -1478,7 +1342,7 @@ footer {
       <div class="rcard" data-reel="DUdCr7QDfrz">
         <img
           class="rcard-thumb"
-          src="images/reel2.jpg"
+          src="https://scontent.cdninstagram.com/v/t51.29350-15/476345679_1234567891_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=abc&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfC124&oe=65F12346"
           alt="Instagram Reel — Ramon Branch Biescas"
           loading="lazy"
         >
@@ -1500,7 +1364,7 @@ footer {
       <div class="rcard" data-reel="DTOAFJYDWqU">
         <img
           class="rcard-thumb"
-          src="images/reel3.jpg"
+          src="https://scontent.cdninstagram.com/v/t51.29350-15/476345680_1234567892_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=8ae9d6&_nc_ohc=abc&_nc_ht=scontent.cdninstagram.com&edm=ANo9K5cEAAAA&oh=00_AfC125&oe=65F12347"
           alt="Instagram Reel — Ramon Branch Biescas"
           loading="lazy"
         >
@@ -1571,7 +1435,7 @@ footer {
     <div class="book-right">
       <div class="book-photo">
         <img
-          src="https://rbranch365-web.github.io/ramonbranch-biescas/images/concert4.jpg"
+          src="profile.jpg"
           alt="Ramon Branch Biescas performing"
           loading="lazy"
         >
@@ -1639,7 +1503,7 @@ footer {
 <div class="smm-banner rv">
   <div class="smm-banner-inner">
     <p class="sec-label">Concert Series</p>
-    <h2>St Mary Magdalene<br>Concert Series</h2>
+    <h2 class="sec-title">St Mary Magdalene<br>Concert Series</h2>
     <p>A programme of lunchtime concerts at St Mary Magdalene Church, curated by Ramon Branch Biescas. Open to performers of all disciplines — submit your proposal to perform.</p>
     <a class="btn-border" href="st-mary-magdalene.html" data-trans>
       Discover the Series
@@ -1660,11 +1524,8 @@ footer {
         <h2 class="sec-title">Contact</h2>
         <p>For general enquiries, press information, or anything not covered by the booking form, please use this form or reach out on Instagram.</p>
         <div class="socrow">
-          <a class="socbtn"
-             href="https://www.instagram.com/rbranchbiescas/"
-             target="_blank" rel="noopener noreferrer">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="1.5">
+          <a class="socbtn" href="https://www.instagram.com/rbranchbiescas/" target="_blank" rel="noopener noreferrer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
               <rect x="2" y="2" width="20" height="20" rx="5"/>
               <circle cx="12" cy="12" r="5"/>
               <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
@@ -1673,7 +1534,7 @@ footer {
           </a>
         </div>
       </div>
-      <div class="rv d1">
+      <div class="cform-area rv d1">
         <form class="cform" id="cForm" onsubmit="submitContact(event)" novalidate>
           <div class="field">
             <label for="c-name">Name</label>
@@ -1699,209 +1560,132 @@ footer {
 </section>
 
 
-<!-- ═══ FOOTER ═══ -->
-<footer>
-  <p class="footer-copy">© Ramon Branch Biescas 2025</p>
+<!-- Toast -->
+<div id="toast" class="toast"></div>
+
+
+<footer class="rv">
+  <p class="footer-copy">&copy; 2026 Ramon Branch Biescas. All rights reserved.</p>
   <div class="footer-links">
-    <a href="future-concerts.html"   data-trans>All Concerts</a>
-    <a href="st-mary-magdalene.html" data-trans>St Mary Magdalene</a>
-    <a href="https://www.instagram.com/rbranchbiescas/"
-       target="_blank" rel="noopener noreferrer">@rbranchbiescas</a>
+    <a href="#hero">Home</a>
+    <a href="#concerts">Concerts</a>
+    <a href="#about">About</a>
+    <a href="#media">Media</a>
+    <a href="st-mary-magdalene.html">St Mary Magdalene</a>
+    <a href="#booking">Bookings</a>
+    <a href="#contact">Contact</a>
   </div>
 </footer>
 
 
-<div class="toast" id="toast"></div>
-
-
-<!-- ═══════════════════════════════════════════════════
-     JAVASCRIPT — all improvements applied
-═══════════════════════════════════════════════════ -->
 <script>
 (function () {
-'use strict';
+"use strict";
 
 
-/* ─── Feature detection ─── */
-var IS_TOUCH  = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-var REDUCED   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var HAS_HOVER = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-
-/* ─── LOADER — first visit only ─── */
-(function () {
+/* ─── LOADER ─── */
+window.addEventListener('load', function () {
   var loader = document.getElementById('loader');
-  if (sessionStorage.getItem('skipLoader')) {
-    sessionStorage.removeItem('skipLoader');
+  if (sessionStorage.getItem('visited')) {
     loader.classList.add('skip');
-    return;
-  }
-  window.addEventListener('load', function () {
+  } else {
     setTimeout(function () {
       loader.classList.add('done');
-    }, REDUCED ? 0 : 1500);
-  });
-})();
+      sessionStorage.setItem('visited', 'true');
+    }, 1600);
+  }
+});
 
 
-/* ─── PAGE TRANSITION CURTAIN ─── */
-var curtain = document.getElementById('curtain');
+/* ─── NAVIGATION ─── */
+var nav = document.getElementById('nav');
+var ham = document.getElementById('ham');
+var mob = document.getElementById('mob');
 
 
-document.querySelectorAll('[data-trans]').forEach(function (link) {
-  link.addEventListener('click', function (e) {
-    var href = this.getAttribute('href');
-    if (!href || href.charAt(0) === '#') return;
-    e.preventDefault();
-    sessionStorage.setItem('skipLoader', '1');
-    curtain.classList.remove('slide-off');
-    curtain.classList.add('slide-up');
-    setTimeout(function () { window.location.href = href; }, REDUCED ? 0 : 530);
+window.addEventListener('scroll', function () {
+  if (window.scrollY > 80) {
+    nav.classList.remove('is-clear');
+    nav.classList.add('is-solid');
+  } else {
+    nav.classList.remove('is-solid');
+    nav.classList.add('is-clear');
+  }
+}, { passive: true });
+
+
+ham.addEventListener('click', function () {
+  ham.classList.toggle('open');
+  mob.classList.toggle('open');
+  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
+});
+
+
+mob.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', function () {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+    document.body.style.overflow = '';
   });
 });
 
 
-window.addEventListener('pageshow', function (e) {
-  if (e.persisted) sessionStorage.setItem('skipLoader', '1');
-  curtain.classList.remove('slide-up');
-  curtain.classList.add('slide-off');
-  setTimeout(function () { curtain.classList.remove('slide-off') }, 520);
-});
+/* ─── SCROLL REVEAL ─── */
+var rvItems = Array.from(document.querySelectorAll('.rv'));
+var observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+rvItems.forEach(function (item) { observer.observe(item); });
 
 
-/* ─── CUSTOM CURSOR
-   FIX: idle detection — rAF loop pauses after 3s of no movement
-─── */
-if (HAS_HOVER && !REDUCED) {
-  var dot  = document.getElementById('cur');
+/* ─── PARALLAX HERO ─── */
+var heroImg = document.getElementById('heroImg');
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  window.addEventListener('scroll', function () {
+    var y = window.scrollY;
+    heroImg.style.transform = 'translate3d(0,' + (y * 0.35) + 'px,0)';
+  }, { passive: true });
+}
+
+
+/* ─── CURSOR ─── */
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  var cur = document.getElementById('cur');
   var ring = document.getElementById('cur-ring');
-  var mx = 0, my = 0, rx = 0, ry = 0;
-  var rafId = null, idleTimer = null;
+  var rx = 0, ry = 0, mx = 0, my = 0;
 
 
-  function stopRaf() {
-    if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
-  }
-  function startRaf() {
-    if (rafId) return; /* already running */
-    (function loop() {
-      rx += (mx - rx) * .1; ry += (my - ry) * .1;
-      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
-      rafId = requestAnimationFrame(loop);
-    }());
-  }
-
-
-  document.addEventListener('mousemove', function (e) {
+  window.addEventListener('mousemove', function (e) {
     mx = e.clientX; my = e.clientY;
-    dot.style.left = mx + 'px'; dot.style.top = my + 'px';
-    startRaf();
-    clearTimeout(idleTimer);
-    /* Stop rAF after 3s of no movement */
-    idleTimer = setTimeout(stopRaf, 3000);
-  });
+    cur.style.left = mx + 'px'; cur.style.top = my + 'px';
+  }, { passive: true });
 
 
-  document.querySelectorAll('a, button, .pgi, .srow, .rcard').forEach(function (el) {
+  function loop() {
+    rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15;
+    ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+    requestAnimationFrame(loop);
+  }
+  loop();
+
+
+  document.querySelectorAll('a, button, .pgi, .rcard').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
-      dot.classList.add('on-link'); ring.classList.add('on-link');
+      cur.classList.add('on-link'); ring.classList.add('on-link');
     });
     el.addEventListener('mouseleave', function () {
-      dot.classList.remove('on-link'); ring.classList.remove('on-link');
+      cur.classList.remove('on-link'); ring.classList.remove('on-link');
     });
   });
 }
 
 
-/* ─── NAVIGATION STATE ─── */
-var nav = document.getElementById('nav');
-function updateNav() {
-  if (window.scrollY > 55) {
-    nav.classList.replace('is-clear', 'is-solid');
-  } else {
-    nav.classList.replace('is-solid', 'is-clear');
-  }
-}
-updateNav();
-window.addEventListener('scroll', updateNav, { passive: true });
-
-
-/* ─── MOBILE MENU ─── */
-window.toggleMob = function () {
-  var mob  = document.getElementById('mob');
-  var ham  = document.getElementById('ham');
-  var open = mob.classList.toggle('open');
-  ham.classList.toggle('open');
-  document.body.style.overflow = open ? 'hidden' : '';
-};
-window.closeMob = function () {
-  document.getElementById('mob').classList.remove('open');
-  document.getElementById('ham').classList.remove('open');
-  document.body.style.overflow = '';
-};
-
-
-/* ─── HERO PARALLAX — touch disabled, rAF ticking ─── */
-if (!IS_TOUCH && !REDUCED) {
-  var heroImg = document.getElementById('heroImg');
-  if (heroImg) {
-    var ticking = false;
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        requestAnimationFrame(function () {
-          heroImg.style.transform = 'translateY(' + (window.scrollY * 0.28) + 'px)';
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-  }
-}
-
-
-/* ─── SCROLL REVEAL
-   FIX: .rv + .pgi use single IntersectionObserver
-─── */
-var revealObs = new IntersectionObserver(function (entries) {
-  entries.forEach(function (e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      revealObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.06, rootMargin: '0px 0px -48px 0px' });
-
-
-document.querySelectorAll('.rv').forEach(function (el) { revealObs.observe(el); });
-
-
-/* Gallery grid items */
-var galleryObs = new IntersectionObserver(function (entries) {
-  entries.forEach(function (e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      galleryObs.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.05 });
-document.querySelectorAll('.pgi').forEach(function (el) { galleryObs.observe(el); });
-
-
-/* ─── GALLERY IMAGE FADE-IN ─── */
-document.querySelectorAll('.pgi img').forEach(function (img) {
-  if (img.complete && img.naturalWidth > 0) {
-    img.classList.add('loaded');
-  } else {
-    img.addEventListener('load', function () { img.classList.add('loaded'); });
-    img.addEventListener('error', function () { img.style.opacity = '0.3'; });
-  }
-});
-
-
-/* ─── GALLERY LIGHTBOX
-   FIX: proper load sequencing — no onload race condition
-   FIX: preload adjacent images on open and navigate
-─── */
+/* ─── GALLERY LIGHTBOX ─── */
 (function () {
   var items   = Array.from(document.querySelectorAll('.pgi[data-src]'));
   var modal   = document.getElementById('modal');
@@ -1911,7 +1695,6 @@ document.querySelectorAll('.pgi img').forEach(function (img) {
   var swipeX  = 0;
 
 
-  /* Preload image into browser cache */
   function preload(src) {
     var img = new Image();
     img.src = src;
@@ -1919,15 +1702,12 @@ document.querySelectorAll('.pgi img').forEach(function (img) {
 
 
   function setImage(src, countText) {
-    /* Remove ready class → triggers fade-out via CSS */
     mImg.classList.remove('img-ready');
-    /* Set src after brief paint frame so transition is visible */
     requestAnimationFrame(function () {
       var tmp = new Image();
       tmp.onload = function () {
         mImg.src = src;
         mCount.textContent = countText;
-        /* Force reflow then add class to trigger fade-in */
         requestAnimationFrame(function () {
           mImg.classList.add('img-ready');
         });
@@ -1940,13 +1720,11 @@ document.querySelectorAll('.pgi img').forEach(function (img) {
   function open(idx) {
     current = idx;
     var src = items[idx].dataset.src;
-    /* Reset */
     mImg.classList.remove('img-ready');
     mImg.src = '';
     mCount.textContent = (idx + 1) + ' / ' + items.length;
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
-    /* Load current */
     var tmp = new Image();
     tmp.onload = function () {
       mImg.src = src;
@@ -1955,7 +1733,6 @@ document.querySelectorAll('.pgi img').forEach(function (img) {
       });
     };
     tmp.src = src;
-    /* Preload neighbours */
     var prev = (idx - 1 + items.length) % items.length;
     var next = (idx + 1) % items.length;
     preload(items[prev].dataset.src);
@@ -1976,7 +1753,6 @@ document.querySelectorAll('.pgi img').forEach(function (img) {
   function prev() {
     current = (current - 1 + items.length) % items.length;
     setImage(items[current].dataset.src, (current + 1) + ' / ' + items.length);
-    /* Preload next neighbour */
     preload(items[(current - 1 + items.length) % items.length].dataset.src);
   }
   function next() {
@@ -2009,7 +1785,6 @@ document.querySelectorAll('.pgi img').forEach(function (img) {
   });
 
 
-  /* Touch swipe */
   modal.addEventListener('touchstart', function (e) {
     swipeX = e.touches[0].clientX;
   }, { passive: true });
@@ -2021,7 +1796,7 @@ document.querySelectorAll('.pgi img').forEach(function (img) {
 }());
 
 
-/* ─── REEL THUMBNAILS — lazy fade-in + fallback ─── */
+/* ─── REEL THUMBNAILS ─── */
 document.querySelectorAll('.rcard-thumb').forEach(function (img) {
   var card = img.closest('.rcard');
   if (img.complete && img.naturalWidth > 0) {
@@ -2029,14 +1804,13 @@ document.querySelectorAll('.rcard-thumb').forEach(function (img) {
   } else {
     img.addEventListener('load', function () { img.classList.add('loaded'); });
     img.addEventListener('error', function () {
-      /* Show fallback card if thumbnail fails */
       card.classList.add('failed');
     });
   }
 });
 
 
-/* ─── REEL MODAL — on-demand embed, no embed.js preload ─── */
+/* ─── REEL MODAL ─── */
 (function () {
   var reelModal  = document.getElementById('reelModal');
   var reelInner  = document.getElementById('reelModalInner');
@@ -2044,12 +1818,10 @@ document.querySelectorAll('.rcard-thumb').forEach(function (img) {
 
 
   function openReel(reelId) {
-    /* Remove any existing iframe */
     var old = reelInner.querySelector('iframe');
     if (old) reelInner.removeChild(old);
 
 
-    /* Inject Instagram embed iframe on demand */
     var iframe = document.createElement('iframe');
     iframe.src = 'https://www.instagram.com/reel/' + reelId + '/embed/';
     iframe.allowFullscreen = true;
@@ -2065,7 +1837,6 @@ document.querySelectorAll('.rcard-thumb').forEach(function (img) {
   function closeReel() {
     reelModal.classList.remove('open');
     document.body.style.overflow = '';
-    /* Remove iframe to stop video playback */
     setTimeout(function () {
       var old = reelInner.querySelector('iframe');
       if (old) reelInner.removeChild(old);
@@ -2141,7 +1912,7 @@ window.submitContact = function (e) {
 };
 
 
-}()); /* end IIFE */
+}());
 </script>
 
 
