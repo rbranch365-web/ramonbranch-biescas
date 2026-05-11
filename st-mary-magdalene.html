@@ -10,11 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@100;200;300;400;500&family=Lato:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        /* ═══════════════════════════════════════════════════════════════
-           RAMON BRANCH BIESCAS — "Grand Stage" Cinematic Editorial
-           St Mary Magdalene Concert Series
-           ═════════════════════════════════════════════════════════════ */
-
         *, *::before, *::after {
             box-sizing: border-box;
             margin: 0;
@@ -51,15 +46,8 @@
             font-weight: 300;
         }
 
-        img {
-            display: block;
-            max-width: 100%;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+        img { display: block; max-width: 100%; }
+        a   { color: inherit; text-decoration: none; }
 
         /* ─── SCROLLBAR ─── */
         ::-webkit-scrollbar { width: 6px }
@@ -75,28 +63,17 @@
             padding-left: 1.5rem;
             padding-right: 1.5rem;
         }
-
         @media (min-width: 640px) {
-            .container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
+            .container { padding-left: 2rem; padding-right: 2rem; }
         }
-
         @media (min-width: 1024px) {
-            .container {
-                padding-left: 3.5rem;
-                padding-right: 3.5rem;
-                max-width: 1400px;
-            }
+            .container { padding-left: 3.5rem; padding-right: 3.5rem; max-width: 1400px; }
         }
 
         /* ─── NAVIGATION ─── */
         .nav-wrap {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 500;
             height: 68px;
             display: flex;
@@ -107,9 +84,8 @@
             backdrop-filter: blur(40px) saturate(1.8);
             -webkit-backdrop-filter: blur(40px) saturate(1.8);
             border-bottom: 1px solid var(--line);
-            box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7) inset, 0 4px 32px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 4px 32px rgba(0,0,0,0.04);
         }
-
         .nav-logo {
             font-family: var(--serif);
             font-size: 1.05rem;
@@ -118,18 +94,13 @@
             color: var(--ink-deep);
             transition: color 0.5s var(--ease-smooth);
         }
-
-        .nav-logo:hover {
-            color: var(--gold);
-        }
-
+        .nav-logo:hover { color: var(--gold); }
         .nav-links {
             display: flex;
             gap: 2.4rem;
             list-style: none;
             align-items: center;
         }
-
         .nav-links a {
             font-family: var(--sans);
             font-size: 0.6rem;
@@ -141,26 +112,16 @@
             color: var(--mid);
             transition: color 0.4s var(--ease-smooth);
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 1px;
+            bottom: 0; left: 0;
+            width: 0; height: 1px;
             background: var(--gold);
             transition: width 0.42s var(--ease-out);
         }
-
-        .nav-links a:hover {
-            color: var(--ink-deep);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
+        .nav-links a:hover { color: var(--ink-deep); }
+        .nav-links a:hover::after { width: 100%; }
         .nav-book-btn {
             font-family: var(--sans);
             font-size: 0.58rem;
@@ -174,22 +135,11 @@
             cursor: pointer;
             transition: all 0.4s var(--ease-smooth);
         }
-
-        .nav-book-btn:hover {
-            background: var(--gold);
-            color: #fff;
-        }
-
+        .nav-book-btn:hover { background: var(--gold); color: #fff; }
         @media (max-width: 768px) {
-            .nav-wrap {
-                padding: 0 2rem;
-            }
-            .nav-links {
-                display: none;
-            }
-            .nav-book-btn {
-                display: none;
-            }
+            .nav-wrap { padding: 0 2rem; }
+            .nav-links { display: none; }
+            .nav-book-btn { display: none; }
         }
 
         /* ─── PAGE HEADER ─── */
@@ -199,7 +149,6 @@
             padding: 4rem 0;
             border-bottom: 1px solid var(--line);
         }
-
         .page-title {
             font-family: var(--serif);
             font-size: clamp(2.5rem, 6vw, 4rem);
@@ -209,7 +158,6 @@
             color: var(--ink-deep);
             margin-bottom: 1rem;
         }
-
         .page-subtitle {
             font-family: var(--body);
             font-size: 1rem;
@@ -225,14 +173,9 @@
             transform: translateY(32px);
             animation: revealIn 0.85s var(--ease-out) forwards;
         }
-
         @keyframes revealIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
-
         .reveal-delay-1 { animation-delay: 0.1s }
         .reveal-delay-2 { animation-delay: 0.2s }
         .reveal-delay-3 { animation-delay: 0.3s }
@@ -240,17 +183,13 @@
 
         /* ─── GOLD RULE ─── */
         .gold-rule {
-            width: 60px;
-            height: 1px;
+            width: 60px; height: 1px;
             background: linear-gradient(to right, var(--gold), transparent);
             margin: 0.8rem 0 2rem;
             animation: goldRuleIn 1.2s var(--ease-out) forwards;
             opacity: 0;
         }
-
-        @keyframes goldRuleIn {
-            to { opacity: 1 }
-        }
+        @keyframes goldRuleIn { to { opacity: 1 } }
 
         /* ─── SECTION LABEL ─── */
         .sec-label {
@@ -262,43 +201,37 @@
             color: var(--gold);
         }
 
-        /* ─── ST MARY MAGDALENE SECTION ─── */
+        /* ─── ST MARY MAGDALENE HERO SECTION ─── */
         .stmary-section {
             position: relative;
             overflow: hidden;
             min-height: 70vh;
             display: flex;
             align-items: center;
-            margin-top: 0;
         }
-
         .stmary-bg {
             position: absolute;
             inset: 0;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             object-fit: cover;
             object-position: center;
             filter: brightness(0.45) saturate(0.9);
         }
-
         .stmary-overlay {
             position: absolute;
             inset: 0;
             background:
                 linear-gradient(to right,
-                    rgba(5, 3, 1, 0.88) 0%,
-                    rgba(5, 3, 1, 0.55) 55%,
-                    rgba(5, 3, 1, 0.2) 100%);
+                    rgba(5,3,1,0.88) 0%,
+                    rgba(5,3,1,0.55) 55%,
+                    rgba(5,3,1,0.2) 100%);
         }
-
         .stmary-content {
             position: relative;
             z-index: 1;
             padding: 7rem 3.5rem;
             max-width: 650px;
         }
-
         .stmary-label {
             font-family: var(--sans);
             font-size: 0.52rem;
@@ -310,39 +243,31 @@
             opacity: 0;
             animation: revealIn 0.9s 0.2s var(--ease-out) forwards;
         }
-
         .stmary-rule {
-            width: 60px;
-            height: 1px;
+            width: 60px; height: 1px;
             background: linear-gradient(to right, var(--gold-light), transparent);
             margin: 0.8rem 0 2rem;
             opacity: 0;
             animation: revealIn 0.9s 0.3s var(--ease-out) forwards;
         }
-
         .stmary-title {
             font-family: var(--serif);
             font-size: clamp(2.4rem, 5vw, 4.2rem);
             font-weight: 300;
             line-height: 1.05;
             letter-spacing: -0.02em;
-            color: rgba(255, 255, 255, 0.95);
+            color: rgba(255,255,255,0.95);
             margin-bottom: 2rem;
             opacity: 0;
             animation: revealIn 0.9s 0.4s var(--ease-out) forwards;
         }
-
-        .stmary-title em {
-            font-style: italic;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
+        .stmary-title em { font-style: italic; color: rgba(255,255,255,0.6); }
         .stmary-content p {
             font-family: var(--body);
             font-size: 1.05rem;
             font-weight: 300;
             line-height: 1.85;
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             margin-bottom: 2.5rem;
             opacity: 0;
             animation: revealIn 0.9s 0.5s var(--ease-out) forwards;
@@ -357,21 +282,21 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             padding: 1.1rem 2.4rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255,255,255,0.3);
             color: #fff;
             transition: all 0.4s var(--ease-smooth);
             opacity: 0;
             animation: revealIn 0.9s 0.6s var(--ease-out) forwards;
         }
-
         .btn-outline-light:hover {
             background: #fff;
             color: var(--ink-deep);
             border-color: #fff;
         }
-
         .btn-gold {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             font-family: var(--sans);
             font-size: 0.6rem;
             font-weight: 300;
@@ -380,13 +305,19 @@
             padding: 1.1rem 2.4rem;
             background: var(--gold);
             color: #fff;
+            border: none;
+            cursor: pointer;
             transition: all 0.4s var(--ease-smooth);
         }
-
         .btn-gold:hover {
             background: var(--gold-light);
             transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(201, 151, 58, 0.25);
+            box-shadow: 0 8px 24px rgba(201,151,58,0.25);
+        }
+        .btn-gold:disabled {
+            opacity: 0.7;
+            cursor: default;
+            transform: none;
         }
 
         /* ─── ABOUT SECTION ─── */
@@ -394,7 +325,6 @@
             padding: 8rem 0;
             background: var(--warm-white);
         }
-
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -402,7 +332,6 @@
             align-items: start;
             max-width: 720px;
         }
-
         .about-section h2 {
             font-family: var(--serif);
             font-size: clamp(2rem, 4vw, 3rem);
@@ -410,7 +339,6 @@
             margin-bottom: 2rem;
             color: var(--ink-deep);
         }
-
         .about-section p {
             font-family: var(--body);
             font-size: 1.05rem;
@@ -419,74 +347,132 @@
             margin-bottom: 1.5rem;
         }
 
-        .about-list {
-            display: flex;
-            flex-direction: column;
-            gap: 2.5rem;
-        }
-
-        .about-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .about-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--warm-white-2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            border: 1px solid var(--line);
-        }
-
-        .about-item-text h3 {
-            font-family: var(--serif);
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 0.4rem;
-            color: var(--ink-deep);
-        }
-
-        .about-item-text p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
-        }
-
-        /* ─── CONTACT CTA ─── */
+        /* ─── PROPOSAL FORM SECTION ─── */
         .contact-cta {
             padding: 8rem 0;
             background: var(--warm-white-2);
-            text-align: center;
         }
-
+        .contact-cta-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
         .contact-cta h2 {
             font-family: var(--serif);
             font-size: clamp(2.2rem, 5vw, 3.5rem);
             font-weight: 300;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
         }
-
-        .contact-cta p {
+        .contact-cta .intro-p {
             font-family: var(--body);
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--mid);
-            max-width: 600px;
+            max-width: 520px;
             margin: 0 auto 3rem;
             line-height: 1.8;
+            text-align: center;
         }
+
+        /* Form fields */
+        .prop-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .prop-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+        }
+        @media (max-width: 600px) {
+            .prop-row { grid-template-columns: 1fr; }
+        }
+        .prop-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .prop-field label {
+            font-family: var(--sans);
+            font-size: 0.52rem;
+            font-weight: 300;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--mid);
+        }
+        .prop-field input,
+        .prop-field textarea,
+        .prop-field select {
+            font-family: var(--body);
+            font-size: 0.92rem;
+            font-weight: 300;
+            background: var(--warm-white);
+            border: 1px solid var(--line);
+            padding: 0.78rem 1rem;
+            color: var(--ink-deep);
+            transition: border-color 0.3s, background 0.3s;
+            outline: none;
+            width: 100%;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .prop-field input:focus,
+        .prop-field textarea:focus,
+        .prop-field select:focus {
+            border-color: var(--gold);
+            background: #fff;
+        }
+        .prop-field textarea { min-height: 120px; resize: vertical; }
+        .prop-field select.empty { color: var(--mid); }
+
+        .prop-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.4rem;
+        }
+        .prop-note {
+            font-size: 0.7rem;
+            color: var(--mid);
+            line-height: 1.7;
+        }
+
+        /* ─── TOAST ─── */
+        #toast {
+            position: fixed;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            z-index: 9999;
+            background: var(--ink-deep);
+            color: #fff;
+            font-family: var(--sans);
+            font-size: 0.68rem;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            padding: 1rem 2rem;
+            border-left: 3px solid var(--gold);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s var(--ease-smooth), transform 0.4s var(--ease-out);
+            max-width: 90vw;
+            text-align: center;
+        }
+        #toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        #toast.error { border-left-color: #c0392b; }
 
         /* ─── FOOTER ─── */
         .footer {
             background: var(--ink-deep);
             color: #fff;
             padding: 4rem 0 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
-
         .footer-inner {
             display: flex;
             justify-content: space-between;
@@ -494,89 +480,61 @@
             gap: 3rem;
             flex-wrap: wrap;
         }
-
         .footer-logo {
             font-family: var(--serif);
             font-size: 1.2rem;
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255,255,255,0.85);
             letter-spacing: 0.04em;
             margin-bottom: 0.5rem;
         }
-
         .footer-sub {
             font-family: var(--sans);
             font-size: 0.5rem;
             font-weight: 200;
             letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba(255,255,255,0.25);
         }
-
         .footer-links {
             display: flex;
             gap: 2rem;
             list-style: none;
             flex-wrap: wrap;
         }
-
         .footer-links a {
             font-family: var(--sans);
             font-size: 0.55rem;
             font-weight: 200;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.35);
+            color: rgba(255,255,255,0.35);
             transition: color 0.3s;
         }
-
-        .footer-links a:hover {
-            color: var(--gold);
-        }
-
+        .footer-links a:hover { color: var(--gold); }
         .footer-copy {
             font-family: var(--sans);
             font-size: 0.5rem;
             font-weight: 200;
             letter-spacing: 0.15em;
-            color: rgba(255, 255, 255, 0.18);
+            color: rgba(255,255,255,0.18);
             margin-top: 3rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255,255,255,0.05);
             text-align: center;
         }
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 4rem;
-            }
-            .stmary-content {
-                padding: 5rem 2rem;
-            }
+            .stmary-content { padding: 5rem 2rem; }
         }
-
         @media (max-width: 768px) {
-            .page-header {
-                padding: 3rem 0;
-            }
-            .about-section {
-                padding: 5rem 0;
-            }
-            .contact-cta {
-                padding: 4rem 0;
-            }
-            .stmary-section {
-                min-height: 50vh;
-            }
-            .stmary-content {
-                padding: 4rem 1.5rem;
-            }
-            .footer-inner {
-                flex-direction: column;
-                gap: 2rem;
-            }
+            .page-header { padding: 3rem 0; }
+            .about-section { padding: 5rem 0; }
+            .contact-cta { padding: 4rem 0; }
+            .stmary-section { min-height: 50vh; }
+            .stmary-content { padding: 4rem 1.5rem; }
+            .footer-inner { flex-direction: column; gap: 2rem; }
         }
 
         /* ─── CUSTOM CURSOR ─── */
@@ -586,8 +544,7 @@
                 pointer-events: none;
                 position: fixed;
                 z-index: 9999;
-                width: 6px;
-                height: 6px;
+                width: 6px; height: 6px;
                 border-radius: 50%;
                 background: var(--gold);
                 transform: translate(-50%, -50%);
@@ -598,19 +555,18 @@
                 pointer-events: none;
                 position: fixed;
                 z-index: 9998;
-                width: 32px;
-                height: 32px;
+                width: 32px; height: 32px;
                 border-radius: 50%;
-                border: 1px solid rgba(201, 151, 58, 0.3);
+                border: 1px solid rgba(201,151,58,0.3);
                 transform: translate(-50%, -50%);
                 transition: width 0.3s var(--ease-out), height 0.3s var(--ease-out), border-color 0.3s;
                 will-change: left, top;
             }
-            #cursor-dot.hovering { transform: translate(-50%, -50%) scale(0); opacity: 0 }
-            #cursor-ring.hovering { width: 48px; height: 48px; border-color: rgba(201, 151, 58, 0.6) }
+            #cursor-dot.hovering  { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+            #cursor-ring.hovering { width: 48px; height: 48px; border-color: rgba(201,151,58,0.6); }
         }
         @media (hover: none), (pointer: coarse) {
-            #cursor-dot, #cursor-ring { display: none }
+            #cursor-dot, #cursor-ring { display: none; }
         }
     </style>
 </head>
@@ -618,6 +574,9 @@
     <!-- Custom cursor -->
     <div id="cursor-dot"></div>
     <div id="cursor-ring"></div>
+
+    <!-- Toast -->
+    <div id="toast"></div>
 
     <!-- Navigation -->
     <nav class="nav-wrap">
@@ -631,13 +590,13 @@
             <li><a href="index.html#booking">Bookings</a></li>
             <li><a href="index.html#contact">Contact</a></li>
         </ul>
-        <button class="nav-book-btn" onclick="document.getElementById('contact-cta').scrollIntoView({behavior: 'smooth'})">Book a Performance</button>
+        <button class="nav-book-btn" onclick="document.getElementById('contact-cta').scrollIntoView({behavior:'smooth'})">Submit Proposal</button>
     </nav>
 
     <!-- Page Header -->
     <header class="page-header">
         <div class="container">
-            <h1 class="page-title reveal">St Mary Magdalene<br><em style="font-style: italic; color: var(--gold)">Concert Series</em></h1>
+            <h1 class="page-title reveal">St Mary Magdalene<br><em style="font-style:italic;color:var(--gold)">Concert Series</em></h1>
             <p class="page-subtitle reveal reveal-delay-1">A curated programme of lunchtime concerts at St Mary Magdalene Church, Brighton. Open to performers of all disciplines — classical, world music, and contemporary.</p>
         </div>
     </header>
@@ -651,11 +610,11 @@
             <div class="stmary-rule"></div>
             <h2 class="stmary-title">
                 A Venue for<br>
-                <em>Emerging & Established</em><br>
+                <em>Emerging &amp; Established</em><br>
                 Artists
             </h2>
             <p>St Mary Magdalene Church provides an intimate, acoustically beautiful setting for chamber music, solo recitals, and experimental performances. The series celebrates artistic diversity and creates opportunities for musicians at all career stages.</p>
-            <a href="mailto:rbranchbiescass@gmail.com?subject=St%20Mary%20Magdalene%20Concert%20Series%20Proposal" class="btn-outline-light">Submit Your Proposal</a>
+            <a href="#contact-cta" class="btn-outline-light">Submit Your Proposal</a>
         </div>
     </section>
 
@@ -668,18 +627,58 @@
                     <p class="reveal reveal-delay-1">St Mary Magdalene offers a unique opportunity to reach an engaged, cultured audience in one of Brighton's most beautiful historic churches. The intimate venue creates a direct connection between performer and listener.</p>
                     <p class="reveal reveal-delay-2">Whether you're a classical ensemble, singer, or experimental artist, we welcome proposals that bring fresh perspectives to our concert series.</p>
                 </div>
-                <div class="about-list">
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact CTA -->
+    <!-- Proposal Form -->
     <section class="contact-cta" id="contact-cta">
         <div class="container">
-            <h2>Ready to Perform?</h2>
-            <p>Send us your proposal with details about your ensemble, repertoire, and preferred dates. We aim to respond within 7 days.</p>
-            <a href="mailto:rbranchbiescass@gmail.com?subject=St%20Mary%20Magdalene%20Concert%20Series%20Proposal&body=Hello%20Ramon%2C%0A%0AI%20would%20like%20to%20propose%20a%20performance%20for%20the%20St%20Mary%20Magdalene%20Concert%20Series.%0A%0AEnsemble%2FPerformer%20Name%3A%0AGenre%2FStyle%3A%0AProposed%20Date%3A%0ADuration%3A%0A%0AAbout%20Us%3A%0A%0ARepertoire%3A%0A%0AThank%20you%2C" class="btn-gold">Submit Proposal</a>
+            <div class="contact-cta-inner">
+                <h2>Submit a Proposal</h2>
+                <p class="intro-p">Fill in the form below with details about your ensemble, repertoire, and preferred dates. We aim to respond within 7 days.</p>
+
+                <form class="prop-form" id="proposalForm" novalidate>
+                    <div class="prop-row">
+                        <div class="prop-field">
+                            <label for="p-name">Your Name</label>
+                            <input id="p-name" type="text" name="name" placeholder="Performer / ensemble name" required>
+                        </div>
+                        <div class="prop-field">
+                            <label for="p-email">Email</label>
+                            <input id="p-email" type="email" name="email" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+                    <div class="prop-row">
+                        <div class="prop-field">
+                            <label for="p-genre">Genre / Style</label>
+                            <input id="p-genre" type="text" name="genre" placeholder="e.g. Chamber, Solo piano, Song cycle…">
+                        </div>
+                        <div class="prop-field">
+                            <label for="p-date">Preferred Date(s)</label>
+                            <input id="p-date" type="text" name="dates" placeholder="e.g. Any lunchtime, June–Aug 2026">
+                        </div>
+                    </div>
+                    <div class="prop-field">
+                        <label for="p-repertoire">Repertoire</label>
+                        <input id="p-repertoire" type="text" name="repertoire" placeholder="Works / composers you'd like to perform">
+                    </div>
+                    <div class="prop-field">
+                        <label for="p-duration">Duration (minutes)</label>
+                        <input id="p-duration" type="text" name="duration" placeholder="e.g. 45 minutes">
+                    </div>
+                    <div class="prop-field">
+                        <label for="p-about">About You</label>
+                        <textarea id="p-about" name="about" placeholder="Tell us about yourself, your experience, and why you'd like to perform at St Mary Magdalene…"></textarea>
+                    </div>
+                    <div class="prop-foot">
+                        <p class="prop-note">We respond within 7 days.<br>All proposals warmly welcomed.</p>
+                        <button type="submit" class="btn-gold" id="propBtn">
+                            <span>Submit Proposal</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </section>
 
@@ -701,7 +700,10 @@
                     <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <div>
-                    <a href="https://www.instagram.com/rbranchbiescas/" target="_blank" rel="noopener noreferrer" style="font-family: var(--sans); font-size: 0.55rem; font-weight: 200; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255, 255, 255, 0.35); transition: color 0.3s; display: inline-block;">@rbranchbiescas</a>
+                    <a href="https://www.instagram.com/rbranchbiescas/" target="_blank" rel="noopener noreferrer"
+                       style="font-family:var(--sans);font-size:0.55rem;font-weight:200;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);transition:color 0.3s;display:inline-block;">
+                        @rbranchbiescas
+                    </a>
                 </div>
             </div>
             <p class="footer-copy">© 2026 Ramon Branch Biescas. All rights reserved.</p>
@@ -709,57 +711,130 @@
     </footer>
 
     <script>
-        // Custom cursor
-        const dot = document.getElementById('cursor-dot');
-        const ring = document.getElementById('cursor-ring');
-        let ringX = 0, ringY = 0;
-        let mouseX = 0, mouseY = 0;
+    (function() {
+        var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/rbranchbiescass@gmail.com';
 
-        document.addEventListener('mousemove', (e) => {
+        /* ─── TOAST ─── */
+        function showToast(msg, isError) {
+            var t = document.getElementById('toast');
+            t.textContent = msg;
+            t.classList.remove('show', 'error');
+            if (isError) t.classList.add('error');
+            void t.offsetWidth;
+            t.classList.add('show');
+            setTimeout(function() { t.classList.remove('show'); }, 6000);
+        }
+
+        /* ─── PROPOSAL FORM ─── */
+        document.getElementById('proposalForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            var btn  = document.getElementById('propBtn');
+            var span = btn.querySelector('span');
+
+            // Basic validation
+            var name  = form.querySelector('[name=name]').value.trim();
+            var email = form.querySelector('[name=email]').value.trim();
+            if (!name || !email) {
+                showToast('Please fill in your name and email.', true);
+                return;
+            }
+
+            span.textContent = 'Sending…';
+            btn.disabled = true;
+
+            var payload = {
+                _subject: 'St Mary Magdalene — New Performance Proposal',
+                _captcha: 'false',
+                _template: 'table',
+                Name:       name,
+                Email:      email,
+                Genre:      form.querySelector('[name=genre]').value || 'Not specified',
+                Dates:      form.querySelector('[name=dates]').value || 'Not specified',
+                Repertoire: form.querySelector('[name=repertoire]').value || 'Not specified',
+                Duration:   form.querySelector('[name=duration]').value || 'Not specified',
+                About:      form.querySelector('[name=about]').value || 'Not provided'
+            };
+
+            fetch(FORMSUBMIT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(json) {
+                if (json.success === 'true' || json.success === true) {
+                    span.textContent = 'Proposal Sent ✓';
+                    btn.style.cssText = 'background:#3a6b3a;cursor:default';
+                    showToast('Your proposal has been sent — we\'ll be in touch within 7 days.');
+                    setTimeout(function() {
+                        span.textContent = 'Submit Proposal';
+                        btn.style.cssText = '';
+                        btn.disabled = false;
+                        form.reset();
+                    }, 6000);
+                } else {
+                    throw new Error('Failed');
+                }
+            })
+            .catch(function() {
+                span.textContent = 'Try Again';
+                btn.style.cssText = 'background:#8b2020';
+                showToast('Something went wrong — please email rbranchbiescass@gmail.com directly.', true);
+                setTimeout(function() {
+                    span.textContent = 'Submit Proposal';
+                    btn.style.cssText = '';
+                    btn.disabled = false;
+                }, 4000);
+            });
+        });
+
+        /* ─── CUSTOM CURSOR ─── */
+        var dot  = document.getElementById('cursor-dot');
+        var ring = document.getElementById('cursor-ring');
+        var ringX = 0, ringY = 0, mouseX = 0, mouseY = 0;
+
+        document.addEventListener('mousemove', function(e) {
             mouseX = e.clientX;
             mouseY = e.clientY;
             dot.style.left = mouseX + 'px';
-            dot.style.top = mouseY + 'px';
+            dot.style.top  = mouseY + 'px';
         });
 
-        const animate = () => {
+        (function animate() {
             ringX += (mouseX - ringX) * 0.12;
             ringY += (mouseY - ringY) * 0.12;
             ring.style.left = ringX + 'px';
-            ring.style.top = ringY + 'px';
+            ring.style.top  = ringY + 'px';
             requestAnimationFrame(animate);
-        };
-        animate();
+        })();
 
-        // Hover effects
-        const addHover = () => {
-            dot.classList.add('hovering');
-            ring.classList.add('hovering');
-        };
-        const removeHover = () => {
-            dot.classList.remove('hovering');
-            ring.classList.remove('hovering');
-        };
-
-        document.querySelectorAll('a, button').forEach((el) => {
-            el.addEventListener('mouseenter', addHover);
-            el.addEventListener('mouseleave', removeHover);
+        document.querySelectorAll('a, button').forEach(function(el) {
+            el.addEventListener('mouseenter', function() {
+                dot.classList.add('hovering');
+                ring.classList.add('hovering');
+            });
+            el.addEventListener('mouseleave', function() {
+                dot.classList.remove('hovering');
+                ring.classList.remove('hovering');
+            });
         });
 
-        // Smooth scroll navigation
-        document.querySelectorAll('a[href^="#"]').forEach((link) => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
+        /* ─── SMOOTH SCROLL ─── */
+        document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                var href = link.getAttribute('href');
                 if (href !== '#' && href.startsWith('#')) {
                     e.preventDefault();
-                    const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({ behavior: 'smooth' });
-                    }
+                    var target = document.querySelector(href);
+                    if (target) target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
         });
+    })();
     </script>
 </body>
 </html>
-  
