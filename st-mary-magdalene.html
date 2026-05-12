@@ -325,6 +325,9 @@
             padding: 8rem 0;
             background: var(--warm-white);
         }
+        .about-section.alt {
+            background: var(--warm-white-2);
+        }
         .about-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -336,8 +339,11 @@
             font-family: var(--serif);
             font-size: clamp(2rem, 4vw, 3rem);
             font-weight: 300;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             color: var(--ink-deep);
+        }
+        .about-section h2 + h2 {
+            margin-top: 3rem;
         }
         .about-section p {
             font-family: var(--body);
@@ -345,6 +351,29 @@
             line-height: 1.85;
             color: var(--mid);
             margin-bottom: 1.5rem;
+        }
+        .about-section ul {
+            font-family: var(--body);
+            font-size: 1.05rem;
+            line-height: 1.85;
+            color: var(--mid);
+            margin-bottom: 1.5rem;
+            padding-left: 1.4rem;
+            list-style: none;
+        }
+        .about-section ul li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.65rem;
+        }
+        .about-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.68em;
+            width: 4px;
+            height: 1px;
+            background: var(--gold);
         }
 
         /* ─── PROPOSAL FORM SECTION ─── */
@@ -631,6 +660,28 @@
         </div>
     </section>
 
+    <!-- What We Ask / What We Offer Section -->
+    <section class="about-section alt">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <h2 class="reveal">What We Ask of Musicians</h2>
+                    <ul class="reveal reveal-delay-1">
+                        <li>Prepare and perform one sacred piece as part of the program</li>
+                        <li>Programme length: 40–45 minutes of music</li>
+                        <li>Please bring your own music stands if needed</li>
+                    </ul>
+
+                    <h2 class="reveal reveal-delay-2">What Our Concert Series Offers</h2>
+                    <ul class="reveal reveal-delay-3">
+                        <li>All travel expenses fully covered for participating musicians</li>
+                        <li>75% of all donations go directly to the musicians</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Proposal Form -->
     <section class="contact-cta" id="contact-cta">
         <div class="container">
@@ -732,7 +783,6 @@
             var btn  = document.getElementById('propBtn');
             var span = btn.querySelector('span');
 
-            // Basic validation
             var name  = form.querySelector('[name=name]').value.trim();
             var email = form.querySelector('[name=email]').value.trim();
             if (!name || !email) {
