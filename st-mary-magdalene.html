@@ -320,60 +320,101 @@
             transform: none;
         }
 
-        /* ─── ABOUT SECTION ─── */
-        .about-section {
-            padding: 8rem 0;
+        /* ─── INFO TRIPTYCH ─── */
+        .info-triptych {
+            padding: 5.5rem 0;
             background: var(--warm-white);
+            border-bottom: 1px solid var(--line);
         }
-        .about-section.alt {
-            background: var(--warm-white-2);
-        }
-        .about-grid {
+        .triptych-grid {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1fr 1px 1fr 1px 1fr;
             gap: 0;
             align-items: start;
-            max-width: 720px;
         }
-        .about-section h2 {
+        .triptych-divider {
+            background: var(--line);
+            height: 100%;
+            min-height: 160px;
+            align-self: stretch;
+        }
+        .triptych-panel {
+            padding: 0 3rem;
+        }
+        .triptych-panel:first-child {
+            padding-left: 0;
+        }
+        .triptych-panel:last-child {
+            padding-right: 0;
+        }
+        .triptych-label {
+            font-family: var(--sans);
+            font-size: 0.5rem;
+            font-weight: 200;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.1rem;
+        }
+        .triptych-title {
             font-family: var(--serif);
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 300;
-            margin-bottom: 1.5rem;
+            font-size: 1.55rem;
+            font-weight: 400;
+            line-height: 1.2;
             color: var(--ink-deep);
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
         }
-        .about-section h2 + h2 {
-            margin-top: 3rem;
-        }
-        .about-section p {
+        .triptych-body {
             font-family: var(--body);
-            font-size: 1.05rem;
+            font-size: 0.9rem;
+            font-weight: 300;
             line-height: 1.85;
             color: var(--mid);
-            margin-bottom: 1.5rem;
         }
-        .about-section ul {
-            font-family: var(--body);
-            font-size: 1.05rem;
-            line-height: 1.85;
-            color: var(--mid);
-            margin-bottom: 1.5rem;
-            padding-left: 1.4rem;
+        .triptych-list {
             list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        .about-section ul li {
+        .triptych-list li {
+            font-family: var(--body);
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--mid);
+            padding: 0.45rem 0;
+            padding-left: 1.1rem;
             position: relative;
-            padding-left: 1rem;
-            margin-bottom: 0.65rem;
+            border-bottom: 1px solid var(--line);
         }
-        .about-section ul li::before {
+        .triptych-list li:last-child {
+            border-bottom: none;
+        }
+        .triptych-list li::before {
             content: '';
             position: absolute;
             left: 0;
-            top: 0.68em;
-            width: 4px;
+            top: 0.82em;
+            width: 5px;
             height: 1px;
             background: var(--gold);
+        }
+        @media (max-width: 900px) {
+            .triptych-grid {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            .triptych-divider {
+                display: block;
+                height: 1px;
+                min-height: unset;
+                width: 100%;
+                margin: 2rem 0;
+            }
+            .triptych-panel {
+                padding: 0;
+            }
         }
 
         /* ─── PROPOSAL FORM SECTION ─── */
@@ -559,7 +600,7 @@
         }
         @media (max-width: 768px) {
             .page-header { padding: 3rem 0; }
-            .about-section { padding: 5rem 0; }
+            .info-triptych { padding: 3.5rem 0; }
             .contact-cta { padding: 4rem 0; }
             .stmary-section { min-height: 50vh; }
             .stmary-content { padding: 4rem 1.5rem; }
@@ -647,37 +688,43 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about-section">
+    <!-- Info Triptych: Why / Ask / Offer -->
+    <section class="info-triptych">
         <div class="container">
-            <div class="about-grid">
-                <div>
-                    <h2 class="reveal">Why Perform Here?</h2>
-                    <p class="reveal reveal-delay-1">St Mary Magdalene offers a unique opportunity to reach an engaged, cultured audience in one of Brighton's most beautiful historic churches.</p>
-                    <p class="reveal reveal-delay-2">We welcome proposals that bring fresh perspectives to our concert series.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="triptych-grid">
 
-    <!-- What We Ask / What We Offer Section -->
-    <section class="about-section alt">
-        <div class="container">
-            <div class="about-grid">
-                <div>
-                    <h2 class="reveal">What We Ask of Musicians</h2>
-                    <ul class="reveal reveal-delay-1">
-                        <li>Prepare and perform one sacred piece as part of the program</li>
+                <!-- Panel 1: Why Perform Here -->
+                <div class="triptych-panel reveal">
+                    <p class="triptych-label">The Venue</p>
+                    <h2 class="triptych-title">Why Perform Here?</h2>
+                    <p class="triptych-body">St Mary Magdalene offers a unique opportunity to reach an engaged, cultured audience in one of Brighton's most beautiful historic churches. We welcome proposals that bring fresh perspectives to our concert series.</p>
+                </div>
+
+                <div class="triptych-divider"></div>
+
+                <!-- Panel 2: What We Ask -->
+                <div class="triptych-panel reveal reveal-delay-2">
+                    <p class="triptych-label">Requirements</p>
+                    <h2 class="triptych-title">What We Ask</h2>
+                    <ul class="triptych-list">
+                        <li>Prepare and perform one sacred piece as part of the programme</li>
                         <li>Programme length: 40–45 minutes of music</li>
                         <li>Please bring your own music stands if needed</li>
                     </ul>
+                </div>
 
-                    <h2 class="reveal reveal-delay-2">What Our Concert Series Offers</h2>
-                    <ul class="reveal reveal-delay-3">
+                <div class="triptych-divider"></div>
+
+                <!-- Panel 3: What We Offer -->
+                <div class="triptych-panel reveal reveal-delay-3">
+                    <p class="triptych-label">Benefits</p>
+                    <h2 class="triptych-title">What We Offer</h2>
+                    <ul class="triptych-list">
                         <li>All travel expenses fully covered for participating musicians</li>
                         <li>75% of all donations go directly to the musicians</li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </section>
