@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ramon Branch Biescas — Tuba</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎺</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎺</text></svg>">
 <meta name="description" content="Ramon Branch Biescas — tuba player working across the UK orchestral scene. Solo recitals, brass quintet, teaching and bookings.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -74,7 +74,7 @@ a   { color: inherit; text-decoration: none }
 #curtain.slide-up { transition: transform .52s var(--out); transform: translateY(0); }
 #curtain.slide-off { transition: transform .48s var(--smooth); transform: translateY(-101%); }
 
-/* ─── CURSOR ─── */
+/* ─── CURSOR — desktop only ─── */
 @media (hover: hover) and (pointer: fine) {
   body { cursor: none }
   #cur {
@@ -134,7 +134,13 @@ nav.is-solid .nav-ul a { color: var(--mid) }
 nav.is-clear .nav-ul a:hover { color: #fff }
 nav.is-solid .nav-ul a:hover { color: var(--ink) }
 
-.ham { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.ham {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 8px;
+  /* Ensure tap target is large enough on mobile */
+  min-width: 44px; min-height: 44px;
+  align-items: center; justify-content: center;
+}
 .ham span { display: block; width: 22px; height: 1px; transition: background .4s, transform .38s var(--smooth), opacity .3s; }
 nav.is-clear .ham span { background: rgba(255,255,255,.85) }
 nav.is-solid .ham span { background: var(--ink) }
@@ -142,8 +148,9 @@ nav.is-solid .ham span { background: var(--ink) }
 .ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0) }
 .ham.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg) }
 
+/* Mobile menu — z-index above curtain (8000) but below loader (9000) */
 .mob {
-  position: fixed; inset: 0; z-index: 499;
+  position: fixed; inset: 0; z-index: 8500;
   background: var(--ink);
   flex-direction: column; align-items: center; justify-content: center;
   gap: 2.4rem; display: flex;
@@ -152,9 +159,11 @@ nav.is-solid .ham span { background: var(--ink) }
 }
 .mob.open { transform: translateX(0) }
 .mob a {
-  font-family: var(--serif); font-size: clamp(2rem, 7vw, 3rem); font-weight: 300;
+  font-family: var(--serif); font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 300;
   color: rgba(255,255,255,.62); display: inline-block;
   transition: color .28s, transform .35s var(--out);
+  /* Ensure tappable */
+  padding: .3rem 1rem;
 }
 .mob a:hover { color: #fff; transform: translateX(8px) }
 .mob-line { width: 1px; height: 40px; background: linear-gradient(to bottom, transparent, rgba(255,255,255,.15), transparent); }
@@ -165,15 +174,6 @@ nav.is-solid .ham span { background: var(--ink) }
   position: relative; width: 100%; height: 100dvh; min-height: 580px;
   overflow: hidden; display: flex; align-items: flex-end; justify-content: center;
   padding-bottom: 8rem;
-}
-@media (orientation: landscape) and (max-height: 500px) {
-  #hero { padding-bottom: 0.2rem; align-items: flex-end; }
-  .hero-img { object-position: center 0%; height: 170%; top: -80%; }
-  .hero-content { transform: translateY(25%); }
-  .h-eyebrow { margin-bottom: 0.2rem; font-size: 0.45rem; }
-  .h-rule { margin: 0.1rem 0 0.6rem; }
-  .h-quote { font-size: 0.8rem; line-height: 1.3; }
-  .h-cta { margin-top: 0.6rem; scale: 0.7; }
 }
 .hero-img {
   position: absolute; top: 0; left: 0; width: 100%; height: 140%;
@@ -190,8 +190,8 @@ nav.is-solid .ham span { background: var(--ink) }
 }
 .hero-content {
   position: relative; z-index: 2; text-align: center;
-  padding: 0 2rem; max-width: 960px; width: 100%;
-  display: flex; flex-direction: column; align-items: center; margin-top: 0;
+  padding: 0 1.5rem; max-width: 960px; width: 100%;
+  display: flex; flex-direction: column; align-items: center;
 }
 .h-eyebrow {
   display: inline-flex; align-items: center; gap: .9rem;
@@ -228,7 +228,7 @@ nav.is-solid .ham span { background: var(--ink) }
   letter-spacing: .32em; text-transform: uppercase;
   padding: 1.12rem 3.2rem; cursor: pointer;
   background: rgba(255,255,255,.95); color: var(--ink); border: none;
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: center;
   position: relative; overflow: hidden;
   transition: box-shadow .4s var(--smooth), letter-spacing .45s var(--out);
 }
@@ -246,7 +246,7 @@ nav.is-solid .ham span { background: var(--ink) }
   padding: 1.12rem 3.2rem; cursor: pointer;
   background: transparent; color: rgba(255,255,255,.72);
   border: 1px solid rgba(255,255,255,.28);
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: center;
   transition: border-color .4s, color .4s, letter-spacing .45s var(--out), background .4s;
 }
 .btn-ghost:hover { border-color: rgba(255,255,255,.82); color: #fff; letter-spacing: .38em; background: rgba(255,255,255,.05); }
@@ -267,7 +267,6 @@ section { padding: 8rem 3.5rem }
 .sec-label {
   font-size: .6rem; font-weight: 400; letter-spacing: .54em; text-transform: uppercase;
   color: var(--gold); margin-bottom: .72rem; display: block;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 .sec-title {
   font-family: var(--serif);
@@ -292,7 +291,7 @@ section { padding: 8rem 3.5rem }
   letter-spacing: .28em; text-transform: uppercase;
   padding: 1.12rem 2.8rem; cursor: pointer;
   background: var(--ink); color: #fff; border: none;
-  display: inline-flex; align-items: center; flex-shrink: 0;
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
   position: relative; overflow: hidden;
   transition: letter-spacing .45s var(--out), box-shadow .4s;
 }
@@ -321,7 +320,9 @@ section { padding: 8rem 3.5rem }
 }
 #concerts .wrap { position: relative; z-index: 1 }
 
-.ctable { width: 100%; border-collapse: collapse }
+.ctable { width: 100%; border-collapse: collapse; }
+/* Prevent table overflow on narrow screens */
+.ctable-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .ctable tbody tr {
   border-top: 1px solid var(--line);
   transition: background .38s var(--smooth);
@@ -368,6 +369,10 @@ section { padding: 8rem 3.5rem }
   opacity: 0; transform: translateY(10px); transition: opacity .3s, transform .3s var(--out);
 }
 .pgi:hover .pgi-icon { opacity: 1; transform: translateY(0) }
+/* Always show icon on touch devices (no hover) */
+@media (hover: none) {
+  .pgi-icon { opacity: 1; transform: translateY(0) }
+}
 .pgi-icon svg { width: 14px; height: 14px; stroke: var(--ink); stroke-width: 1.5; fill: none }
 
 /* ─── LIGHTBOX ─── */
@@ -386,6 +391,8 @@ section { padding: 8rem 3.5rem }
   border: 1px solid rgba(255,255,255,.3); background: rgba(0,0,0,.5); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: border-color .3s, background .3s; z-index: 7010; touch-action: manipulation;
+  /* Bigger tap target on mobile */
+  min-width: 48px; min-height: 48px;
 }
 .modal-close:hover { border-color: #fff; background: rgba(255,255,255,.2) }
 .modal-close svg { width: 20px; height: 20px; stroke: #fff; stroke-width: 2; fill: none }
@@ -394,6 +401,7 @@ section { padding: 8rem 3.5rem }
   border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.04); cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: border-color .3s, background .3s, transform .3s var(--out);
+  touch-action: manipulation;
 }
 .modal-prev { left: 1.8rem }
 .modal-next { right: 1.8rem }
@@ -403,7 +411,7 @@ section { padding: 8rem 3.5rem }
 .modal-counter { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); font-size: .52rem; font-weight: 200; letter-spacing: .3em; text-transform: uppercase; color: rgba(255,255,255,.28); }
 
 /* ─── INSTAGRAM REELS ─── */
-#reels { background: var(--w2); padding: 8rem 3.5rem 0; position: relative; overflow: hidden; }
+#reels { background: var(--w2); padding: 8rem 3.5rem 6rem; position: relative; overflow: hidden; }
 #reels::before {
   content: ''; position: absolute; inset: 0; z-index: 0;
   background: url('https://rbranch365-web.github.io/ramonbranch-biescas/images/concert2.jpg') center / cover no-repeat;
@@ -417,12 +425,10 @@ section { padding: 8rem 3.5rem }
 .ig-handle:hover { color: var(--gold) }
 .ig-handle:hover svg { transform: scale(1.2) }
 .rgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; justify-items: center; padding: 2rem 0; }
-@media (max-width: 992px) { .rgrid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .rgrid { grid-template-columns: 1fr; } }
 .reel-embed-wrap { width: 100%; max-width: 340px; min-height: 580px; background: transparent; display: flex; align-items: center; justify-content: center; transition: transform 0.3s ease; }
 .reel-embed-wrap:hover { transform: translateY(-5px); }
 .reel-embed-wrap .instagram-media { min-width: unset !important; width: 100% !important; max-width: 100% !important; margin: 0 !important; border-radius: 12px !important; box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important; }
-.reels-foot { padding: 2.2rem 0 6rem; text-align: center; }
+.reels-foot { padding: 2.2rem 0 0; text-align: center; }
 
 /* ─── BOOKING ─── */
 #booking { padding: 0 }
@@ -443,13 +449,23 @@ section { padding: 8rem 3.5rem }
 .book-photo { overflow: hidden }
 .book-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; transition: transform .9s var(--out); }
 .book-photo:hover img { transform: scale(1.04) }
-.book-form-area { padding: 3.5rem 3.5rem }
+.book-form-area { padding: 3.5rem }
 .bform-title { font-family: var(--serif); font-size: clamp(1.2rem, 2.5vw, 1.7rem); font-weight: 400; letter-spacing: -.01em; margin-bottom: 2rem; }
 .bform { display: flex; flex-direction: column; gap: 1.2rem }
 .frow  { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem }
 .field { display: flex; flex-direction: column; gap: .42rem }
 .field label { font-size: .52rem; font-weight: 300; letter-spacing: .28em; text-transform: uppercase; color: var(--mid); }
-.field input, .field select, .field textarea { font-family: var(--sans); font-size: .88rem; font-weight: 300; background: var(--w2); border: 1px solid var(--line); padding: .78rem 1rem; color: var(--ink); transition: border-color .3s, background .3s; outline: none; width: 100%; }
+.field input, .field select, .field textarea {
+  font-family: var(--sans); font-size: .88rem; font-weight: 300;
+  background: var(--w2); border: 1px solid var(--line);
+  padding: .78rem 1rem; color: var(--ink);
+  transition: border-color .3s, background .3s; outline: none; width: 100%;
+  /* Prevent iOS zoom on focus — min font-size 16px */
+  font-size: max(.88rem, 16px);
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
 .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold2); background: #fff; }
 .field textarea { min-height: 100px; resize: vertical }
 .field select.empty { color: var(--mid) }
@@ -465,14 +481,21 @@ section { padding: 8rem 3.5rem }
 }
 .smm-banner-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.4rem; }
 .smm-banner-inner .sec-label { color: rgba(255,255,255,.6) }
-.smm-banner-inner h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.4rem); font-weight: 300; line-height: 1.1; letter-spacing: -.02em; color: #fff; text-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+.smm-banner-inner h2 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 300; line-height: 1.1; letter-spacing: -.02em; color: #fff;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  /* Override sec-title border */
+  border-left: none; padding-left: 0;
+}
 .smm-banner-inner p { font-size: .88rem; font-weight: 300; color: rgba(255,255,255,.85); line-height: 1.88; max-width: 480px; text-shadow: 0 1px 5px rgba(0,0,0,0.3); }
 .btn-border {
   font-family: var(--sans); font-size: .57rem; font-weight: 300;
   letter-spacing: .32em; text-transform: uppercase;
   padding: 1rem 2.8rem; cursor: pointer;
   background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,.5);
-  display: inline-flex; align-items: center;
+  display: inline-flex; align-items: center; justify-content: center;
   transition: border-color .4s, color .4s, background .4s; margin-top: .6rem;
 }
 .btn-border:hover { border-color: #fff; color: var(--ink); background: #fff; }
@@ -524,7 +547,11 @@ footer {
 }
 .footer-links a:hover { color: #fff }
 
-/* ─── RESPONSIVE ─── */
+/* ═══════════════════════════════════════════
+   RESPONSIVE — ordered largest → smallest
+═══════════════════════════════════════════ */
+
+/* ── 1024px ── */
 @media (max-width: 1024px) {
   nav { padding: 0 2rem }
   section { padding: 6rem 2rem }
@@ -532,19 +559,116 @@ footer {
   .about-side { position: static; margin-bottom: -2rem }
   .pgrid { grid-template-columns: repeat(2, 1fr); gap: 1rem }
   .book-wrap { grid-template-columns: 1fr }
-  .book-photo { height: 320px }
+  .book-photo { height: 320px; grid-template-rows: unset }
+  .book-right { grid-template-rows: 320px 1fr }
   .cgrid { grid-template-columns: 1fr; gap: 4rem }
+  .rgrid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ── 768px ── */
 @media (max-width: 768px) {
   .nav-ul { display: none }
   .ham { display: flex }
-  .h-eyebrow { letter-spacing: .35em }
-  .h-eyebrow::before, .h-eyebrow::after { width: 20px }
-  .h-cta { flex-direction: column; width: 100%; max-width: 280px }
-  .btn-white, .btn-ghost { width: 100%; justify-content: center }
-  .rgrid { grid-template-columns: 1fr }
-  footer { flex-direction: column; text-align: center; padding: 4rem 2rem }
+
+  section { padding: 5rem 1.5rem }
+
+  /* Hero */
+  #hero { padding-bottom: 6rem; }
+  .hero-img { height: 120%; object-position: center 10%; }
+  .h-eyebrow { letter-spacing: .3em; gap: .5rem; font-size: .6rem; margin-bottom: 1.6rem; }
+  .h-eyebrow::before, .h-eyebrow::after { width: 16px }
+  .h-rule { margin: .6rem 0 1.8rem }
+  .h-cta { flex-direction: column; width: 100%; max-width: 300px; margin-top: 2.4rem; }
+  .btn-white, .btn-ghost { width: 100%; justify-content: center; }
+
+  /* Concerts */
+  .ctable td { padding: 1.2rem .25rem }
+  .cmeta { font-size: .6rem; }
+  .concerts-foot { flex-direction: column; gap: .8rem }
+
+  /* About */
+  .about-side .sec-title { margin-bottom: 1.5rem }
+  .bio p { font-size: .94rem }
+  .bio p:first-child::first-letter { font-size: 2.6em }
+
+  /* Gallery */
+  .pgrid { grid-template-columns: repeat(2, 1fr); gap: .75rem }
+
+  /* Lightbox nav arrows — hide on small screens (swipe instead) */
+  .modal-prev, .modal-next { display: none }
+  .modal-img-wrap { padding: 5rem 1rem 3.5rem }
+
+  /* Reels */
+  #reels { padding: 5rem 1.5rem 4rem }
+  .rgrid { grid-template-columns: 1fr; gap: 1.5rem }
+  .reel-embed-wrap { max-width: 400px; }
+
+  /* Booking */
+  .book-left { padding: 4rem 1.5rem }
+  .book-form-area { padding: 2.5rem 1.5rem }
+  .frow { grid-template-columns: 1fr }  /* stack form pairs on mobile */
+  .ffoot { flex-direction: column; align-items: flex-start; }
+  .btn-dark { width: 100%; justify-content: center }
+
+  /* SMM banner */
+  .smm-banner { padding: 5rem 1.5rem }
+
+  /* Contact */
+  #contact { padding: 5rem 1.5rem }
+
+  /* Footer */
+  footer { flex-direction: column; text-align: center; padding: 3rem 1.5rem; gap: 1.5rem }
+  .footer-links { justify-content: center; gap: 1.2rem }
 }
+
+/* ── 480px (small phones) ── */
+@media (max-width: 480px) {
+  nav { padding: 0 1.2rem }
+  .logo { font-size: .9rem }
+
+  section { padding: 4rem 1.2rem }
+
+  /* Hero — prevent scroll-cue from overlapping CTAs */
+  #hero { padding-bottom: 5.5rem }
+  .scroll-cue { bottom: 1.4rem }
+
+  /* Single-column gallery */
+  .pgrid { grid-template-columns: 1fr; gap: .75rem }
+
+  /* Booking */
+  .book-left { padding: 3.5rem 1.2rem }
+  .book-form-area { padding: 2rem 1.2rem }
+
+  /* Concert table cmeta — stack spans */
+  .cmeta { display: flex; flex-wrap: wrap; gap: .15rem .4rem }
+  .cmeta span+span::before { content: none; margin: 0 }
+
+  /* SMM banner */
+  .smm-banner { padding: 4rem 1.2rem }
+
+  /* Contact */
+  #contact { padding: 4rem 1.2rem }
+
+  /* Footer */
+  footer { padding: 2.8rem 1.2rem }
+  .footer-links { gap: .9rem }
+}
+
+/* ── Landscape phones (short viewport) ── */
+@media (orientation: landscape) and (max-height: 500px) {
+  #hero {
+    padding-bottom: 1rem;
+    min-height: 100dvh;
+  }
+  .hero-img { height: 160%; top: -60%; }
+  .h-eyebrow { font-size: .5rem; margin-bottom: .8rem }
+  .h-rule { margin: .4rem 0 1rem }
+  .h-quote { font-size: .85rem }
+  .h-cta { margin-top: 1.2rem; gap: .6rem }
+  .btn-white, .btn-ghost { padding: .8rem 2rem }
+  .scroll-cue { display: none }
+}
+
 </style>
 </head>
 <body>
@@ -569,12 +693,12 @@ footer {
     <li><a href="#booking">Bookings</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <button class="ham" id="ham" aria-label="Menu">
+  <button class="ham" id="ham" aria-label="Menu" aria-expanded="false" aria-controls="mob">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<div class="mob" id="mob">
+<div class="mob" id="mob" role="navigation" aria-label="Mobile navigation">
   <a href="#hero">Home</a>
   <a href="#concerts">Concerts</a>
   <a href="#about">About</a>
@@ -593,7 +717,6 @@ footer {
   <div class="hero-content">
     <p class="h-eyebrow">Tuba · Organ · Teacher</p>
     <div class="h-rule"></div>
-    <p class="h-quote" style="display:none"></p>
     <div class="h-cta">
       <a class="btn-white" href="#booking"><span>Book a Performance</span></a>
       <a class="btn-ghost"  href="#concerts">Past Concerts</a>
@@ -612,30 +735,32 @@ footer {
   <div class="wrap">
     <p class="sec-label rv">Upcoming Performances</p>
     <h2 class="sec-title rv d1">Concerts &amp; Events</h2>
-    <table class="ctable rv d2">
-      <tbody>
-        <tr>
-          <td>
-            <div class="ctitle">Wedding — St Mary Magdalene</div>
-            <div class="cmeta">
-              <span>20 May 2026</span>
-              <span>12:00 PM</span>
-              <span>St Mary Magdalene Church, Brighton</span>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <div class="ctitle">Wedding — St Mary Magdalene</div>
-            <div class="cmeta">
-              <span>18 Aug 2026</span>
-              <span>12:00 PM</span>
-              <span>St Mary Magdalene Church, Brighton</span>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="ctable-wrap rv d2">
+      <table class="ctable">
+        <tbody>
+          <tr>
+            <td>
+              <div class="ctitle">Wedding — St Mary Magdalene</div>
+              <div class="cmeta">
+                <span>20 May 2026</span>
+                <span>12:00 PM</span>
+                <span>St Mary Magdalene Church, Brighton</span>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="ctitle">Wedding — St Mary Magdalene</div>
+              <div class="cmeta">
+                <span>18 Aug 2026</span>
+                <span>12:00 PM</span>
+                <span>St Mary Magdalene Church, Brighton</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     <div class="concerts-foot rv d3">
       <a class="tlink" href="future-concerts.html" data-trans>View all past concerts</a>
       <a class="tlink" href="st-mary-magdalene.html" data-trans style="color:var(--gold);border-color:rgba(138,92,40,.22)">
@@ -756,17 +881,17 @@ footer {
           <div class="frow">
             <div class="field">
               <label for="b-name">Full Name</label>
-              <input id="b-name" type="text" name="name" placeholder="Your name" required>
+              <input id="b-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
             </div>
             <div class="field">
               <label for="b-email">Email</label>
-              <input id="b-email" type="email" name="email" placeholder="you@example.com" required>
+              <input id="b-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
             </div>
           </div>
           <div class="frow">
             <div class="field">
               <label for="b-phone">Phone</label>
-              <input id="b-phone" type="tel" name="phone" placeholder="Optional">
+              <input id="b-phone" type="tel" name="phone" placeholder="Optional" autocomplete="tel">
             </div>
             <div class="field">
               <label for="b-date">Preferred Date</label>
@@ -788,7 +913,7 @@ footer {
           </div>
           <div class="field">
             <label for="b-venue">Venue / Location</label>
-            <input id="b-venue" type="text" name="venue" placeholder="Where is the event?">
+            <input id="b-venue" type="text" name="venue" placeholder="Where is the event?" autocomplete="off">
           </div>
           <div class="field">
             <label for="b-details">Details</label>
@@ -808,7 +933,7 @@ footer {
 <div class="smm-banner rv">
   <div class="smm-banner-inner">
     <p class="sec-label">Concert Series</p>
-    <h2 class="sec-title" style="border-left:none;padding-left:0;color:#fff">St Mary Magdalene<br>Concert Series</h2>
+    <h2>St Mary Magdalene<br>Concert Series</h2>
     <p>A programme of lunchtime concerts at St Mary Magdalene Church, Brighton, curated by Ramon Branch Biescas. Open to performers of all disciplines — submit your proposal to perform.</p>
     <a class="btn-border" href="st-mary-magdalene.html" data-trans>Discover the Series</a>
   </div>
@@ -839,11 +964,11 @@ footer {
         <form class="cform" id="cForm" novalidate>
           <div class="field">
             <label for="c-name">Name</label>
-            <input id="c-name" type="text" name="name" placeholder="Your name" required>
+            <input id="c-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
           </div>
           <div class="field">
             <label for="c-email">Email</label>
-            <input id="c-email" type="email" name="email" placeholder="you@example.com" required>
+            <input id="c-email" type="email" name="email" placeholder="you@example.com" required autocomplete="email">
           </div>
           <div class="field">
             <label for="c-msg">Message</label>
@@ -858,7 +983,7 @@ footer {
   </div>
 </section>
 
-<div id="toast"></div>
+<div id="toast" role="status" aria-live="polite"></div>
 
 <footer class="rv">
   <p class="footer-copy">&copy; 2026 Ramon Branch Biescas. All rights reserved.</p>
@@ -878,7 +1003,7 @@ footer {
 "use strict";
 var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/rbranchbiescass@gmail.com';
 
-/* LOADER */
+/* ── LOADER ── */
 window.addEventListener('load', function () {
   var loader = document.getElementById('loader');
   if (sessionStorage.getItem('visited')) {
@@ -891,45 +1016,62 @@ window.addEventListener('load', function () {
   }
 });
 
-/* NAV */
+/* ── NAV ── */
 var nav = document.getElementById('nav');
 var ham = document.getElementById('ham');
 var mob = document.getElementById('mob');
+
 window.addEventListener('scroll', function () {
   if (window.scrollY > 80) { nav.classList.remove('is-clear'); nav.classList.add('is-solid'); }
   else { nav.classList.remove('is-solid'); nav.classList.add('is-clear'); }
 }, { passive: true });
+
+function closeMob() {
+  ham.classList.remove('open');
+  ham.setAttribute('aria-expanded', 'false');
+  mob.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function openMob() {
+  ham.classList.add('open');
+  ham.setAttribute('aria-expanded', 'true');
+  mob.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
 ham.addEventListener('click', function () {
-  ham.classList.toggle('open'); mob.classList.toggle('open');
-  document.body.style.overflow = mob.classList.contains('open') ? 'hidden' : '';
-});
-mob.querySelectorAll('a').forEach(function (link) {
-  link.addEventListener('click', function () {
-    ham.classList.remove('open'); mob.classList.remove('open');
-    document.body.style.overflow = '';
-  });
+  mob.classList.contains('open') ? closeMob() : openMob();
 });
 
-/* SCROLL REVEAL */
+mob.querySelectorAll('a').forEach(function (link) {
+  link.addEventListener('click', closeMob);
+});
+
+/* Close mobile menu on Escape */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && mob.classList.contains('open')) closeMob();
+});
+
+/* ── SCROLL REVEAL ── */
 var rvItems = Array.from(document.querySelectorAll('.rv'));
 var observer = new IntersectionObserver(function (entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
   });
-}, { threshold: 0.12 });
+}, { threshold: 0.08 });
 rvItems.forEach(function (item) { observer.observe(item); });
 
-/* PARALLAX */
-var heroImg = document.getElementById('heroImg');
+/* ── PARALLAX — desktop only ── */
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+  var heroImg = document.getElementById('heroImg');
   window.addEventListener('scroll', function () {
     heroImg.style.transform = 'translate3d(0,' + (window.scrollY * 0.35) + 'px,0)';
   }, { passive: true });
 }
 
-/* CURSOR */
+/* ── CUSTOM CURSOR — desktop only ── */
 if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-  var cur = document.getElementById('cur');
+  var cur  = document.getElementById('cur');
   var ring = document.getElementById('cur-ring');
   var rx = 0, ry = 0, mx = 0, my = 0;
   window.addEventListener('mousemove', function (e) {
@@ -947,54 +1089,92 @@ if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
   });
 }
 
-/* LIGHTBOX */
+/* ── LIGHTBOX ── */
 (function () {
-  var items = Array.from(document.querySelectorAll('.pgi[data-src]'));
-  var modal = document.getElementById('modal');
-  var mImg  = document.getElementById('modalImg');
-  var mCount = document.getElementById('modalCounter');
-  var current = 0, swipeX = 0;
+  var items   = Array.from(document.querySelectorAll('.pgi[data-src]'));
+  var modal   = document.getElementById('modal');
+  var mImg    = document.getElementById('modalImg');
+  var mCount  = document.getElementById('modalCounter');
+  var current = 0, swipeX = 0, swipeY = 0;
+
   function preload(src) { var img = new Image(); img.src = src; }
+
   function setImage(src, countText) {
     mImg.classList.remove('img-ready');
-    requestAnimationFrame(function () {
-      var tmp = new Image();
-      tmp.onload = function () { mImg.src = src; mCount.textContent = countText; requestAnimationFrame(function () { mImg.classList.add('img-ready'); }); };
-      tmp.src = src;
-    });
+    var tmp = new Image();
+    tmp.onload = function () {
+      mImg.src = src; mCount.textContent = countText;
+      requestAnimationFrame(function () { mImg.classList.add('img-ready'); });
+    };
+    tmp.src = src;
   }
+
   function open(idx) {
     current = idx;
     mImg.classList.remove('img-ready'); mImg.src = '';
     mCount.textContent = (idx + 1) + ' / ' + items.length;
     modal.classList.add('open'); document.body.style.overflow = 'hidden';
     var tmp = new Image();
-    tmp.onload = function () { mImg.src = items[idx].dataset.src; requestAnimationFrame(function () { mImg.classList.add('img-ready'); }); };
+    tmp.onload = function () {
+      mImg.src = items[idx].dataset.src;
+      requestAnimationFrame(function () { mImg.classList.add('img-ready'); });
+    };
     tmp.src = items[idx].dataset.src;
     preload(items[(idx - 1 + items.length) % items.length].dataset.src);
     preload(items[(idx + 1) % items.length].dataset.src);
   }
+
   function close() {
     modal.classList.remove('open'); document.body.style.overflow = '';
     setTimeout(function () { mImg.classList.remove('img-ready'); mImg.src = ''; }, 450);
   }
-  function prev() { current = (current - 1 + items.length) % items.length; setImage(items[current].dataset.src, (current + 1) + ' / ' + items.length); preload(items[(current - 1 + items.length) % items.length].dataset.src); }
-  function next() { current = (current + 1) % items.length; setImage(items[current].dataset.src, (current + 1) + ' / ' + items.length); preload(items[(current + 1) % items.length].dataset.src); }
+
+  function prev() {
+    current = (current - 1 + items.length) % items.length;
+    setImage(items[current].dataset.src, (current + 1) + ' / ' + items.length);
+    preload(items[(current - 1 + items.length) % items.length].dataset.src);
+  }
+  function next() {
+    current = (current + 1) % items.length;
+    setImage(items[current].dataset.src, (current + 1) + ' / ' + items.length);
+    preload(items[(current + 1) % items.length].dataset.src);
+  }
+
   items.forEach(function (el, i) { el.addEventListener('click', function () { open(i); }); });
+
   var closeBtn = document.getElementById('modalClose');
-  function handleClose(e) { if (e) { e.preventDefault(); e.stopPropagation(); } close(); }
+  function handleClose(e) { e.preventDefault(); e.stopPropagation(); close(); }
   closeBtn.addEventListener('click', handleClose);
-  closeBtn.addEventListener('touchstart', handleClose, { passive: false });
+  closeBtn.addEventListener('touchend', handleClose, { passive: false });
+
   document.getElementById('modalPrev').addEventListener('click', prev);
   document.getElementById('modalNext').addEventListener('click', next);
-  modal.addEventListener('click', function (e) { if (e.target === modal || e.target.closest('.modal-close')) handleClose(e); });
-  modal.addEventListener('touchstart', function (e) { if (e.target === modal || e.target.classList.contains('modal-img-wrap')) handleClose(e); }, { passive: false });
-  document.addEventListener('keydown', function (e) { if (!modal.classList.contains('open')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') prev(); if (e.key === 'ArrowRight') next(); });
-  modal.addEventListener('touchstart', function (e) { swipeX = e.touches[0].clientX; }, { passive: true });
-  modal.addEventListener('touchend', function (e) { var dx = e.changedTouches[0].clientX - swipeX; if (Math.abs(dx) < 40) return; if (dx < 0) next(); else prev(); }, { passive: true });
+
+  modal.addEventListener('click', function (e) {
+    if (e.target === modal || e.target === mImg.parentElement) close();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!modal.classList.contains('open')) return;
+    if (e.key === 'Escape')      close();
+    if (e.key === 'ArrowLeft')   prev();
+    if (e.key === 'ArrowRight')  next();
+  });
+
+  /* Swipe — track both axes to avoid interfering with scroll */
+  modal.addEventListener('touchstart', function (e) {
+    swipeX = e.touches[0].clientX;
+    swipeY = e.touches[0].clientY;
+  }, { passive: true });
+  modal.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - swipeX;
+    var dy = e.changedTouches[0].clientY - swipeY;
+    if (Math.abs(dx) < 40 || Math.abs(dy) > Math.abs(dx)) return; /* mostly vertical — ignore */
+    if (dx < 0) next(); else prev();
+  }, { passive: true });
 }());
 
-/* TOAST */
+/* ── TOAST ── */
 function showToast(msg, isError) {
   var t = document.getElementById('toast');
   t.textContent = msg; t.classList.remove('show', 'error');
@@ -1003,7 +1183,7 @@ function showToast(msg, isError) {
   setTimeout(function () { t.classList.remove('show'); }, 5000);
 }
 
-/* FORM HELPER */
+/* ── FORM HELPER ── */
 function sendForm(payload, btn, btnSpan, successMsg, resetFn) {
   btnSpan.textContent = 'Sending…'; btn.disabled = true;
   fetch(FORMSUBMIT_URL, {
@@ -1016,7 +1196,11 @@ function sendForm(payload, btn, btnSpan, successMsg, resetFn) {
     if (json.success === 'true' || json.success === true) {
       btnSpan.textContent = 'Sent ✓'; btn.style.cssText = 'background:#3a6b3a;background-image:none';
       showToast(successMsg);
-      setTimeout(function () { btnSpan.textContent = btn.dataset.label || 'Send'; btn.style.cssText = ''; btn.disabled = false; if (resetFn) resetFn(); }, 5200);
+      setTimeout(function () {
+        btnSpan.textContent = btn.dataset.label || 'Send';
+        btn.style.cssText = ''; btn.disabled = false;
+        if (resetFn) resetFn();
+      }, 5200);
     } else { throw new Error('Failed'); }
   })
   .catch(function() {
@@ -1026,30 +1210,34 @@ function sendForm(payload, btn, btnSpan, successMsg, resetFn) {
   });
 }
 
-/* BOOKING FORM */
+/* ── BOOKING FORM ── */
 document.getElementById('bookForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this, btn = document.getElementById('bookBtn'), span = btn.querySelector('span');
   btn.dataset.label = 'Send Enquiry';
   sendForm({
     _subject: 'New Booking Enquiry — Ramon Branch Biescas',
-    Name: form.querySelector('[name=name]').value, Email: form.querySelector('[name=email]').value,
-    Phone: form.querySelector('[name=phone]').value || 'Not provided', Date: form.querySelector('[name=date]').value || 'Not specified',
-    Type: form.querySelector('[name=type]').value, Venue: form.querySelector('[name=venue]').value || 'Not specified',
-    Details: form.querySelector('[name=details]').value || 'None'
+    Name:    form.querySelector('[name=name]').value,
+    Email:   form.querySelector('[name=email]').value,
+    Phone:   form.querySelector('[name=phone]').value    || 'Not provided',
+    Date:    form.querySelector('[name=date]').value     || 'Not specified',
+    Type:    form.querySelector('[name=type]').value,
+    Venue:   form.querySelector('[name=venue]').value    || 'Not specified',
+    Details: form.querySelector('[name=details]').value  || 'None'
   }, btn, span, "Booking enquiry received — I'll be in touch within 48 hours.", function() {
     form.reset(); document.getElementById('b-type').classList.add('empty');
   });
 });
 
-/* CONTACT FORM */
+/* ── CONTACT FORM ── */
 document.getElementById('cForm').addEventListener('submit', function(e) {
   e.preventDefault();
   var form = this, btn = document.getElementById('cBtn'), span = btn.querySelector('span');
   btn.dataset.label = 'Send Message';
   sendForm({
     _subject: 'New Contact Message — Ramon Branch Biescas',
-    Name: form.querySelector('[name=name]').value, Email: form.querySelector('[name=email]').value,
+    Name:    form.querySelector('[name=name]').value,
+    Email:   form.querySelector('[name=email]').value,
     Message: form.querySelector('[name=message]').value
   }, btn, span, 'Message sent — thank you!', function() { form.reset(); });
 });
