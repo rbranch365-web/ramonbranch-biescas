@@ -623,10 +623,6 @@ footer {
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
 
-<!-- Hidden iframes — receive form POSTs so the page never navigates away -->
-<iframe name="book_iframe" id="book_iframe" style="display:none" aria-hidden="true"></iframe>
-<iframe name="contact_iframe" id="contact_iframe" style="display:none" aria-hidden="true"></iframe>
-
 <nav class="is-clear" id="nav">
   <a class="logo" href="index.html">Ramon Branch Biescas</a>
   <ul class="nav-ul">
@@ -821,18 +817,7 @@ footer {
       </div>
       <div class="book-form-area">
         <div class="bform-title">Send an Enquiry</div>
-        <!-- target="book_iframe" submits silently; hidden inputs carry metadata -->
-        <form
-          class="bform"
-          id="bookForm"
-          action="https://formsubmit.co/rbranchbiescass@gmail.com"
-          method="POST"
-          target="book_iframe"
-          novalidate
-        >
-          <input type="hidden" name="_subject"  value="New Booking Enquiry — Ramon Branch Biescas">
-          <input type="hidden" name="_captcha"  value="false">
-          <input type="hidden" name="_template" value="table">
+        <form class="bform" id="bookForm" novalidate>
           <div class="frow">
             <div class="field">
               <label for="b-name">Full Name</label>
@@ -916,18 +901,7 @@ footer {
         </div>
       </div>
       <div class="cform-area rv d1">
-        <!-- target="contact_iframe" submits silently -->
-        <form
-          class="cform"
-          id="cForm"
-          action="https://formsubmit.co/rbranchbiescass@gmail.com"
-          method="POST"
-          target="contact_iframe"
-          novalidate
-        >
-          <input type="hidden" name="_subject"  value="New Contact Message — Ramon Branch Biescas">
-          <input type="hidden" name="_captcha"  value="false">
-          <input type="hidden" name="_template" value="table">
+        <form class="cform" id="cForm" novalidate>
           <div class="field">
             <label for="c-name">Name</label>
             <input id="c-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
@@ -967,6 +941,8 @@ footer {
 <script>
 (function () {
 "use strict";
+
+const FORMSPREE = 'https://formspree.io/f/xredaqrl';
 
 /* ── LOADER ── */
 window.addEventListener('load', function () {
@@ -1144,75 +1120,69 @@ function showToast(msg, isError) {
   setTimeout(function () { t.classList.remove('show'); }, 5000);
 }
 
-/* ── BOOKING FORM ── */
-(function () {
-  var form = document.getElementById('bookForm');
-  var btn  = document.getElementById('bookBtn');
+/* ── GENERIC FORM SUBMIT HELPER ── */
+function handleForm(formId, btnId, successMsg, resetExtra) {
+  var form = document.getElementById(formId);
+  var btn  = document.getElementById(btnId);
   var span = btn.querySelector('span');
 
   form.addEventListener('submit', function (e) {
-    /* Basic validation */
-    var name  = form.querySelector('[name=name]').value.trim();
-    var email = form.querySelector('[name=email]').value.trim();
-    var type  = form.querySelector('[name=type]').value;
-    if (!name || !email || !type) {
-      e.preventDefault();
-      showToast('Please fill in your name, email and booking type.', true);
+    e.preventDefault();
+    // Basic required-field check
+    var valid = true;
+    form.querySelectorAll('[required]').forEach(function(field) {
+      if (!field.value.trim()) valid = false;
+    });
+    if (!valid) {
+      showToast('Please fill in all required fields.', true);
       return;
     }
-    /* Let the form POST naturally to the hidden iframe */
-    span.textContent = 'Sending…';
+
+    span.textContent = 'Sending\u2026';
     btn.disabled = true;
-  });
 
-  /* The iframe fires load when FormSubmit responds — treat that as success */
-  document.getElementById('book_iframe').addEventListener('load', function () {
-    if (!btn.disabled) return; /* ignore the initial blank load */
-    span.textContent = 'Sent ✓';
-    btn.style.cssText = 'background:#3a6b3a;background-image:none';
-    showToast("Booking enquiry received — I'll be in touch within 48 hours.");
-    setTimeout(function () {
-      span.textContent = 'Send Enquiry';
-      btn.style.cssText = '';
+    fetch(FORMSPREE, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(res) {
+      if (res.ok) {
+        span.textContent = 'Sent \u2713';
+        btn.style.cssText = 'background:#3a6b3a;background-image:none';
+        showToast(successMsg);
+        setTimeout(function () {
+          span.textContent = span.dataset.orig || 'Send';
+          btn.style.cssText = '';
+          btn.disabled = false;
+          form.reset();
+          if (resetExtra) resetExtra();
+        }, 5200);
+      } else {
+        return res.json().then(function(d) { throw new Error(d.error || 'Server error'); });
+      }
+    })
+    .catch(function() {
+      span.textContent = span.dataset.orig || 'Send';
       btn.disabled = false;
-      form.reset();
-      document.getElementById('b-type').classList.add('empty');
-    }, 5200);
-  });
-}());
-
-/* ── CONTACT FORM ── */
-(function () {
-  var form = document.getElementById('cForm');
-  var btn  = document.getElementById('cBtn');
-  var span = btn.querySelector('span');
-
-  form.addEventListener('submit', function (e) {
-    var name  = form.querySelector('[name=name]').value.trim();
-    var email = form.querySelector('[name=email]').value.trim();
-    var msg   = form.querySelector('[name=message]').value.trim();
-    if (!name || !email || !msg) {
-      e.preventDefault();
-      showToast('Please fill in all fields.', true);
-      return;
-    }
-    span.textContent = 'Sending…';
-    btn.disabled = true;
+      showToast('Something went wrong \u2014 please try again.', true);
+    });
   });
 
-  document.getElementById('contact_iframe').addEventListener('load', function () {
-    if (!btn.disabled) return;
-    span.textContent = 'Sent ✓';
-    btn.style.cssText = 'background:#3a6b3a;background-image:none';
-    showToast('Message sent — thank you!');
-    setTimeout(function () {
-      span.textContent = 'Send Message';
-      btn.style.cssText = '';
-      btn.disabled = false;
-      form.reset();
-    }, 5200);
-  });
-}());
+  // Store original button label
+  span.dataset.orig = span.textContent;
+}
+
+handleForm(
+  'bookForm', 'bookBtn',
+  "Booking enquiry received \u2014 I'll be in touch within 48 hours.",
+  function() { document.getElementById('b-type').classList.add('empty'); }
+);
+
+handleForm(
+  'cForm', 'cBtn',
+  'Message sent \u2014 thank you!'
+);
 
 }());
 </script>
