@@ -623,6 +623,10 @@ footer {
   <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
 </div>
 
+<!-- Hidden iframes — receive form POSTs so the page never navigates away -->
+<iframe name="book_iframe" id="book_iframe" style="display:none" aria-hidden="true"></iframe>
+<iframe name="contact_iframe" id="contact_iframe" style="display:none" aria-hidden="true"></iframe>
+
 <nav class="is-clear" id="nav">
   <a class="logo" href="index.html">Ramon Branch Biescas</a>
   <ul class="nav-ul">
@@ -817,7 +821,18 @@ footer {
       </div>
       <div class="book-form-area">
         <div class="bform-title">Send an Enquiry</div>
-        <form class="bform" id="bookForm" novalidate>
+        <!-- target="book_iframe" submits silently; hidden inputs carry metadata -->
+        <form
+          class="bform"
+          id="bookForm"
+          action="https://formsubmit.co/rbranchbiescass@gmail.com"
+          method="POST"
+          target="book_iframe"
+          novalidate
+        >
+          <input type="hidden" name="_subject"  value="New Booking Enquiry — Ramon Branch Biescas">
+          <input type="hidden" name="_captcha"  value="false">
+          <input type="hidden" name="_template" value="table">
           <div class="frow">
             <div class="field">
               <label for="b-name">Full Name</label>
@@ -901,7 +916,18 @@ footer {
         </div>
       </div>
       <div class="cform-area rv d1">
-        <form class="cform" id="cForm" novalidate>
+        <!-- target="contact_iframe" submits silently -->
+        <form
+          class="cform"
+          id="cForm"
+          action="https://formsubmit.co/rbranchbiescass@gmail.com"
+          method="POST"
+          target="contact_iframe"
+          novalidate
+        >
+          <input type="hidden" name="_subject"  value="New Contact Message — Ramon Branch Biescas">
+          <input type="hidden" name="_captcha"  value="false">
+          <input type="hidden" name="_template" value="table">
           <div class="field">
             <label for="c-name">Name</label>
             <input id="c-name" type="text" name="name" placeholder="Your name" required autocomplete="name">
@@ -941,7 +967,6 @@ footer {
 <script>
 (function () {
 "use strict";
-var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/rbranchbiescass@gmail.com';
 
 /* ── LOADER ── */
 window.addEventListener('load', function () {
@@ -1119,64 +1144,75 @@ function showToast(msg, isError) {
   setTimeout(function () { t.classList.remove('show'); }, 5000);
 }
 
-/* ── FORM HELPER ── */
-function sendForm(payload, btn, btnSpan, successMsg, resetFn) {
-  btnSpan.textContent = 'Sending…'; btn.disabled = true;
-  fetch(FORMSUBMIT_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify(Object.assign({ _captcha: 'false', _template: 'table' }, payload))
-  })
-  .then(function(res) { return res.json(); })
-  .then(function(json) {
-    if (json.success === 'true' || json.success === true) {
-      btnSpan.textContent = 'Sent ✓'; btn.style.cssText = 'background:#3a6b3a;background-image:none';
-      showToast(successMsg);
-      setTimeout(function () {
-        btnSpan.textContent = btn.dataset.label || 'Send';
-        btn.style.cssText = ''; btn.disabled = false;
-        if (resetFn) resetFn();
-      }, 5200);
-    } else { throw new Error('Failed'); }
-  })
-  .catch(function() {
-    btnSpan.textContent = 'Try Again'; btn.style.cssText = 'background:#8b2020;background-image:none';
-    showToast('Something went wrong — please try again or email rbranchbiescass@gmail.com directly.', true);
-    setTimeout(function () { btnSpan.textContent = btn.dataset.label || 'Send'; btn.style.cssText = ''; btn.disabled = false; }, 4000);
-  });
-}
-
 /* ── BOOKING FORM ── */
-document.getElementById('bookForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var form = this, btn = document.getElementById('bookBtn'), span = btn.querySelector('span');
-  btn.dataset.label = 'Send Enquiry';
-  sendForm({
-    _subject: 'New Booking Enquiry — Ramon Branch Biescas',
-    Name:    form.querySelector('[name=name]').value,
-    Email:   form.querySelector('[name=email]').value,
-    Phone:   form.querySelector('[name=phone]').value    || 'Not provided',
-    Date:    form.querySelector('[name=date]').value     || 'Not specified',
-    Type:    form.querySelector('[name=type]').value,
-    Venue:   form.querySelector('[name=venue]').value    || 'Not specified',
-    Details: form.querySelector('[name=details]').value  || 'None'
-  }, btn, span, "Booking enquiry received — I'll be in touch within 48 hours.", function() {
-    form.reset(); document.getElementById('b-type').classList.add('empty');
+(function () {
+  var form = document.getElementById('bookForm');
+  var btn  = document.getElementById('bookBtn');
+  var span = btn.querySelector('span');
+
+  form.addEventListener('submit', function (e) {
+    /* Basic validation */
+    var name  = form.querySelector('[name=name]').value.trim();
+    var email = form.querySelector('[name=email]').value.trim();
+    var type  = form.querySelector('[name=type]').value;
+    if (!name || !email || !type) {
+      e.preventDefault();
+      showToast('Please fill in your name, email and booking type.', true);
+      return;
+    }
+    /* Let the form POST naturally to the hidden iframe */
+    span.textContent = 'Sending…';
+    btn.disabled = true;
   });
-});
+
+  /* The iframe fires load when FormSubmit responds — treat that as success */
+  document.getElementById('book_iframe').addEventListener('load', function () {
+    if (!btn.disabled) return; /* ignore the initial blank load */
+    span.textContent = 'Sent ✓';
+    btn.style.cssText = 'background:#3a6b3a;background-image:none';
+    showToast("Booking enquiry received — I'll be in touch within 48 hours.");
+    setTimeout(function () {
+      span.textContent = 'Send Enquiry';
+      btn.style.cssText = '';
+      btn.disabled = false;
+      form.reset();
+      document.getElementById('b-type').classList.add('empty');
+    }, 5200);
+  });
+}());
 
 /* ── CONTACT FORM ── */
-document.getElementById('cForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  var form = this, btn = document.getElementById('cBtn'), span = btn.querySelector('span');
-  btn.dataset.label = 'Send Message';
-  sendForm({
-    _subject: 'New Contact Message — Ramon Branch Biescas',
-    Name:    form.querySelector('[name=name]').value,
-    Email:   form.querySelector('[name=email]').value,
-    Message: form.querySelector('[name=message]').value
-  }, btn, span, 'Message sent — thank you!', function() { form.reset(); });
-});
+(function () {
+  var form = document.getElementById('cForm');
+  var btn  = document.getElementById('cBtn');
+  var span = btn.querySelector('span');
+
+  form.addEventListener('submit', function (e) {
+    var name  = form.querySelector('[name=name]').value.trim();
+    var email = form.querySelector('[name=email]').value.trim();
+    var msg   = form.querySelector('[name=message]').value.trim();
+    if (!name || !email || !msg) {
+      e.preventDefault();
+      showToast('Please fill in all fields.', true);
+      return;
+    }
+    span.textContent = 'Sending…';
+    btn.disabled = true;
+  });
+
+  document.getElementById('contact_iframe').addEventListener('load', function () {
+    if (!btn.disabled) return;
+    span.textContent = 'Sent ✓';
+    btn.style.cssText = 'background:#3a6b3a;background-image:none';
+    showToast('Message sent — thank you!');
+    setTimeout(function () {
+      span.textContent = 'Send Message';
+      btn.style.cssText = '';
+      btn.disabled = false;
+      form.reset();
+    }, 5200);
+  });
+}());
 
 }());
 </script>
