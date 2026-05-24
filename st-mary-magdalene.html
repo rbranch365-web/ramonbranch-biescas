@@ -307,7 +307,7 @@
             transform: none;
         }
 
-        /* ─── INFO TRIPTYCH — extended to 4 panels ─── */
+        /* ─── INFO TRIPTYCH ─── */
         .info-triptych {
             padding: 5.5rem 0;
             background: var(--warm-white);
@@ -368,7 +368,6 @@
             border-bottom: none;
         }
 
-        /* Dates list — month grouping */
         .dates-month {
             font-family: var(--sans);
             font-size: 0.48rem;
@@ -594,6 +593,9 @@
     <div id="cursor-ring"></div>
     <div id="toast"></div>
 
+    <!-- Hidden iframe — receives the proposal form POST silently -->
+    <iframe name="proposal_iframe" id="proposal_iframe" style="display:none" aria-hidden="true"></iframe>
+
     <nav class="nav-wrap">
         <a class="nav-logo" href="index.html">Ramon Branch Biescas</a>
         <ul class="nav-links">
@@ -690,7 +692,18 @@
             <div class="contact-cta-inner">
                 <h2>Submit a Proposal</h2>
                 <p class="intro-p">Fill in the form below with details about your ensemble, repertoire, and preferred dates. We aim to respond within 7 days.</p>
-                <form class="prop-form" id="proposalForm" novalidate>
+                <!-- target="proposal_iframe" submits silently; hidden inputs carry metadata -->
+                <form
+                  class="prop-form"
+                  id="proposalForm"
+                  action="https://formsubmit.co/rbranchbiescass@gmail.com"
+                  method="POST"
+                  target="proposal_iframe"
+                  novalidate
+                >
+                    <input type="hidden" name="_subject"  value="St Mary Magdalene — New Performance Proposal">
+                    <input type="hidden" name="_captcha"  value="false">
+                    <input type="hidden" name="_template" value="table">
                     <div class="prop-row">
                         <div class="prop-field">
                             <label for="p-name">Your Name</label>
@@ -747,8 +760,8 @@
 
     <script>
     (function() {
-        var FORMSUBMIT_URL = 'https://formsubmit.co/ajax/rbranchbiescass@gmail.com';
 
+        /* ── TOAST ── */
         function showToast(msg, isError) {
             var t = document.getElementById('toast');
             t.textContent = msg;
@@ -759,59 +772,41 @@
             setTimeout(function() { t.classList.remove('show'); }, 6000);
         }
 
-        document.getElementById('proposalForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var form = this;
+        /* ── PROPOSAL FORM ── */
+        (function() {
+            var form = document.getElementById('proposalForm');
             var btn  = document.getElementById('propBtn');
             var span = btn.querySelector('span');
-            var name  = form.querySelector('[name=name]').value.trim();
-            var email = form.querySelector('[name=email]').value.trim();
-            if (!name || !email) { showToast('Please fill in your name and email.', true); return; }
-            span.textContent = 'Sending…';
-            btn.disabled = true;
-            var payload = {
-                _subject: 'St Mary Magdalene — New Performance Proposal',
-                _captcha: 'false',
-                _template: 'table',
-                Name:       name,
-                Email:      email,
-                Genre:      form.querySelector('[name=genre]').value || 'Not specified',
-                Dates:      form.querySelector('[name=dates]').value || 'Not specified',
-                Repertoire: form.querySelector('[name=repertoire]').value || 'Not specified',
-                Duration:   form.querySelector('[name=duration]').value || 'Not specified',
-                About:      form.querySelector('[name=about]').value || 'Not provided'
-            };
-            fetch(FORMSUBMIT_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify(payload)
-            })
-            .then(function(res) { return res.json(); })
-            .then(function(json) {
-                if (json.success === 'true' || json.success === true) {
-                    span.textContent = 'Proposal Sent ✓';
-                    btn.style.cssText = 'background:#3a6b3a;cursor:default';
-                    showToast('Your proposal has been sent — we\'ll be in touch within 7 days.');
-                    setTimeout(function() {
-                        span.textContent = 'Submit Proposal';
-                        btn.style.cssText = '';
-                        btn.disabled = false;
-                        form.reset();
-                    }, 6000);
-                } else { throw new Error('Failed'); }
-            })
-            .catch(function() {
-                span.textContent = 'Try Again';
-                btn.style.cssText = 'background:#8b2020';
-                showToast('Something went wrong — please email rbranchbiescass@gmail.com directly.', true);
+
+            form.addEventListener('submit', function(e) {
+                var name  = form.querySelector('[name=name]').value.trim();
+                var email = form.querySelector('[name=email]').value.trim();
+                if (!name || !email) {
+                    e.preventDefault();
+                    showToast('Please fill in your name and email.', true);
+                    return;
+                }
+                /* Let form POST naturally to the hidden iframe */
+                span.textContent = 'Sending…';
+                btn.disabled = true;
+            });
+
+            /* iframe fires load when FormSubmit responds */
+            document.getElementById('proposal_iframe').addEventListener('load', function() {
+                if (!btn.disabled) return; /* ignore initial blank load */
+                span.textContent = 'Proposal Sent ✓';
+                btn.style.cssText = 'background:#3a6b3a;cursor:default';
+                showToast("Your proposal has been sent — we'll be in touch within 7 days.");
                 setTimeout(function() {
                     span.textContent = 'Submit Proposal';
                     btn.style.cssText = '';
                     btn.disabled = false;
-                }, 4000);
+                    form.reset();
+                }, 6000);
             });
-        });
+        }());
 
+        /* ── CUSTOM CURSOR ── */
         if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
             var dot  = document.getElementById('cursor-dot');
             var ring = document.getElementById('cursor-ring');
@@ -834,6 +829,7 @@
             });
         }
 
+        /* ── SMOOTH SCROLL ── */
         document.querySelectorAll('a[href^="#"]').forEach(function(link) {
             link.addEventListener('click', function(e) {
                 var href = link.getAttribute('href');
@@ -844,6 +840,7 @@
                 }
             });
         });
+
     })();
     </script>
 </body>
