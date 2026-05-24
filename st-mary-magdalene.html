@@ -593,9 +593,6 @@
     <div id="cursor-ring"></div>
     <div id="toast"></div>
 
-    <!-- Hidden iframe — receives the proposal form POST silently -->
-    <iframe name="proposal_iframe" id="proposal_iframe" style="display:none" aria-hidden="true"></iframe>
-
     <nav class="nav-wrap">
         <a class="nav-logo" href="index.html">Ramon Branch Biescas</a>
         <ul class="nav-links">
@@ -692,18 +689,7 @@
             <div class="contact-cta-inner">
                 <h2>Submit a Proposal</h2>
                 <p class="intro-p">Fill in the form below with details about your ensemble, repertoire, and preferred dates. We aim to respond within 7 days.</p>
-                <!-- target="proposal_iframe" submits silently; hidden inputs carry metadata -->
-                <form
-                  class="prop-form"
-                  id="proposalForm"
-                  action="https://formsubmit.co/rbranchbiescass@gmail.com"
-                  method="POST"
-                  target="proposal_iframe"
-                  novalidate
-                >
-                    <input type="hidden" name="_subject"  value="St Mary Magdalene — New Performance Proposal">
-                    <input type="hidden" name="_captcha"  value="false">
-                    <input type="hidden" name="_template" value="table">
+                <form class="prop-form" id="proposalForm" novalidate>
                     <div class="prop-row">
                         <div class="prop-field">
                             <label for="p-name">Your Name</label>
@@ -779,30 +765,41 @@
             var span = btn.querySelector('span');
 
             form.addEventListener('submit', function(e) {
+                e.preventDefault();
                 var name  = form.querySelector('[name=name]').value.trim();
                 var email = form.querySelector('[name=email]').value.trim();
                 if (!name || !email) {
-                    e.preventDefault();
                     showToast('Please fill in your name and email.', true);
                     return;
                 }
-                /* Let form POST naturally to the hidden iframe */
-                span.textContent = 'Sending…';
+                span.textContent = 'Sending\u2026';
                 btn.disabled = true;
-            });
 
-            /* iframe fires load when FormSubmit responds */
-            document.getElementById('proposal_iframe').addEventListener('load', function() {
-                if (!btn.disabled) return; /* ignore initial blank load */
-                span.textContent = 'Proposal Sent ✓';
-                btn.style.cssText = 'background:#3a6b3a;cursor:default';
-                showToast("Your proposal has been sent — we'll be in touch within 7 days.");
-                setTimeout(function() {
+                fetch('https://formspree.io/f/xredaqrl', {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                })
+                .then(function(res) {
+                    if (res.ok) {
+                        span.textContent = 'Proposal Sent \u2713';
+                        btn.style.cssText = 'background:#3a6b3a;cursor:default';
+                        showToast("Your proposal has been sent \u2014 we'll be in touch within 7 days.");
+                        setTimeout(function() {
+                            span.textContent = 'Submit Proposal';
+                            btn.style.cssText = '';
+                            btn.disabled = false;
+                            form.reset();
+                        }, 6000);
+                    } else {
+                        return res.json().then(function(d) { throw new Error(d.error || 'Server error'); });
+                    }
+                })
+                .catch(function() {
                     span.textContent = 'Submit Proposal';
-                    btn.style.cssText = '';
                     btn.disabled = false;
-                    form.reset();
-                }, 6000);
+                    showToast('Something went wrong \u2014 please try again.', true);
+                });
             });
         }());
 
