@@ -382,6 +382,12 @@
             margin-top: 0;
         }
 
+        /* Keep the Available Dates block in the codebase, but hide it on the live page */
+        .available-dates-panel,
+        .available-dates-divider {
+            display: none;
+        }
+
         @media (max-width: 900px) {
             .triptych-grid {
                 grid-template-columns: 1fr;
@@ -396,6 +402,9 @@
             }
             .triptych-panel {
                 padding: 0;
+            }
+            .available-dates-divider {
+                display: none;
             }
         }
 
@@ -660,9 +669,9 @@
                     </ul>
                 </div>
 
-                <div class="triptych-divider"></div>
+                <div class="triptych-divider available-dates-divider"></div>
 
-                <div class="triptych-panel reveal reveal-delay-3">
+                <div class="triptych-panel reveal reveal-delay-3 available-dates-panel">
                     <h2 class="triptych-title">Available Dates</h2>
                     <p class="dates-month">July</p>
                     <ul class="triptych-list">
@@ -785,7 +794,7 @@
                     showToast('Please fill in your name and email.', true);
                     return;
                 }
-                span.textContent = 'Sending\u2026';
+                span.textContent = 'Sending…';
                 btn.disabled = true;
 
                 fetch('https://formspree.io/f/xredaqrl', {
@@ -795,9 +804,9 @@
                 })
                 .then(function(res) {
                     if (res.ok) {
-                        span.textContent = 'Proposal Sent \u2713';
+                        span.textContent = 'Proposal Sent ✓';
                         btn.style.cssText = 'background:#3a6b3a;cursor:default';
-                        showToast("Your proposal has been sent \u2014 we'll be in touch within 7 days.");
+                        showToast("Your proposal has been sent — we'll be in touch within 7 days.");
                         setTimeout(function() {
                             span.textContent = 'Submit Proposal';
                             btn.style.cssText = '';
@@ -811,7 +820,7 @@
                 .catch(function() {
                     span.textContent = 'Submit Proposal';
                     btn.disabled = false;
-                    showToast('Something went wrong \u2014 please try again.', true);
+                    showToast('Something went wrong — please try again.', true);
                 });
             });
         }());
@@ -854,4 +863,4 @@
     })();
     </script>
 </body>
-</html> 	
+</html>
