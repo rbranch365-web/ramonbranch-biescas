@@ -385,12 +385,15 @@
       /* default: solo/portrait shots — taller crop, face at top */
       .concert-photo img { aspect-ratio: 3/2; object-position: center 15%; }
 
-      /* group/landscape shots — centred so nobody gets cropped out */
+      /* landscape shots — wide crop, centred */
       .concert-photo.landscape img { aspect-ratio: 3/2; object-position: center center; }
 
-      /* Ventus Duo and Kairos Winds are group shots in portrait containers —
-         centre them so both players stay in frame */
-      .concert-photo.group img { aspect-ratio: 3/2; object-position: center center; }
+      /* group shots (Ventus Duo, Kairos Winds) — use a taller aspect ratio
+         so all players stay in frame without being cropped */
+      .concert-photo.group img {
+        aspect-ratio: 4/3;
+        object-position: center center;
+      }
 
       .concert-body { grid-column: 2; grid-row: 1; }
 
