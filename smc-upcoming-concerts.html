@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Upcoming Concerts — St Mary Magdalene Concert Series, Brighton. Lunchtime concerts at St Mary Magdalene Church, curated by Ramon Branch Biescas." />
   <title>Upcoming Concerts — St Mary Magdalene Concert Series</title>
-  //fonts.googleapis.com" />
-  //fonts.gstatic.com" crossorigin />
-  //fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -78,18 +78,10 @@
     .page-hero {
       position: relative;
       padding: 9rem 3rem 5rem;
-      background-image:
-        linear-gradient(to right, rgba(245,242,236,0.78) 0%, rgba(245,242,236,0.62) 52%, rgba(245,242,236,0.38) 100%),
-        linear-gradient(to bottom, rgba(245,242,236,0.14), rgba(245,242,236,0.22)),
-        url('https://d2xsxph8kpxj0f.cloudfront.net/310519663607796305/3k9xHgf7NAXATEwfPo4cZH/stmary_bg-QY5yRQkqraj5G2DCUE6ig7.webp');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
+      background: linear-gradient(135deg, #ede8df 0%, #f5f2ec 60%, #ede0cd 100%);
     }
 
     .page-hero-inner {
-      position: relative;
-      z-index: 1;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -380,14 +372,7 @@
     @media (max-width: 700px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .page-hero {
-        padding: 7rem 1.5rem 3rem;
-        background-image:
-          linear-gradient(to bottom, rgba(245,242,236,0.74) 0%, rgba(245,242,236,0.56) 55%, rgba(245,242,236,0.38) 100%),
-          linear-gradient(to bottom, rgba(245,242,236,0.1), rgba(245,242,236,0.18)),
-          url('https://d2xsxph8kpxj0f.cloudfront.net/310519663607796305/3k9xHgf7NAXATEwfPo4cZH/stmary_bg-QY5yRQkqraj5G2DCUE6ig7.webp');
-        background-position: center center;
-      }
+      .page-hero { padding: 7rem 1.5rem 3rem; }
       .concerts-section { padding: 2rem 1.5rem 5rem; }
       .perform-strip { padding: 3rem 1.5rem; }
       .perform-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -433,12 +418,12 @@
   <nav>
     <a class="nav-logo" href="index.html">Ramon Branch Biescas</a>
     <ul class="nav-links">
-      ><a href="index.html#concerts">Concerts</a></li>
-      ><a href="index.html#about">About</a></li>
-      ><a href="index.html#media">Media</a></li>
-      ><a href="st-mary-magdalene.html" class="active">St Mary Magdalene</a></li>
-      ><a href="index.html#booking">Bookings</a></li>
-      ><a href="index.html#contact">Contact</a></li>
+      <li><a href="index.html#concerts">Concerts</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#media">Media</a></li>
+      <li><a href="st-mary-magdalene.html" class="active">St Mary Magdalene</a></li>
+      <li><a href="index.html#booking">Bookings</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -484,11 +469,11 @@
           <h3 class="concert-title">The Beech Duo</h3>
           <p class="concert-players">Jan Halen, violin · Nigel Tuffs, guitar</p>
           <ul class="programme">
-            ><span class="piece">Un Ange</span><span class="meta">Sébastien Vachez</span></li>
-            ><span class="piece">Sonata in E minor</span><span class="meta">J. S. Bach</span></li>
-            ><span class="piece">Arietta</span><span class="meta">David Loeb</span></li>
-            ><span class="piece">Romanian Dances</span><span class="meta">Béla Bartók</span></li>
-            ><span class="piece">Café 1930</span><span class="meta">Astor Piazzolla</span></li>
+            <li><span class="piece">Un Ange</span><span class="meta">Sébastien Vachez</span></li>
+            <li><span class="piece">Sonata in E minor</span><span class="meta">J. S. Bach</span></li>
+            <li><span class="piece">Arietta</span><span class="meta">David Loeb</span></li>
+            <li><span class="piece">Romanian Dances</span><span class="meta">Béla Bartók</span></li>
+            <li><span class="piece">Café 1930</span><span class="meta">Astor Piazzolla</span></li>
           </ul>
           <p class="concert-note">Plus <strong>a selection of gypsy jazz arrangements</strong> for violin and guitar.</p>
         </div>
@@ -507,11 +492,11 @@
           <h3 class="concert-title">Ventus Duo</h3>
           <p class="concert-players">Ramon, tuba &amp; organ · David, horn</p>
           <ul class="programme">
-            ><span class="piece">Sonata for Flute in F major<span class="arr">arr. for tuba and piano</span></span><span class="meta">Telemann</span></li>
-            ><span class="piece">Concert Rondo for Horn and Piano in E-flat major</span><span class="meta">Mozart</span></li>
-            ><span class="piece">Carnival of Venice<span class="arr">arr. David Le Clair, for tuba and piano</span></span><span class="meta">Arban</span></li>
-            ><span class="piece">Romance, for horn and piano</span><span class="meta">Saint-Saëns</span></li>
-            ><span class="piece">Aria<span class="arr">arr. for tuba and piano</span></span><span class="meta">E. Bozza</span></li>
+            <li><span class="piece">Sonata for Flute in F major<span class="arr">arr. for tuba and piano</span></span><span class="meta">Telemann</span></li>
+            <li><span class="piece">Concert Rondo for Horn and Piano in E-flat major</span><span class="meta">Mozart</span></li>
+            <li><span class="piece">Carnival of Venice<span class="arr">arr. David Le Clair, for tuba and piano</span></span><span class="meta">Arban</span></li>
+            <li><span class="piece">Romance, for horn and piano</span><span class="meta">Saint-Saëns</span></li>
+            <li><span class="piece">Aria<span class="arr">arr. for tuba and piano</span></span><span class="meta">E. Bozza</span></li>
           </ul>
         </div>
       </article>
@@ -529,12 +514,12 @@
           <h3 class="concert-title">Matilde Freiria</h3>
           <p class="concert-players">Guitar</p>
           <ul class="programme">
-            ><span class="piece">Les Barricades Mystérieuses</span><span class="meta">François Couperin</span></li>
-            ><span class="piece">Sonatas K.208, K.209 &amp; K.213</span><span class="meta">Domenico Scarlatti</span></li>
-            ><span class="piece">Le Départ</span><span class="meta">Napoléon Coste</span></li>
-            ><span class="piece">Junto al Generalife</span><span class="meta">Joaquín Rodrigo</span></li>
-            ><span class="piece">The Old Lime Tree</span><span class="meta">Sergei Rudnev</span></li>
-            ><span class="piece">Bilacus</span><span class="meta">Erik Marchelie</span></li>
+            <li><span class="piece">Les Barricades Mystérieuses</span><span class="meta">François Couperin</span></li>
+            <li><span class="piece">Sonatas K.208, K.209 &amp; K.213</span><span class="meta">Domenico Scarlatti</span></li>
+            <li><span class="piece">Le Départ</span><span class="meta">Napoléon Coste</span></li>
+            <li><span class="piece">Junto al Generalife</span><span class="meta">Joaquín Rodrigo</span></li>
+            <li><span class="piece">The Old Lime Tree</span><span class="meta">Sergei Rudnev</span></li>
+            <li><span class="piece">Bilacus</span><span class="meta">Erik Marchelie</span></li>
           </ul>
         </div>
       </article>
@@ -552,9 +537,9 @@
           <h3 class="concert-title">Kairos Winds</h3>
           <p class="concert-players">Laura Ware-Heine, oboe · Guillermo Ramasasa, clarinet · Izabela Musial, bassoon</p>
           <ul class="programme">
-            ><span class="piece">Cinq Pièces en Trio</span><span class="meta">Jacques Ibert</span></li>
-            ><span class="piece">Divertimento No. 1, K439b</span><span class="meta">Mozart</span></li>
-            ><span class="piece">Century Dances</span><span class="meta">Cecilia McDowall</span></li>
+            <li><span class="piece">Cinq Pièces en Trio</span><span class="meta">Jacques Ibert</span></li>
+            <li><span class="piece">Divertimento No. 1, K439b</span><span class="meta">Mozart</span></li>
+            <li><span class="piece">Century Dances</span><span class="meta">Cecilia McDowall</span></li>
           </ul>
         </div>
       </article>
@@ -572,11 +557,11 @@
           <h3 class="concert-title">Cathy Tsang &amp; Bethany Caswell</h3>
           <p class="concert-players">Flute &amp; harp</p>
           <ul class="programme">
-            ><span class="piece">Romance, for flute and harp</span><span class="meta">Saint-Saëns</span></li>
-            ><span class="piece">Rêverie</span><span class="meta">Debussy</span></li>
-            ><span class="piece">Nocturne<span class="arr">arr. flute and harp</span></span><span class="meta">Boulanger</span></li>
-            ><span class="piece">Narthex</span><span class="meta">Andres</span></li>
-            ><span class="piece">Entr'acte, for flute and harp</span><span class="meta">Jacques Ibert</span></li>
+            <li><span class="piece">Romance, for flute and harp</span><span class="meta">Saint-Saëns</span></li>
+            <li><span class="piece">Rêverie</span><span class="meta">Debussy</span></li>
+            <li><span class="piece">Nocturne<span class="arr">arr. flute and harp</span></span><span class="meta">Boulanger</span></li>
+            <li><span class="piece">Narthex</span><span class="meta">Andres</span></li>
+            <li><span class="piece">Entr'acte, for flute and harp</span><span class="meta">Jacques Ibert</span></li>
           </ul>
         </div>
       </article>
