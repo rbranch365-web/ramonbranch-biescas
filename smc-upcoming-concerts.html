@@ -231,6 +231,11 @@
       object-position: center center;
     }
 
+    /* Kairos Winds: shift crop downward so heads are not cut off */
+    .concert-photo.kairos-photo img {
+      object-position: center 28%;
+    }
+
     /* CONTENT COLUMN */
     .concert-title {
       font-family: var(--font-display);
@@ -395,6 +400,11 @@
         object-position: center center;
       }
 
+      /* Kairos Winds: shift crop downward so heads are not cut off */
+      .concert-photo.kairos-photo img {
+        object-position: center 22%;
+      }
+
       .concert-body { grid-column: 2; grid-row: 1; }
 
       .concert-daynum { font-size: 2rem; }
@@ -520,7 +530,7 @@
           <span class="concert-daynum">22</span>
           <span class="concert-month">Aug</span>
         </div>
-        <div class="concert-photo group">
+        <div class="concert-photo group kairos-photo">
           <img src="images/kairos-winds.jpg" alt="Kairos Winds — woodwind trio" />
         </div>
         <div class="concert-body">
