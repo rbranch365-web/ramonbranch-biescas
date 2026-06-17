@@ -32,7 +32,6 @@
       min-height: 100vh;
     }
 
-    /* NAV */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -74,14 +73,20 @@
 
     .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 
-    /* PAGE HERO */
     .page-hero {
       position: relative;
       padding: 9rem 3rem 5rem;
-      background: linear-gradient(135deg, #ede8df 0%, #f5f2ec 60%, #ede0cd 100%);
+      background-image:
+        linear-gradient(rgba(245, 242, 236, 0.82), rgba(245, 242, 236, 0.88)),
+        url("images/st-mary-magdalene-church.jpg");
+      background-position: center center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     .page-hero-inner {
+      position: relative;
+      z-index: 1;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -131,7 +136,7 @@
       flex-wrap: wrap;
       gap: 2rem;
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid var(--rule);
+      border-bottom: 1px solid rgba(216, 210, 200, 0.9);
     }
 
     .hero-meta-item { display: flex; flex-direction: column; gap: 0.2rem; }
@@ -150,7 +155,6 @@
       color: var(--ink);
     }
 
-    /* CONCERTS LIST */
     .concerts-section {
       max-width: 900px;
       margin: 0 auto;
@@ -171,7 +175,6 @@
       flex-direction: column;
     }
 
-    /* Concert entry: date | photo | content */
     .concert-entry {
       display: grid;
       grid-template-columns: 90px 140px 1fr;
@@ -183,7 +186,6 @@
 
     .concert-entry:first-child { border-top: 1px solid var(--rule); }
 
-    /* DATE COLUMN */
     .concert-date {
       display: flex;
       flex-direction: column;
@@ -209,7 +211,6 @@
       margin: 0.15rem 0;
     }
 
-    /* PHOTO COLUMN */
     .concert-photo {
       width: 140px;
       flex-shrink: 0;
@@ -225,18 +226,15 @@
       filter: sepia(8%) contrast(1.02);
     }
 
-    /* landscape group shots */
     .concert-photo.landscape img {
       aspect-ratio: 4 / 3;
       object-position: center center;
     }
 
-    /* Kairos Winds: shift crop downward so heads are not cut off */
     .concert-photo.kairos-photo img {
       object-position: center 28%;
     }
 
-    /* CONTENT COLUMN */
     .concert-title {
       font-family: var(--font-display);
       font-size: 1.75rem;
@@ -300,7 +298,6 @@
       font-weight: 500;
     }
 
-    /* PERFORM STRIP */
     .perform-strip {
       background: var(--ink);
       color: var(--cream);
@@ -354,7 +351,6 @@
       border-color: rgba(245,242,236,0.6);
     }
 
-    /* FOOTER */
     footer {
       border-top: 1px solid var(--rule);
       padding: 2rem 3rem;
@@ -372,7 +368,7 @@
     @media (max-width: 700px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .page-hero { padding: 7rem 1.5rem 3rem; }
+      .page-hero { padding: 7rem 1.5rem 3rem; background-position: center center; }
       .concerts-section { padding: 3rem 1.5rem 5rem; }
       .perform-strip { padding: 3rem 1.5rem; }
       .perform-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
@@ -386,27 +382,17 @@
 
       .concert-date { grid-column: 1; grid-row: 1; }
       .concert-photo { grid-column: 1 / -1; grid-row: 2; width: 100%; }
-
-      /* default: solo/portrait shots — taller crop, face at top */
       .concert-photo img { aspect-ratio: 3/2; object-position: center 15%; }
-
-      /* landscape shots — wide crop, centred */
       .concert-photo.landscape img { aspect-ratio: 3/2; object-position: center center; }
-
-      /* group shots (Ventus Duo, Kairos Winds) — use a taller aspect ratio
-         so all players stay in frame without being cropped */
       .concert-photo.group img {
         aspect-ratio: 4/3;
         object-position: center center;
       }
-
-      /* Kairos Winds: shift crop downward so heads are not cut off */
       .concert-photo.kairos-photo img {
         object-position: center 22%;
       }
 
       .concert-body { grid-column: 2; grid-row: 1; }
-
       .concert-daynum { font-size: 2rem; }
       .programme li { flex-direction: column; gap: 0.1rem; }
       .programme .meta { text-align: left; }
