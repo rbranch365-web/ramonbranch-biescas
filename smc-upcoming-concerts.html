@@ -78,18 +78,10 @@
     .page-hero {
       position: relative;
       padding: 9rem 3rem 5rem;
-      background-image:
-        linear-gradient(to right, rgba(18, 13, 8, 0.82) 0%, rgba(18, 13, 8, 0.52) 52%, rgba(18, 13, 8, 0.18) 100%),
-        linear-gradient(to bottom, rgba(245,242,236,0.14), rgba(245,242,236,0.22)),
-        url('https://d2xsxph8kpxj0f.cloudfront.net/310519663607796305/3k9xHgf7NAXATEwfPo4cZH/stmary_bg-QY5yRQkqraj5G2DCUE6ig7.webp');
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
+      background: linear-gradient(135deg, #ede8df 0%, #f5f2ec 60%, #ede0cd 100%);
     }
 
     .page-hero-inner {
-      position: relative;
-      z-index: 1;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -106,20 +98,20 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(245,242,236,0.78);
+      color: var(--mid);
       text-decoration: none;
     }
 
-    .breadcrumb a:hover { color: #fff; }
-    .breadcrumb .sep { color: rgba(245,242,236,0.38); }
-    .breadcrumb .current { color: #d8c29a; }
+    .breadcrumb a:hover { color: var(--ink); }
+    .breadcrumb .sep { color: var(--rule); }
+    .breadcrumb .current { color: var(--accent); }
 
     .hero-label {
       font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: #d8c29a;
+      color: var(--accent);
       margin-bottom: 1rem;
     }
 
@@ -128,12 +120,11 @@
       font-size: clamp(2.8rem, 6vw, 4.5rem);
       font-weight: 300;
       line-height: 1.1;
-      color: #fffdf8;
+      color: var(--ink);
       margin-bottom: 1.5rem;
-      text-shadow: 0 1px 10px rgba(0,0,0,0.18);
     }
 
-    .hero-title em { font-style: italic; color: #e4cfab; }
+    .hero-title em { font-style: italic; color: var(--accent); }
 
     .hero-meta {
       display: flex;
@@ -150,13 +141,13 @@
       font-weight: 500;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(245,242,236,0.7);
+      color: var(--mid);
     }
 
     .hero-meta-item .value {
       font-family: var(--font-display);
       font-size: 1rem;
-      color: #fff8ee;
+      color: var(--ink);
     }
 
     /* CONCERTS LIST */
@@ -381,14 +372,7 @@
     @media (max-width: 700px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .page-hero {
-        padding: 7rem 1.5rem 3rem;
-        background-image:
-          linear-gradient(to bottom, rgba(18, 13, 8, 0.72) 0%, rgba(18, 13, 8, 0.5) 55%, rgba(18, 13, 8, 0.3) 100%),
-          linear-gradient(to bottom, rgba(245,242,236,0.1), rgba(245,242,236,0.18)),
-          url('https://d2xsxph8kpxj0f.cloudfront.net/310519663607796305/3k9xHgf7NAXATEwfPo4cZH/stmary_bg-QY5yRQkqraj5G2DCUE6ig7.webp');
-        background-position: center center;
-      }
+      .page-hero { padding: 7rem 1.5rem 3rem; }
       .concerts-section { padding: 2rem 1.5rem 5rem; }
       .perform-strip { padding: 3rem 1.5rem; }
       .perform-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
