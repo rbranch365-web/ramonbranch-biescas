@@ -171,16 +171,19 @@
       flex-direction: column;
     }
 
+    /* Concert entry: date | photo | content */
     .concert-entry {
       display: grid;
-      grid-template-columns: 110px 1fr;
+      grid-template-columns: 90px 140px 1fr;
       gap: 2.5rem;
       padding: 3rem 0;
       border-bottom: 1px solid var(--rule);
+      align-items: start;
     }
 
     .concert-entry:first-child { border-top: 1px solid var(--rule); }
 
+    /* DATE COLUMN */
     .concert-date {
       display: flex;
       flex-direction: column;
@@ -206,6 +209,29 @@
       margin: 0.15rem 0;
     }
 
+    /* PHOTO COLUMN */
+    .concert-photo {
+      width: 140px;
+      flex-shrink: 0;
+    }
+
+    .concert-photo img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      border-radius: 2px;
+      filter: sepia(8%) contrast(1.02);
+    }
+
+    /* landscape group shots */
+    .concert-photo.landscape img {
+      aspect-ratio: 4 / 3;
+      object-position: center center;
+    }
+
+    /* CONTENT COLUMN */
     .concert-title {
       font-family: var(--font-display);
       font-size: 1.75rem;
@@ -341,11 +367,24 @@
     @media (max-width: 700px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
-      .page-hero, .concerts-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .page-hero { padding: 7rem 1.5rem 3rem; }
+      .concerts-section { padding: 3rem 1.5rem 5rem; }
       .perform-strip { padding: 3rem 1.5rem; }
       .perform-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-      .concert-entry { grid-template-columns: 70px 1fr; gap: 1.5rem; }
+
+      .concert-entry {
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
+        gap: 1rem 1.5rem;
+      }
+
+      .concert-date { grid-column: 1; grid-row: 1; }
+      .concert-photo { grid-column: 1 / -1; grid-row: 2; width: 100%; }
+      .concert-photo img { aspect-ratio: 16/9; object-position: center 20%; }
+      .concert-photo.landscape img { aspect-ratio: 16/9; }
+      .concert-body { grid-column: 2; grid-row: 1; }
+
       .concert-daynum { font-size: 2rem; }
       .programme li { flex-direction: column; gap: 0.1rem; }
       .programme .meta { text-align: left; }
@@ -389,7 +428,10 @@
           <span class="value">Free — donations welcome</span>
         </div>
       </div>
+    </div>
   </header>
+
+  <div class="concerts-section">
     <div class="concert-list">
 
       <article class="concert-entry">
@@ -398,7 +440,10 @@
           <span class="concert-daynum">11</span>
           <span class="concert-month">Jul</span>
         </div>
-        <div>
+        <div class="concert-photo landscape">
+          <img src="images/beech-duo.jpg" alt="The Beech Duo — Jan Halen and Nigel Tuffs" />
+        </div>
+        <div class="concert-body">
           <h3 class="concert-title">The Beech Duo</h3>
           <p class="concert-players">Jan Halen, violin · Nigel Tuffs, guitar</p>
           <ul class="programme">
@@ -418,16 +463,19 @@
           <span class="concert-daynum">18</span>
           <span class="concert-month">Jul</span>
         </div>
-        <div>
+        <div class="concert-photo">
+          <img src="images/ventus-duo.jpg" alt="Ventus Duo — Ramon and David" />
+        </div>
+        <div class="concert-body">
           <h3 class="concert-title">Ventus Duo</h3>
           <p class="concert-players">Ramon, tuba &amp; organ · David, horn</p>
           <ul class="programme">
-            <li><span class="piece">Sonata for Flute in F major<span class="arr">arr. for tuba and piano</span></span><span class="meta">Telemann </span></li>
+            <li><span class="piece">Sonata for Flute in F major<span class="arr">arr. for tuba and piano</span></span><span class="meta">Telemann</span></li>
             <li><span class="piece">Concert Rondo for Horn and Piano in E-flat major</span><span class="meta">Mozart</span></li>
             <li><span class="piece">Carnival of Venice<span class="arr">arr. David Le Clair, for tuba and piano</span></span><span class="meta">Arban</span></li>
             <li><span class="piece">Romance, for horn and piano</span><span class="meta">Saint-Saëns</span></li>
             <li><span class="piece">Aria<span class="arr">arr. for tuba and piano</span></span><span class="meta">E. Bozza</span></li>
-         
+          </ul>
         </div>
       </article>
 
@@ -437,7 +485,10 @@
           <span class="concert-daynum">8</span>
           <span class="concert-month">Aug</span>
         </div>
-        <div>
+        <div class="concert-photo">
+          <img src="images/matilde-freiria.jpg" alt="Matilde Freiria, guitar" />
+        </div>
+        <div class="concert-body">
           <h3 class="concert-title">Matilde Freiria</h3>
           <p class="concert-players">Guitar</p>
           <ul class="programme">
@@ -457,7 +508,10 @@
           <span class="concert-daynum">22</span>
           <span class="concert-month">Aug</span>
         </div>
-        <div>
+        <div class="concert-photo">
+          <img src="images/kairos-winds.jpg" alt="Kairos Winds — woodwind trio" />
+        </div>
+        <div class="concert-body">
           <h3 class="concert-title">Kairos Winds</h3>
           <p class="concert-players">Laura Ware-Heine, oboe · Guillermo Ramasasa, clarinet · Izabela Musial, bassoon</p>
           <ul class="programme">
@@ -474,7 +528,10 @@
           <span class="concert-daynum">5</span>
           <span class="concert-month">Sep</span>
         </div>
-        <div>
+        <div class="concert-photo">
+          <img src="images/cathy-tsang.jpg" alt="Cathy Tsang, flute" />
+        </div>
+        <div class="concert-body">
           <h3 class="concert-title">Cathy Tsang &amp; Bethany Caswell</h3>
           <p class="concert-players">Flute &amp; harp</p>
           <ul class="programme">
@@ -488,7 +545,7 @@
       </article>
 
     </div>
-  </section>
+  </div>
 
   <div class="perform-strip">
     <div class="perform-strip-inner">
