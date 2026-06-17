@@ -150,70 +150,124 @@
       color: var(--ink);
     }
 
-    /* COMING SOON */
+    /* CONCERTS LIST */
     .concerts-section {
       max-width: 900px;
       margin: 0 auto;
       padding: 5rem 3rem 7rem;
     }
 
-    .coming-soon {
+    .season-intro {
+      text-align: center;
+      font-family: var(--font-display);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--mid);
+      margin-bottom: 4rem;
+    }
+
+    .concert-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .concert-entry {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 2.5rem;
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .concert-entry:first-child { border-top: 1px solid var(--rule); }
+
+    .concert-date {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 5rem 2rem;
-      border: 1px solid var(--rule);
-      border-radius: 4px;
-      background: rgba(255,255,255,0.4);
+      padding-top: 0.2rem;
     }
 
-    .coming-soon-icon {
-      width: 56px;
-      height: 56px;
-      margin-bottom: 2rem;
-      opacity: 0.25;
+    .concert-day, .concert-month {
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
     }
 
-    .coming-soon h2 {
+    .concert-daynum {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 2.6rem;
       font-weight: 300;
+      line-height: 1;
+      color: var(--ink);
+      margin: 0.15rem 0;
+    }
+
+    .concert-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 400;
       font-style: italic;
       color: var(--ink);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.3rem;
     }
 
-    .coming-soon p {
-      font-size: 0.88rem;
-      color: var(--mid);
-      max-width: 340px;
-      line-height: 1.8;
-    }
-
-    .coming-soon .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      margin-top: 2.5rem;
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .concert-players {
+      font-size: 0.82rem;
       color: var(--accent);
-      text-decoration: none;
-      transition: color 0.2s;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.4rem;
     }
 
-    .coming-soon .back-link:hover { color: var(--ink); }
-
-    .coming-soon .back-link svg {
-      width: 14px; height: 14px;
-      transition: transform 0.2s;
+    .programme {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
     }
 
-    .coming-soon .back-link:hover svg { transform: translateX(-3px); }
+    .programme li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 1.5rem;
+      font-size: 0.86rem;
+      padding: 0.55rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .programme li:last-child { border-bottom: none; }
+
+    .programme .piece { color: var(--ink); }
+    .programme .piece .arr {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--mid);
+      font-style: italic;
+      margin-top: 0.1rem;
+    }
+
+    .programme .meta {
+      color: var(--mid);
+      font-style: italic;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .concert-note {
+      margin-top: 1.1rem;
+      font-size: 0.8rem;
+      color: var(--mid);
+      font-style: italic;
+    }
+
+    .concert-note strong {
+      color: var(--ink);
+      font-style: normal;
+      font-weight: 500;
+    }
 
     /* PERFORM STRIP */
     .perform-strip {
@@ -291,6 +345,10 @@
       .perform-strip { padding: 3rem 1.5rem; }
       .perform-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      .concert-entry { grid-template-columns: 70px 1fr; gap: 1.5rem; }
+      .concert-daynum { font-size: 2rem; }
+      .programme li { flex-direction: column; gap: 0.1rem; }
+      .programme .meta { text-align: left; }
     }
   </style>
 </head>
@@ -335,20 +393,106 @@
   </header>
 
   <section class="concerts-section">
-    <div class="coming-soon">
-      <svg class="coming-soon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
-        <rect x="3" y="4" width="18" height="18" rx="2"/>
-        <path d="M16 2v4M8 2v4M3 10h18"/>
-        <circle cx="12" cy="16" r="1" fill="currentColor"/>
-      </svg>
-      <h2>Concerts coming soon</h2>
-      <p>The 2026 programme is being finalised. Check back shortly for confirmed dates and performers.</p>
-      <a class="back-link" href="st-mary-magdalene.html">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
-        </svg>
-        Back to Series
-      </a>
+    <p class="season-intro">Five Saturday lunchtime concerts, July through September.</p>
+
+    <div class="concert-list">
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Sat</span>
+          <span class="concert-daynum">11</span>
+          <span class="concert-month">Jul</span>
+        </div>
+        <div>
+          <h3 class="concert-title">The Beech Duo</h3>
+          <p class="concert-players">Jan Halen, violin · Nigel Tuffs, guitar</p>
+          <ul class="programme">
+            <li><span class="piece">Un Ange</span><span class="meta">Sébastien Vachez</span></li>
+            <li><span class="piece">Sonata in E minor</span><span class="meta">J. S. Bach</span></li>
+            <li><span class="piece">Arietta</span><span class="meta">David Loeb</span></li>
+            <li><span class="piece">Romanian Dances</span><span class="meta">Béla Bartók</span></li>
+            <li><span class="piece">Café 1930</span><span class="meta">Astor Piazzolla</span></li>
+          </ul>
+          <p class="concert-note">Plus <strong>a selection of gypsy jazz arrangements</strong> for violin and guitar.</p>
+        </div>
+      </article>
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Sat</span>
+          <span class="concert-daynum">18</span>
+          <span class="concert-month">Jul</span>
+        </div>
+        <div>
+          <h3 class="concert-title">Ventus Duo</h3>
+          <p class="concert-players">Ramon, tuba &amp; organ · David, horn</p>
+          <ul class="programme">
+            <li><span class="piece">Sonata for Flute in F major<span class="arr">arr. for tuba and piano</span></span><span class="meta">Telemann · 10′</span></li>
+            <li><span class="piece">Concert Rondo for Horn and Piano in E-flat major</span><span class="meta">Mozart · 8′</span></li>
+            <li><span class="piece">Carnival of Venice<span class="arr">arr. David Le Clair, for tuba and piano</span></span><span class="meta">Arban · 10′</span></li>
+            <li><span class="piece">Romance, for horn and piano</span><span class="meta">Saint-Saëns · 4′</span></li>
+            <li><span class="piece">Aria<span class="arr">arr. for tuba and piano</span></span><span class="meta">E. Bozza · 3′</span></li>
+          </ul>
+          <p class="concert-note">Encore: <strong>Mozart Duets</strong>, tuba and horn together.</p>
+        </div>
+      </article>
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Sat</span>
+          <span class="concert-daynum">8</span>
+          <span class="concert-month">Aug</span>
+        </div>
+        <div>
+          <h3 class="concert-title">Matilde Freiria</h3>
+          <p class="concert-players">Guitar</p>
+          <ul class="programme">
+            <li><span class="piece">Les Barricades Mystérieuses</span><span class="meta">François Couperin</span></li>
+            <li><span class="piece">Sonatas K.208, K.209 &amp; K.213</span><span class="meta">Domenico Scarlatti</span></li>
+            <li><span class="piece">Le Départ</span><span class="meta">Napoléon Coste</span></li>
+            <li><span class="piece">Junto al Generalife</span><span class="meta">Joaquín Rodrigo</span></li>
+            <li><span class="piece">The Old Lime Tree</span><span class="meta">Sergei Rudnev</span></li>
+            <li><span class="piece">Bilacus</span><span class="meta">Erik Marchelie</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Sat</span>
+          <span class="concert-daynum">22</span>
+          <span class="concert-month">Aug</span>
+        </div>
+        <div>
+          <h3 class="concert-title">Kairos Winds</h3>
+          <p class="concert-players">Laura Ware-Heine, oboe · Guillermo Ramasasa, clarinet · Izabela Musial, bassoon</p>
+          <ul class="programme">
+            <li><span class="piece">Cinq Pièces en Trio</span><span class="meta">Jacques Ibert</span></li>
+            <li><span class="piece">Divertimento No. 1, K439b</span><span class="meta">Mozart</span></li>
+            <li><span class="piece">Century Dances</span><span class="meta">Cecilia McDowall</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Sat</span>
+          <span class="concert-daynum">5</span>
+          <span class="concert-month">Sep</span>
+        </div>
+        <div>
+          <h3 class="concert-title">Cathy Tsang &amp; Bethany Caswell</h3>
+          <p class="concert-players">Flute &amp; harp</p>
+          <ul class="programme">
+            <li><span class="piece">Romance, for flute and harp</span><span class="meta">Saint-Saëns</span></li>
+            <li><span class="piece">Rêverie</span><span class="meta">Debussy</span></li>
+            <li><span class="piece">Nocturne<span class="arr">arr. flute and harp</span></span><span class="meta">Boulanger</span></li>
+            <li><span class="piece">Narthex</span><span class="meta">Andres</span></li>
+            <li><span class="piece">Entr'acte, for flute and harp</span><span class="meta">Jacques Ibert</span></li>
+          </ul>
+        </div>
+      </article>
+
     </div>
   </section>
 
