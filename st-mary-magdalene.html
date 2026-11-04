@@ -194,20 +194,25 @@
             color: var(--gold);
         }
 
+        /* Dark fallback behind the church photo: if the image fails to load,
+           the white text is still readable and the section still looks designed. */
         .stmary-section {
             position: relative;
             overflow: hidden;
             min-height: 70vh;
             display: flex;
             align-items: center;
+            background:
+                radial-gradient(ellipse at 75% 40%, #3b2d1d 0%, rgba(59,45,29,0) 60%),
+                #0f0d0a;
         }
         .stmary-bg {
             position: absolute;
             inset: 0;
             width: 100%; height: 100%;
             object-fit: cover;
-            object-position: center;
-            filter: brightness(0.45) saturate(0.9);
+            object-position: 62% 30%;
+            filter: brightness(0.62) saturate(0.95);
         }
         .stmary-overlay {
             position: absolute;
@@ -559,6 +564,7 @@
             .info-triptych { padding: 3.5rem 0; }
             .contact-cta { padding: 4rem 0; }
             .stmary-section { min-height: 50vh; }
+            .stmary-bg { object-position: 66% 30%; }
             .stmary-content { padding: 4rem 1.5rem; }
         }
         @media (max-width: 1024px) {
@@ -624,7 +630,7 @@
     </header>
 
     <section class="stmary-section">
-        <img class="stmary-bg" src="https://d2xsxph8kpxj0f.cloudfront.net/310519663607796305/3k9xHgf7NAXATEwfPo4cZH/stmary_bg-QY5yRQkqraj5G2DCUE6ig7.webp" alt="St Mary Magdalene Church interior">
+        <img class="stmary-bg" src="images/stmary_bg.jpg" alt="Mass at St Mary Magdalene Church, Brighton" onerror="this.style.display='none'">
         <div class="stmary-overlay"></div>
         <div class="stmary-content">
             <p class="stmary-label">About the Series</p>
