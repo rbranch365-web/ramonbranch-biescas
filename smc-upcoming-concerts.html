@@ -33,7 +33,7 @@
     }
 
     /* NAV */
-    body > nav {
+    nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
@@ -430,7 +430,7 @@
     footer a:hover { color: var(--ink); }
 
     @media (max-width: 700px) {
-      body > nav { padding: 1rem 1.5rem; }
+      nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       .page-hero { padding: 7rem 1.5rem 3rem; }
       .concerts-section { padding: 2rem 1.5rem 5rem; }
@@ -491,25 +491,13 @@
 </head>
 <body>
 
-  <nav>
-    <a class="nav-logo" href="index.html">Ramon Branch Biescas</a>
-    <ul class="nav-links">
-      <li><a href="index.html#concerts">Concerts</a></li>
-      <li><a href="index.html#about">About</a></li>
-      <li><a href="index.html#media">Media</a></li>
-      <li><a href="st-mary-magdalene.html" class="active">St Mary Magdalene</a></li>
-      <li><a href="index.html#booking">Bookings</a></li>
-      <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-  </nav>
-
   <header class="page-hero">
     <div class="page-hero-inner">
-      <div class="breadcrumb" role="navigation" aria-label="breadcrumb">
+      <nav class="breadcrumb" aria-label="breadcrumb">
         <a href="st-mary-magdalene.html">St Mary Magdalene</a>
         <span class="sep">—</span>
-        <span class="current">Concerts</span>
-      </div>
+        <span class="current">Upcoming Concerts</span>
+      </nav>
       <p class="hero-label">St Mary Magdalene Concert Series</p>
       <h1 class="hero-title">Upcoming <em>&amp; Past Concerts</em></h1>
       <div class="hero-meta">
