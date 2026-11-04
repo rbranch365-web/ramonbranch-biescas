@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Upcoming Concerts — St Mary Magdalene Concert Series, Brighton. Lunchtime concerts at St Mary Magdalene Church, curated by Ramon Branch Biescas." />
-  <title>Upcoming Concerts — St Mary Magdalene Concert Series</title>
+  <meta name="description" content="Upcoming and past concerts — St Mary Magdalene Concert Series, Brighton. Lunchtime concerts at St Mary Magdalene Church, curated by Ramon Branch Biescas." />
+  <title>Upcoming &amp; Past Concerts — St Mary Magdalene Concert Series</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -33,7 +33,7 @@
     }
 
     /* NAV */
-    nav {
+    body > nav {
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
@@ -169,6 +169,35 @@
       margin-bottom: 4rem;
     }
 
+    /* Section headings: Upcoming / Past */
+    .list-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .list-heading h2 {
+      font-family: var(--font-display);
+      font-size: 2.1rem;
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .list-heading h2 em { font-style: italic; color: var(--accent); }
+
+    .list-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      transform: translateY(-0.35rem);
+    }
+
+    .list-heading.past { margin-top: 5rem; }
+
     .concert-list {
       display: flex;
       flex-direction: column;
@@ -185,6 +214,9 @@
     }
 
     .concert-entry:first-child { border-top: none; padding-top: 1.25rem; }
+
+    /* Entry without a photo */
+    .concert-entry.no-photo { grid-template-columns: 90px 1fr; }
 
     /* DATE COLUMN */
     .concert-date {
@@ -239,6 +271,22 @@
       object-position: center 28%;
     }
 
+    /* Original photos: shown exactly as supplied (no crop, no filter) */
+    .concert-photo.original {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .concert-photo.original img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: auto;
+      object-fit: contain;
+      filter: none;
+      border-radius: 0;
+    }
+
     /* CONTENT COLUMN */
     .concert-title {
       font-family: var(--font-display);
@@ -247,6 +295,15 @@
       font-style: italic;
       color: var(--ink);
       margin-bottom: 0.3rem;
+    }
+
+    .concert-when {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 0.5rem;
     }
 
     .concert-players {
@@ -373,7 +430,7 @@
     footer a:hover { color: var(--ink); }
 
     @media (max-width: 700px) {
-      nav { padding: 1rem 1.5rem; }
+      body > nav { padding: 1rem 1.5rem; }
       .nav-links { display: none; }
       .page-hero { padding: 7rem 1.5rem 3rem; }
       .concerts-section { padding: 2rem 1.5rem 5rem; }
@@ -381,7 +438,11 @@
       .perform-strip-inner { grid-template-columns: 1fr; gap: 1.5rem; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
 
-      .concert-entry {
+      .list-heading h2 { font-size: 1.7rem; }
+      .list-heading.past { margin-top: 3.5rem; }
+
+      .concert-entry,
+      .concert-entry.no-photo {
         grid-template-columns: 60px 1fr;
         grid-template-rows: auto auto;
         gap: 1rem 1.5rem;
@@ -408,7 +469,19 @@
         object-position: center 22%;
       }
 
+      /* Original photos stay uncropped, side by side */
+      .concert-photo.original { flex-direction: row; align-items: flex-start; }
+      .concert-photo.original img {
+        width: auto;
+        max-width: 48%;
+        max-height: 280px;
+        aspect-ratio: auto;
+        object-fit: contain;
+      }
+      .concert-photo.original.single img { max-width: 60%; max-height: 340px; }
+
       .concert-body { grid-column: 2; grid-row: 1; }
+      .concert-entry.no-photo .concert-body { grid-row: 1; }
 
       .concert-daynum { font-size: 2rem; }
       .programme li { flex-direction: column; gap: 0.1rem; }
@@ -432,13 +505,13 @@
 
   <header class="page-hero">
     <div class="page-hero-inner">
-      <nav class="breadcrumb" aria-label="breadcrumb">
+      <div class="breadcrumb" role="navigation" aria-label="breadcrumb">
         <a href="st-mary-magdalene.html">St Mary Magdalene</a>
         <span class="sep">—</span>
-        <span class="current">Upcoming Concerts</span>
-      </nav>
+        <span class="current">Concerts</span>
+      </div>
       <p class="hero-label">St Mary Magdalene Concert Series</p>
-      <h1 class="hero-title">Upcoming <em>Concerts</em></h1>
+      <h1 class="hero-title">Upcoming <em>&amp; Past Concerts</em></h1>
       <div class="hero-meta">
         <div class="hero-meta-item">
           <span class="label">Venue</span>
@@ -446,7 +519,7 @@
         </div>
         <div class="hero-meta-item">
           <span class="label">Format</span>
-          <span class="value">Lunchtime Concerts — Saturdays, 1:00 PM</span>
+          <span class="value">Lunchtime Concerts — Fridays, 12:30 PM</span>
         </div>
         <div class="hero-meta-item">
           <span class="label">Admission</span>
@@ -457,6 +530,118 @@
   </header>
 
   <div class="concerts-section">
+
+    <!-- ═════════════ UPCOMING ═════════════ -->
+    <div class="list-heading">
+      <h2>Upcoming <em>Concerts</em></h2>
+    </div>
+
+    <div class="concert-list">
+
+      <!-- ════════ HOW TO ADD A CONCERT ════════
+           1. Save the performer photos in /images (crop each one out of the poster).
+           2. Copy the whole <article> block below, paste it in date order,
+              and change the date, names, photos and programme.
+           3. When a concert has happened, cut its <article> and paste it under "Past Concerts".
+           Photo class:  "concert-photo original"         -> shown exactly as supplied, uncropped.
+                         add "single" for one photo only  -> "concert-photo original single"
+                         no photo at all                  -> use <article class="concert-entry no-photo"> and delete the photo <div>.
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Fri</span>
+          <span class="concert-daynum">DD</span>
+          <span class="concert-month">Mon</span>
+        </div>
+        <div class="concert-photo original">
+          <img src="images/performer-one.png" alt="Name, instrument" />
+          <img src="images/performer-two.png" alt="Name, instrument" />
+        </div>
+        <div class="concert-body">
+          <h3 class="concert-title">Title or performer names</h3>
+          <p class="concert-when">Friday · 12:30 PM</p>
+          <p class="concert-players">Name, instrument · Name, instrument</p>
+          <ul class="programme">
+            <li><span class="piece">Piece title</span><span class="meta">Composer</span></li>
+          </ul>
+        </div>
+      </article>
+      ═════════════════════════════════════════ -->
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Fri</span>
+          <span class="concert-daynum">6</span>
+          <span class="concert-month">Nov</span>
+        </div>
+        <div class="concert-photo original">
+          <img src="images/smc-kristina-ammattil.png" alt="Kristina Ammattil, voice" />
+          <img src="images/smc-ben-cook.png" alt="Ben Cook, piano" />
+        </div>
+        <div class="concert-body">
+          <h3 class="concert-title">Homage</h3>
+          <p class="concert-when">Friday · 12:30 PM</p>
+          <p class="concert-players">Kristina Ammattil, voice · Ben Cook, piano</p>
+          <ul class="programme">
+            <li><span class="piece">A recital of song retelling lost stories</span><span class="meta">Works by influential women of the 19th &amp; 20th centuries</span></li>
+            <li><span class="piece">Maria Theresia von Paradis</span><span class="meta">composer</span></li>
+            <li><span class="piece">Fanny Hensel</span><span class="meta">composer</span></li>
+            <li><span class="piece">Pauline Viardot</span><span class="meta">composer</span></li>
+            <li><span class="piece">Maude Valérie White</span><span class="meta">composer</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Fri</span>
+          <span class="concert-daynum">4</span>
+          <span class="concert-month">Dec</span>
+        </div>
+        <div class="concert-photo original">
+          <img src="images/smc-isabelle-allan.png" alt="Isabelle Allan, violin" />
+          <img src="images/smc-owen-lee.png" alt="Owen Lee, piano" />
+        </div>
+        <div class="concert-body">
+          <h3 class="concert-title">Isabelle Allan &amp; Owen Lee</h3>
+          <p class="concert-when">Friday · 12:30 PM</p>
+          <p class="concert-players">Isabelle Allan, violin · Owen Lee, piano</p>
+          <ul class="programme">
+            <li><span class="piece">Partita in D minor<span class="arr">Sarabande · Gigue · Chaconne</span></span><span class="meta">J. S. Bach</span></li>
+            <li><span class="piece">Violin Sonata No. 3</span><span class="meta">Brahms</span></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="concert-entry">
+        <div class="concert-date">
+          <span class="concert-day">Fri</span>
+          <span class="concert-daynum">11</span>
+          <span class="concert-month">Dec</span>
+        </div>
+        <div class="concert-photo original single">
+          <img src="images/smc-boreas-trio.png" alt="Boreas Trio — Lidia Moscoso Bernal, Patrick Kearney and Lara Cucic" />
+        </div>
+        <div class="concert-body">
+          <h3 class="concert-title">Boreas Trio</h3>
+          <p class="concert-when">Friday · 12:30 PM</p>
+          <p class="concert-players">Lidia Moscoso Bernal, oboe · Patrick Kearney, bassoon · Lara Cucic, piano</p>
+          <ul class="programme">
+            <li><span class="piece">Soir</span><span class="meta">Mel Bonis</span></li>
+            <li><span class="piece">Trio Pathétique</span><span class="meta">Michael Glinka</span></li>
+            <li><span class="piece">Trio for Oboe, Bassoon &amp; Piano</span><span class="meta">Francis Poulenc</span></li>
+            <li><span class="piece">Life of a Balloon</span><span class="meta">Alyssa Morris</span></li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- ═════════════ PAST ═════════════ -->
+    <div class="list-heading past">
+      <h2>Past <em>Concerts</em></h2>
+    </div>
+
     <div class="concert-list">
 
       <article class="concert-entry">
@@ -470,6 +655,7 @@
         </div>
         <div class="concert-body">
           <h3 class="concert-title">The Beech Duo</h3>
+          <p class="concert-when">Saturday · 1:00 PM</p>
           <p class="concert-players">Jan Halen, violin · Nigel Tuffs, guitar</p>
           <ul class="programme">
             <li><span class="piece">Un Ange</span><span class="meta">Sébastien Vachez</span></li>
@@ -493,6 +679,7 @@
         </div>
         <div class="concert-body">
           <h3 class="concert-title">Ventus Duo</h3>
+          <p class="concert-when">Saturday · 1:00 PM</p>
           <p class="concert-players">Ramon, tuba &amp; organ · David, horn</p>
           <ul class="programme">
             <li><span class="piece">Sonata for Flute in F major<span class="arr">arr. Drobnak</span></span><span class="meta">Telemann</span></li>
@@ -515,6 +702,7 @@
         </div>
         <div class="concert-body">
           <h3 class="concert-title">Matilde Freiria</h3>
+          <p class="concert-when">Saturday · 1:00 PM</p>
           <p class="concert-players">Solo Guitar</p>
           <ul class="programme">
             <li><span class="piece">Les Barricades Mystérieuses</span><span class="meta">François Couperin</span></li>
@@ -538,6 +726,7 @@
         </div>
         <div class="concert-body">
           <h3 class="concert-title">Kairos Winds</h3>
+          <p class="concert-when">Saturday · 1:00 PM</p>
           <p class="concert-players">Laura Ware-Heine, oboe · Guillermo Ramasasa, clarinet · Izabela Musial, bassoon</p>
           <ul class="programme">
             <li><span class="piece">Cinq Pièces en Trio</span><span class="meta">Jacques Ibert</span></li>
@@ -558,6 +747,7 @@
         </div>
         <div class="concert-body">
           <h3 class="concert-title">Cathy Tsang &amp; Bethany Caswell</h3>
+          <p class="concert-when">Saturday · 1:00 PM</p>
           <p class="concert-players">Flute &amp; harp</p>
           <ul class="programme">
             <li><span class="piece">Romance, for flute and harp</span><span class="meta">Saint-Saëns</span></li>
